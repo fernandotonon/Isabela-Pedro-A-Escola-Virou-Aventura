@@ -1,0 +1,28 @@
+# Needed when the same files are served over HTTP to the Clayground Web Runtime:
+# a directory import cannot be listed remotely, so the sibling types are declared here.
+EscolaGame 1.0 EscolaGame.qml
+GameWorld 1.0 GameWorld.qml
+SideCamera 1.0 SideCamera.qml
+InputManager 1.0 InputManager.qml
+Character 1.0 Character.qml
+CharacterVisual 1.0 CharacterVisual.qml
+Sprite3D 1.0 Sprite3D.qml
+PropVisual 1.0 PropVisual.qml
+Prop 1.0 Prop.qml
+GroundSlab 1.0 GroundSlab.qml
+MovingPlatform 1.0 MovingPlatform.qml
+Pushable 1.0 Pushable.qml
+Switch 1.0 Switch.qml
+Gate 1.0 Gate.qml
+Collectible 1.0 Collectible.qml
+Checkpoint 1.0 Checkpoint.qml
+Hazard 1.0 Hazard.qml
+TriggerZone 1.0 TriggerZone.qml
+FinalDoor 1.0 FinalDoor.qml
+LevelDirector 1.0 LevelDirector.qml
+Effects 1.0 Effects.qml
+ScreenFade 1.0 ScreenFade.qml
+AudioManager 1.0 AudioManager.qml
+SaveSystem 1.0 SaveSystem.qml
+Hud 1.0 Hud.qml
+MenuOverlay 1.0 MenuOverlay.qml

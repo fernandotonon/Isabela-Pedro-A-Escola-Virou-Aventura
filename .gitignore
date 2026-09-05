@@ -1,0 +1,20 @@
+# build output
+build*/
+/deploy/
+CMakeUserPresets.json
+.cache/
+.clay/
+compile_commands.json
+# macOS
+.DS_Store
+# QtMeshEditor generation sidecars and logs (20 MB each; regenerate with scripts/generate-models.sh)
+assets/qtmesh-projects/sources/
+assets/qtmesh-projects/logs/
+assets/qtmesh-projects/matted/
+# local tool output
+*.png.preview.png
+browser-check*.png
+# local run logs and previews
+*.log
+assets/qtmesh-projects/*.png
+/tmp/
