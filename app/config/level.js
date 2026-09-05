@@ -74,16 +74,16 @@ var level = {
         gate("gate_bars", 54, 0, 0.8, 3.2, ["button_bars", "lever_bars"], { asset: "school_gate_small" }),
         // --- Challenge 2: the vertical ladder ----------------------------------------------
         ladder(62.4, 2.5, 1.5, { asset: "climbing_ladder", visualFrom: 0 }),        // starts out of Pedro's reach
-        platform(60, 3.65, 20, 0.35, "parallel_bars_top"),                         // the upper walkway (top 4.0)
+        platform(60, 3.65, 11.8, 0.35, "parallel_bars_top"),                       // the upper walkway (top 4.0), ends before the block
         pushable("box_ladder", 68, 0, 1.0, 1.2, 1, "backpack", { hint: "hint.push" }),    // Pedro's route: push, climb
         wall(73, 0, 3, 2.6, { asset: "tire_planter", visual: "stack" }),          // the step block
         star(66, 1.2),
         // --- Challenge 3: the swinging equipment -------------------------------------------
         moving("swing_1", 84, 1.9, 2.2, 0.35, [{ x: 84, y: 1.9 }, { x: 89, y: 2.6 }], 1.7, { asset: "moving_platform", swing: true }),
         trigger("hint.moving", 80, 2),
-        platform(89.5, -2.2, 1.0, 1.0, "tire_planter"), platform(91, -2.2, 1.0, 2.2, "tire_planter"),   // steps out of the pit
+        platform(89.7, -2.2, 1.0, 1.0, "tire_planter"), platform(91, -2.2, 1.0, 2.2, "tire_planter"),   // steps out of the pit
         lowpass(85, -2.2, 3, 2.2, { gap: 0.8, asset: "garden_planter", secret: true }),      // secret tunnel in the pit
-        wall(88, -2.2, 0.6, 2.2), memory(88.9, -1.6),
+        wall(88, -2.2, 0.5, 2.2), memory(89.1, -1.6),
         star(87, 2.4),
         // --- Challenge 4: the distant gate -------------------------------------------------
         trigger("story.gate", 96, 3, { narrative: "gate_far" }),
@@ -117,9 +117,10 @@ var level = {
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
         lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter" }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
-        pushable("bench_garden2", 157.4, 0, 1.8, 1.1, 2, "school_bench"),          // Isabela slides it to the block for Pedro
-        platform(168, 2.0, 7, 0.4, "garden_planter", { ledge: true }), lever("lever_garden", 173, 2.4, {}),
-        star(165.9, 5.0), star(170, 3.2), star(162, 0.3),
+        pushable("bench_garden2", 165.4, 0, 1.8, 1.1, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
+        wall(169.4, 0, 0.4, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
+        platform(169.6, 4.0, 6, 0.4, "garden_planter", { ledge: true }), lever("lever_garden", 173, 4.4, {}),
+        star(165.9, 5.0), star(171, 5.4), star(162, 0.3),
         gate("gate_garden", 180, 0, 0.8, 3.4, ["button_garden", "lever_garden"], { asset: "school_gate_small" }),
         // --- secret: Isabela's notebook reveals a hidden stair to a pencil -----------------
         trigger("hint.notebook", 183, 3),
@@ -229,7 +230,7 @@ var level = {
         plane("plane_hz_2", [{ x: 414, y: 2.4 }, { x: 424, y: 1.6 }], 3.4),
         // the desk under the window
         pushable("desk_hall", 419, 0, 1.6, 1.4, 2, "student_desk", { hint: "hint.desk" }), wall(424.6, 0, 0.4, 1.0, { asset: "book_stack" }),
-        platform(424, 2.4, 6, 0.4, "window_ledge", { ledge: true }), star(426, 3.6), pencil(429, 3.6),
+        platform(424.6, 2.4, 5.4, 0.4, "window_ledge", { ledge: true }), star(426.5, 3.6), pencil(429, 3.6),
         wall(430, 0, 0.5, 2.4, { asset: "corridor_wall" }),
         // low obstacles and a high lever
         lowpass(436, 0, 4, 2.0, { gap: 0.8, asset: "student_desk_row" }), button("button_hall", 438, {}), star(437.5, 0.3),

@@ -87,8 +87,9 @@ TestCase {
     }
     function test_ladder() {
         const w = flatWorld(); Physics.addSolid(w, { x: 2, y: 0, w: 0.8, h: 4, kind: Physics.LADDER }); Physics.addSolid(w, { x: 2.8, y: 3.8, w: 3, h: 0.2 })
-        const c = Motion.create(w, Tuning.characters.pedro, 2.4, 0); run(c, 3); run(c, 240, { moveY: 1, moveX: 0.3 })
-        verify(c.body.y > 3.5, "reached the top, y=" + c.body.y)
+        const c = Motion.create(w, Tuning.characters.pedro, 2.4, 0); run(c, 3)
+        let top = 0; for (let i = 0; i < 240; ++i) { Motion.setInput(c, Object.assign(Motion.emptyInput(), { moveY: 1, moveX: 0.3 })); Motion.update(c, dt); top = Math.max(top, c.body.grounded ? c.body.y : 0) }
+        verify(top > 3.5, "reached the top, highest grounded y=" + top)
     }
     function test_moving_platform_carries_body() {
         const w = flatWorld(); const plat = Physics.addSolid(w, { x: 0, y: 2, w: 2, h: 0.3, id: "p" })

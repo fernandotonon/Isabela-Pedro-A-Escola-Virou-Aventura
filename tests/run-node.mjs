@@ -113,8 +113,8 @@ test("motion: Pedro crawls through a low passage, Isabela is blocked", () => {
 test("motion: ladder climb", () => {
   const w = flatWorld(); Physics.addSolid(w, { x: 2, y: 0, w: 0.8, h: 4, kind: Physics.LADDER, id: "ladder" }); Physics.addSolid(w, { x: 2.8, y: 3.8, w: 3, h: 0.2, id: "top" });
   const c = Motion.create(w, Tuning.characters.pedro, 2.4, 0); run(c, 3, {});
-  run(c, 240, { moveY: 1, moveX: 0.3 });
-  check(c.body.y > 3.5, `y=${c.body.y.toFixed(2)} state=${c.fsm.state}`);
+  let top = 0; for (let i = 0; i < 240; ++i) { Motion.setInput(c, Object.assign(Motion.emptyInput(), { moveY: 1, moveX: 0.3 })); Motion.update(c, DT); top = Math.max(top, c.body.grounded ? c.body.y : 0); }
+  check(top > 3.5, `highest grounded y=${top.toFixed(2)}`);
 });
 
 test("courage: hurt, invulnerability, depletion and refill", () => {

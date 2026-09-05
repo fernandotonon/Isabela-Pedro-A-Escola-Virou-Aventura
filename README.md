@@ -12,6 +12,9 @@ como um labirinto. O ambiente é 3D, a movimentação acontece num plano lateral
 > IA de companheiro, Coragem, 4 checkpoints, 40 estrelas, 6 lápis, 1 Memória da Família, salvamento,
 > teclado e gamepad. A escola é fictícia ("Escola Horizonte").
 
+![A pracinha, build web (Chrome headless)](docs/screenshots/web-pracinha.png)
+![O corredor gigante, desktop](docs/screenshots/desktop-corredor.png)
+
 ## Requisitos
 
 | Ferramenta | Versão | Observações |

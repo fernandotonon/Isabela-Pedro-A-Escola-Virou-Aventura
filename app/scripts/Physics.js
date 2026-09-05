@@ -38,7 +38,7 @@ function findSolid(world, id) {
 
 function makeBody(x, y, w, h) {
     return { x: x, y: y, w: w, h: h, vx: 0, vy: 0, grounded: false, ground: null,
-             hitWall: 0, hitCeiling: false, ownSolid: null, stepHeight: 0 }
+             hitWall: 0, hitCeiling: false, ownSolid: null, stepHeight: 0, mantleHeight: 0 }
 }
 
 function box(b) { return { x: b.x - b.w / 2, y: b.y, w: b.w, h: b.h } }
@@ -70,7 +70,9 @@ function step(world, body, dx, dy) {
             if (overlap(bx, s)) {
                 // a low step (kerb, stair) is walked up instead of blocking
                 const stepTop = s.y + s.h
-                if (wasGrounded && body.stepHeight > 0 && stepTop > body.y && stepTop - body.y <= body.stepHeight + EPS) {
+                // ...and a body in the air that has almost cleared an edge mantles onto it (ledge forgiveness)
+                const mantle = !wasGrounded && body.vy < 3 && body.mantleHeight > 0 && stepTop - body.y <= body.mantleHeight
+                if (body.stepHeight > 0 && stepTop > body.y && ((wasGrounded && stepTop - body.y <= body.stepHeight + EPS) || mantle)) {
                     const lifted = { x: bx.x, y: stepTop + EPS, w: bx.w, h: bx.h }
                     let free = true
                     for (const o of world.solids) { if (o === s || o.kind === ONEWAY || !blocks(o, body, 0, prevBottom)) continue; if (overlap(lifted, o)) { free = false; break } }
@@ -158,7 +160,8 @@ function ledgeAhead(world, body, dir, opts) {
     const handMin = body.y + body.h * 0.55
     const handMax = body.y + body.h + 0.45
     for (const s of world.solids) {
-        if (!s.enabled || (s.kind !== SOLID && s.kind !== ONEWAY) || s === body.ownSolid) continue
+        if (!s.enabled || s.kind === LADDER || s === body.ownSolid) continue
+        if (s.kind === LOW && body.h <= s.gap) continue          // a passage this body fits through is not a wall to grab
         const top = s.y + s.h
         if (top < handMin || top > handMax) continue
         const edgeX = dir > 0 ? s.x : s.x + s.w

@@ -16,6 +16,7 @@ function create(world, def, x, y) {
     const t = Object.assign({}, Tuning.base, def)
     const body = Physics.makeBody(x, y, def.width, def.height)
     body.stepHeight = t.stepHeight !== undefined ? t.stepHeight : 0.55
+    body.mantleHeight = def.mantle !== undefined ? def.mantle : 0      // Pedro pops onto edges he nearly cleared; Isabela grabs them
     const c = {
         id: def.id, def: def, t: t, world: world, body: body,
         facing: 1, input: emptyInput(), lastInput: emptyInput(),
@@ -98,6 +99,8 @@ function update(c, dt) {
 
     const wasGrounded = b.grounded, prevVy = b.vy
     Physics.step(c.world, b, b.vx * dt, b.vy * dt)
+    // walked off an edge (no jump): do not grab the ledge just left behind
+    if (wasGrounded && !b.grounded && !c.jumping) c.hangCooldown = Math.max(c.hangCooldown, 0.35)
     if (b.grounded && !wasGrounded) { c.jumping = false; emit(c, "land", { speed: -prevVy }) ; if (st !== "Scared") FSM.set(c.fsm, c, "Land") }
     if (b.grounded && st !== "Scared") { c.safeTimer += dt; if (c.safeTimer > 0.25 && b.ground && b.ground.dx === 0 && b.ground.dy === 0 && !b.ground.unsafe) { c.lastSafe.x = b.x; c.lastSafe.y = b.y; c.safeTimer = 0 } }
     else c.safeTimer = 0

@@ -82,6 +82,16 @@ Each `Character` already owns an independent input snapshot per fixed step (`Mot
 the companion AI is just another input source. A second local player means a second `InputManager`
 feeding the other character instead of `CompanionAI.think()`, and a camera that always frames both.
 
+## Walkthrough harness
+
+`--walkthrough` plays `app/config/walkthrough.js` against the real game: high-level steps (`move`,
+`jump`, `hopOnto` a pushed object from whichever side, `crawl`, `climb`, `switch`, `interact`,
+`ability`, `expect` gate/switch/checkpoint/position) produce the input snapshot each fixed step, so the
+route from the square to the classroom door is an executable specification (exit code 0 = completable).
+Iterate on one section with `--wt-from <step> --wt-pos <x>,<y> --wt-active pedro|isabela` and
+`--wt-trace` (per-frame body state for move/jump steps). Failure lines list the solids around the
+character (`blockers=`) and the pushables nearby.
+
 ## Development tools (`DevTools.qml`, compiled only with `ESCOLA_DEV_TOOLS=ON`)
 
 F1 panel: collider view (F2), character states, FPS, coordinates, teleport to checkpoints, restart a

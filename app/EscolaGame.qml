@@ -26,6 +26,7 @@ Item {
     readonly property bool autotest: args.indexOf("--autotest") >= 0
     readonly property bool walkthrough: args.indexOf("--walkthrough") >= 0
     property var wt: null
+    readonly property bool wtTrace: args.indexOf("--wt-trace") >= 0
     property int wtLogged: 0
     property bool useModels: args.indexOf("--no-models") < 0
     // Model files: qrc:/ (relative) on desktop; on WebAssembly they are preloaded into the
@@ -125,6 +126,14 @@ Item {
                 game.elapsed = p.elapsed || 0
                 game.checkpointSnapshot = director.snapshot()
             }
+            if (game.wt && game.args.indexOf("--wt-from") >= 0) {
+                const from = parseInt(game.args[game.args.indexOf("--wt-from") + 1])
+                const pos = (game.args[game.args.indexOf("--wt-pos") + 1] || "4,0").split(",").map(Number)
+                game.wt.index = from
+                game.placeAt(pos[0], pos[1])
+                if (game.args.indexOf("--wt-active") >= 0) game.setActive(game.args[game.args.indexOf("--wt-active") + 1] === "pedro" ? pedro : isabela, true)
+                console.log("WALKTHROUGH fast-forward to step", from, "at", pos.join(","), "active", game.active.characterId)
+            }
             game.enterSection(director.sectionAt(game.active.motion.body.x), true)
             game.phase = "playing"
             game.playSectionMusic()
@@ -186,6 +195,14 @@ Item {
             const r = Walkthrough.tick(wt, game, dt)
             snap = r.input
             if (r.switchTo && active.characterId !== r.switchTo) switchCharacter()
+            if (wtTrace && wt.steps[wt.index] && wt.steps[wt.index].do === "move" && Math.round(wt.time * 60) % 10 === 0) {
+                const b = active.motion.body
+                console.log("WTMOVE", wt.index, wt.time.toFixed(2), "x", b.x.toFixed(3), "y", b.y.toFixed(4), "vx", b.vx.toFixed(2), "wall", b.hitWall, "g", b.grounded, active.motion.fsm.state, b.ground ? (b.ground.id + "@" + b.ground.x + "," + (b.ground.y + b.ground.h)) : "-", "blockers", describeBlockers())
+            }
+            if (wtTrace && wt.steps[wt.index] && wt.steps[wt.index].do === "jump" && wt.phase === 2) {
+                const b = active.motion.body
+                console.log("WTTRACE", wt.index, wt.time.toFixed(2), "x", b.x.toFixed(2), "y", b.y.toFixed(2), "vx", b.vx.toFixed(1), "vy", b.vy.toFixed(1), "wall", b.hitWall, "g", b.grounded, active.motion.fsm.state, b.ground ? b.ground.id : "-", "in", JSON.stringify(snap))
+            }
             if (r.interact) snap.interactPressed = true
             if (r.ability) snap.abilityPressed = true
             while (wtLogged < wt.log.length) console.log("WALKTHROUGH", wt.log[wtLogged++])
@@ -384,6 +401,7 @@ Item {
     function activeY() { return active.motion.body.y }
     function activeGrounded() { return active.motion.body.grounded }
     function activeVx() { return active.motion.body.vx }
+    function pushableBox(id) { for (const p of director.pushables) if (p.spec.id === id) return { x0: p.body.x - p.w / 2, x1: p.body.x + p.w / 2, top: p.body.y + p.h }; return null }
     function activeState() { return active.motion.fsm.state }
     function activeId() { return active.characterId }
     function companionState() { return companion.motion.fsm.state }

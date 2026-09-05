@@ -25,7 +25,7 @@ function finish(w, ok, msg) {
     const s = current(w)
     w.log.push((ok ? "ok   " : "FAIL ") + w.index + " " + JSON.stringify(s) + (msg ? " - " + msg : ""))
     if (!ok) w.failures.push(w.index + ": " + JSON.stringify(s) + " " + (msg || ""))
-    w.index++; w.time = 0; w.phase = 0; w.jumped = false
+    w.index++; w.time = 0; w.phase = 0; w.jumped = false; w.dir = undefined; w.tries = 0
     if (w.index >= w.steps.length) w.done = true
 }
 
@@ -39,7 +39,9 @@ function tick(w, game, dt) {
     const x = game.activeX(), grounded = game.activeGrounded()
     // hanging on a ledge in the middle of a locomotion step: climb up (or drop when asked)
     if (game.activeState() === "Hang" && (s.do === "move" || s.do === "crawl" || (s.do === "jump" && !s.grab))) {
-        if (s.dropFromLedge) out.input.downHeld = true; else out.input.moveY = 1
+        // a target right below/next to the ledge means we came from above: drop; a far target: climb on
+        const nearTarget = s.x !== undefined && Math.abs(s.x - x) < 1.0
+        if (s.dropFromLedge || (s.do === "move" && nearTarget)) out.input.downHeld = true; else out.input.moveY = 1
         return out
     }
     switch (s.do) {
@@ -51,6 +53,7 @@ function tick(w, game, dt) {
     case "move": {
         const dx = s.x - x
         if (Math.abs(dx) < 0.3 && grounded) { finish(w, true); break }
+        if (!grounded && Math.abs(dx) < 0.8) break            // falling next to the target: just land
         out.input.moveX = Math.abs(dx) < 1.2 ? Math.sign(dx) * 0.45 : Math.sign(dx)
         if (s.down) out.input.downHeld = true
         break
@@ -64,8 +67,10 @@ function tick(w, game, dt) {
     }
     case "jump": {
         const dir = s.dir === undefined ? Math.sign((s.x || x) - x) || 1 : s.dir
-        if (w.phase === 0) {                       // walk to the take-off point
-            const dx = (s.x === undefined ? x : s.x) - x
+        if (w.phase === 0) {                       // walk to the take-off point (may be relative to a pushed object)
+            let sx = s.x === undefined ? x : s.x
+            if (s.fromPushable) { const b = game.pushableBox(s.fromPushable); if (b) sx = (dir > 0 ? b.x1 : b.x0) + (s.offset === undefined ? -dir * 0.3 : s.offset) }
+            const dx = sx - x
             if (Math.abs(dx) < 0.25) { w.phase = 1; w.time = 0 } else out.input.moveX = Math.abs(dx) < 1.0 ? Math.sign(dx) * 0.45 : Math.sign(dx)
         } else if (w.phase === 1) {                // settle: no momentum against the jump direction, then press jump
             const vx = game.activeVx()
@@ -80,6 +85,37 @@ function tick(w, game, dt) {
             out.input.moveX = w.time < (s.air === undefined ? 1.2 : s.air) ? dir * (s.airMove === undefined ? 1 : s.airMove) : 0
             if (s.grab && game.activeState() === "Hang") { finish(w, true); break }
             if (w.time > 0.15 && grounded) finish(w, true, "landed at x=" + x.toFixed(2) + " y=" + game.activeY().toFixed(2))
+        }
+        break
+    }
+    case "hopOnto": {
+        // { do: "hopOnto", pushable: "id" } or { left, right, top }: approach the object from the side we are
+        // on, hop up onto it (short jump, gentle air move), retry a few times. Done when standing on top.
+        const box = s.pushable ? game.pushableBox(s.pushable) : { x0: s.left, x1: s.right, top: s.top }
+        if (!box) { finish(w, false, "no object " + s.pushable); break }
+        const top = box.top
+        if (grounded && game.activeY() >= top - 0.05 && x > box.x0 - 0.1 && x < box.x1 + 0.1) { finish(w, true, "on top at x=" + x.toFixed(2)); break }
+        if (w.dir === undefined || w.phase === 0) {
+            w.dir = x < (box.x0 + box.x1) / 2 ? 1 : -1
+            w.target = w.dir > 0 ? box.x0 - 0.28 : box.x1 + 0.28
+            w.phase = 1; w.tries = (w.tries || 0)
+        }
+        if (w.phase === 1) {                       // approach the take-off point
+            const dx = w.target - x
+            if (Math.abs(dx) < 0.12 && grounded) { w.phase = 2; w.time = 0 } else out.input.moveX = Math.abs(dx) < 0.8 ? Math.sign(dx) * 0.4 : Math.sign(dx)
+        } else if (w.phase === 2) {                // take off
+            const vx = game.activeVx()
+            if (Math.abs(vx) > 0.6 && w.time < 0.5) { out.input.moveX = 0; break }
+            out.input.moveX = w.dir * 0.5; out.input.jumpPressed = true; out.input.jumpHeld = true; w.phase = 3; w.time = 0
+        } else {                                   // in the air: keep a gentle push toward the object
+            out.input.jumpHeld = w.time < (s.hold === undefined ? 0.22 : s.hold)
+            out.input.moveX = w.time < (s.air === undefined ? 0.5 : s.air) ? w.dir * (s.airMove === undefined ? 0.5 : s.airMove) : 0
+            if (game.activeState() === "Hang") out.input.moveY = 1
+            if (w.time > 0.2 && grounded) {
+                if (game.activeY() >= top - 0.05) { finish(w, true, "on top at x=" + x.toFixed(2)) }
+                else if (++w.tries >= 4) finish(w, false, "could not get onto the object (x=" + x.toFixed(2) + ")")
+                else { w.phase = 0 }
+            }
         }
         break
     }

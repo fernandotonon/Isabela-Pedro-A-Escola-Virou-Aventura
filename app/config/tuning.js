@@ -42,6 +42,7 @@ var characters = {
         width: 0.5, height: 1.15, crouchHeight: 0.62,
         maxSpeed: 7.2, jumpVelocity: 10.0,     // ~1.7 m apex
         canLedgeGrab: false, canCrawl: true, pushStrength: 1,   // 1 = light objects only
+        mantle: 0.6,                            // ledge forgiveness: an edge cleared by all but 0.6 m is still reached
         ability: "curiosity", abilityCooldown: 1.0, abilityRadius: 7,
         courageMax: 3, color: "#2f6fd6", hair: "#2a1a10"
     }
