@@ -24,7 +24,13 @@ Item {
     Component { id: soundComp; Sound { volume: audio.sfxVolume; lazyLoading: false } }
     Component { id: musicComp; Sound { volume: audio.musicVolume; lazyLoading: true } }
 
+    // Clayground.Sound still freezes the page on WebAssembly when the sounds are created (the desktop
+    // is fine), so the web build runs silent unless started with --audio; --no-audio silences any build.
+    readonly property bool audioEnabled: Qt.application.arguments.indexOf("--no-audio") < 0
+                                         && (Qt.platform.os !== "wasm" || Qt.application.arguments.indexOf("--audio") >= 0)
     Component.onCompleted: {
+        console.log("AudioManager: audio", audioEnabled ? "on" : "off")
+        if (!audioEnabled) { soundOn = false; return }
         const map = {}
         for (const n of _names) map[n] = soundComp.createObject(audio, { source: Qt.resolvedUrl("assets/audio/" + n + ".wav") })
         _sounds = map
@@ -34,7 +40,7 @@ Item {
     }
 
     function play(name, volumeScale) {
-        if (!soundOn) return
+        if (!soundOn || !audioEnabled) return
         const s = _sounds[name]
         if (!s) return
         const now = Date.now() / 1000
@@ -56,6 +62,7 @@ Item {
         onTriggered: { const m = audio._music[audio.currentMusic]; if (m && audio.soundOn) m.play() }
     }
     function playMusic(name) {
+        if (!audioEnabled) return
         if (name === currentMusic && musicLoop.running) return
         stopMusic()
         currentMusic = name

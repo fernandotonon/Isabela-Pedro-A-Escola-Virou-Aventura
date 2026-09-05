@@ -37,6 +37,11 @@ function tick(w, game, dt) {
     w.time += dt
     if (w.time > (s.timeout || w.timeout) && s.do !== "wait") { finish(w, false, "timeout at x=" + game.activeX().toFixed(2) + " y=" + game.activeY().toFixed(2) + " state=" + game.activeState() + " blockers=" + game.describeBlockers()); return out }
     const x = game.activeX(), grounded = game.activeGrounded()
+    // hanging on a ledge in the middle of a locomotion step: climb up (or drop when asked)
+    if (game.activeState() === "Hang" && (s.do === "move" || s.do === "crawl" || (s.do === "jump" && !s.grab))) {
+        if (s.dropFromLedge) out.input.downHeld = true; else out.input.moveY = 1
+        return out
+    }
     switch (s.do) {
     case "switch":
         if (game.activeId() === s.to) { finish(w, true); break }
@@ -46,7 +51,6 @@ function tick(w, game, dt) {
     case "move": {
         const dx = s.x - x
         if (Math.abs(dx) < 0.3 && grounded) { finish(w, true); break }
-        if (game.activeState() === "Hang") { out.input.moveY = s.dropFromLedge ? 0 : 1; out.input.downHeld = !!s.dropFromLedge; break }
         out.input.moveX = Math.abs(dx) < 1.2 ? Math.sign(dx) * 0.45 : Math.sign(dx)
         if (s.down) out.input.downHeld = true
         break
@@ -63,8 +67,11 @@ function tick(w, game, dt) {
         if (w.phase === 0) {                       // walk to the take-off point
             const dx = (s.x === undefined ? x : s.x) - x
             if (Math.abs(dx) < 0.25) { w.phase = 1; w.time = 0 } else out.input.moveX = Math.abs(dx) < 1.0 ? Math.sign(dx) * 0.45 : Math.sign(dx)
-        } else if (w.phase === 1) {                // press jump (with a running start if asked)
-            out.input.moveX = s.run ? dir : (s.stand ? 0 : dir * 0.9)
+        } else if (w.phase === 1) {                // settle: no momentum against the jump direction, then press jump
+            const vx = game.activeVx()
+            out.input.moveX = s.stand ? 0 : dir * 0.9
+            if (!s.stand && Math.sign(vx) === -dir && Math.abs(vx) > 0.3 && w.time < 0.6) break
+            if (!grounded && w.time < 0.6) break
             out.input.jumpPressed = true; out.input.jumpHeld = true; w.phase = 2; w.time = 0; w.jumped = true
         } else {                                   // in the air: hold direction / jump for `hold`
             const hold = s.hold === undefined ? 0.3 : s.hold

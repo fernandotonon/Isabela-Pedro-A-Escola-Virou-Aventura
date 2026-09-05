@@ -9,7 +9,7 @@ Node {
     property string assetBase: ""
     property bool useModels: true
     property real speedScale: 1
-    readonly property string kind: spec.type        // ball | plane
+    readonly property string kind: spec.type || ""        // ball | plane
     property real cx: spec.x
     property real cy: spec.y
     property int dir: 1

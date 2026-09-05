@@ -22,7 +22,7 @@ var steps = [
     { do: "jump", x: 71.0, dir: 1, hold: 0.35 }, { do: "expect", yMin: 1.1 }, { do: "jump", x: 72.3, dir: 1, hold: 0.4 }, { do: "expect", yMin: 2.5 },
     { do: "jump", x: 75.3, dir: 1, hold: 0.45 }, { do: "expect", yMin: 3.9 }, { do: "move", x: 79.5 }, { do: "move", x: 81.5 },
     // challenge 3: the swing - the easy route through the pit, plus the Family Memory
-    { do: "switch", to: "isabela" }, { do: "move", x: 85.4 }, { do: "expect", yMin: -0.1 }, { do: "move", x: 89.05 }, { do: "expect", yMax: -2.0 },
+    { do: "switch", to: "isabela" }, { do: "move", x: 85.4 }, { do: "expect", yMin: -0.1 }, { do: "move", x: 89.3 }, { do: "expect", yMax: -2.0 },
     { do: "expect", memory: true },
     { do: "jump", x: 89.1, dir: 1, hold: 0.4 }, { do: "jump", x: 90.2, dir: 1, hold: 0.4 }, { do: "expect", yMin: -0.1 }, { do: "move", x: 94 },
     // challenge 4: the distant gate - hops, then both on the marks

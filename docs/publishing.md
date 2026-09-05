@@ -7,6 +7,7 @@ export QT_ROOT=~/Qt/6.11.1/macos
 cmake --preset desktop && cmake --build --preset desktop --target escola_aventura
 ./build-desktop/bin/escola_aventura.app/Contents/MacOS/escola_aventura            # play
 ./build-desktop/bin/escola_aventura.app/Contents/MacOS/escola_aventura --autotest # scripted pass, prints AUTOTEST lines
+./build-desktop/bin/escola_aventura.app/Contents/MacOS/escola_aventura --walkthrough # plays the whole level (config/walkthrough.js), exit 0 = completable
 node tests/run-node.mjs                                                            # rules/physics/level checks without Qt
 ctest --preset desktop                                                             # QML suites + app smoke test (headless)
 ```

@@ -77,7 +77,9 @@ function step(world, body, dx, dy) {
                     if (free) { bx.y = lifted.y; body.y = lifted.y; continue }
                 }
                 if (dx > 0) { bx.x = s.x - bx.w - EPS; body.hitWall = 1 } else { bx.x = s.x + s.w + EPS; body.hitWall = -1 }
-                body.vx = 0
+                // walking into a wall stops you; in the air the speed is kept so a jump from right next
+                // to a ledge still carries over its edge once the body clears the top
+                if (wasGrounded) body.vx = 0
             }
         }
         body.x = bx.x + bx.w / 2

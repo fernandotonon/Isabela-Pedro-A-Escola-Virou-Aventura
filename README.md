@@ -61,8 +61,10 @@ por exemplo `FETCHCONTENT_SOURCE_DIR_LLAMA_CPP` apontando para um checkout já e
 `all` se o caminho do projeto tiver `&` ou espaços: o alvo de exemplos do qml-box2d não escapa o
 caminho corretamente.
 
-Linha de comando: `--autotest` (percurso roteirizado, imprime linhas `AUTOTEST`), `--no-models`
-(placeholders), `--no-dev` (desliga as ferramentas de desenvolvimento). No navegador: `index.html?args=--autotest`.
+Linha de comando: `--autotest` (passeio roteirizado curto, imprime linhas `AUTOTEST`; `--shots <dir>` salva
+capturas), `--walkthrough` (joga a fase inteira com o roteiro de `app/config/walkthrough.js` e sai com código 0
+quando a porta da sala se abre - a prova executável de que a fase é completável), `--no-models` (placeholders),
+`--no-dev` (desliga as ferramentas de desenvolvimento). No navegador: `index.html?args=--autotest`.
 
 ## Controles
 
@@ -119,6 +121,19 @@ A build WebAssembly é multithread (necessário para Qt Quick 3D), então a pág
 o `coi-serviceworker.js` empacotado. `.wasm` deve ser servido como `application/wasm`. Abrir o
 `index.html` do disco não funciona. `scripts/deploy-pages.sh` publica `deploy/multithread` no branch
 `gh-pages` (mesmo processo usado no Ironfang).
+
+## Limitações conhecidas
+
+* **Áudio na web**: criar os objetos `Clayground.Sound` congela a página na build WebAssembly (o desktop
+  tem áudio completo). A build web roda em silêncio por padrão; `index.html?args=--audio` ativa o áudio
+  para testar quando o Clayground corrigir o problema (issue MisterGC/clayground#216).
+* **Preset `high` do TRELLIS.2**: nesta máquina (24 GB) os presets `high`/`balanced` travam num command
+  buffer do Metal; `scripts/generate-models.sh` detecta o travamento e usa `fast` (512). Os limites de
+  triângulos (10k props / 25k personagens) e texturas (1024 / 2048) são respeitados em qualquer preset.
+* **Gamepad no desktop**: o Qt 6 não tem módulo de gamepad; controles físicos funcionam na build web.
+* **Sprites**: a troca modelo → sprite sheet está implementada (`representation: "sprite"` no manifesto e
+  `scripts/render-sprites.sh`); as folhas dos props são geradas pelo pipeline, as animadas dos personagens
+  (`--animated`) ficam como próximo passo.
 
 ## Licença
 

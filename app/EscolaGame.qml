@@ -64,6 +64,7 @@ Item {
     signal shake(real strength)
 
     Component.onCompleted: {
+        console.log("EscolaGame: boot", Qt.platform.os, "args", JSON.stringify(args), "save backend", save.backend)
         save.load()
         applySettings()
         if (autotest) { startNewGame(); autotestTimer.start() }
@@ -382,6 +383,7 @@ Item {
     function activeX() { return active.motion.body.x }
     function activeY() { return active.motion.body.y }
     function activeGrounded() { return active.motion.body.grounded }
+    function activeVx() { return active.motion.body.vx }
     function activeState() { return active.motion.fsm.state }
     function activeId() { return active.characterId }
     function companionState() { return companion.motion.fsm.state }

@@ -9,7 +9,7 @@ import "scripts/Physics.js" as Physics
 Node {
     id: root
     property var spec: ({})
-    property string kind: spec.type        // button | lever | plate
+    property string kind: spec.type || ""        // button | lever | plate
     property bool active: false
     property bool latching: kind !== "plate"
     property string assetBase: ""

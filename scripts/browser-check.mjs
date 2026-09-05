@@ -65,14 +65,14 @@ try {
   await send("Page.navigate", { url });
   console.error("navigated, waiting", seconds, "s");
   await sleep(seconds * 1000);
-  const iso = await send("Runtime.evaluate", { expression: "JSON.stringify({coi: window.crossOriginIsolated, sab: typeof SharedArrayBuffer !== 'undefined'})", returnByValue: true });
-  console.log("isolation:", iso.result.value);
   const big = Object.values(bytes).filter(b => b.size > 200000).sort((a, b) => b.size - a.size);
   for (const b of big) console.log(`${(b.size / 1048576).toFixed(1)} MB  ${b.url.split("/").pop()}`);
   console.log(`total download: ${(Object.values(bytes).reduce((s, b) => s + b.size, 0) / 1048576).toFixed(1)} MB in ${Object.keys(bytes).length} requests`);
   const shot = await send("Page.captureScreenshot", { format: "png" });
   writeFileSync(out, Buffer.from(shot.data, "base64"));
   console.log("screenshot:", out);
+  const iso = await send("Runtime.evaluate", { expression: "JSON.stringify({coi: window.crossOriginIsolated, sab: typeof SharedArrayBuffer !== 'undefined'})", returnByValue: true });
+  console.log("isolation:", iso.result.value);
 } catch (e) {
   console.error("browser-check failed:", e); fatal = true;
 } finally {
