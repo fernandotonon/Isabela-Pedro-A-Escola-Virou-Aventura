@@ -15,12 +15,12 @@
 
 var assets = {
     // ---- characters -------------------------------------------------------------------------
-    isabela: { kind: "character", model: "assets/runtime/isabela/Isabela.qml", sprite: null, representation: "model", scale: 1.471, footOffset: 0.51, height: 1.5, unitWidth: 0.76, unitHeight: 1.02, rotation: 0,
+    isabela: { kind: "character", model: "assets/runtime/isabela/Isabela.qml", sprite: null, representation: "model", scale: 1.471, footOffset: 0.51, height: 1.5, unitWidth: 0.76, unitHeight: 1.02, rotation: 180,
                collider: { w: 0.6, h: 1.5, d: 0.5 }, shadow: { cast: true, receive: false }, status: "generated",
                placeholder: { color: "#e64b7a", skin: "#f1c7a8", hair: "#3b2418", w: 0.6, h: 1.5, d: 0.4 },
                clips: { Idle: "Idle", Walk: "Walk", Run: "Run", JumpStart: "Jump", JumpLoop: "Jump", Land: "Land", Push: "Push", Interact: "Pickup",
                         Climb: "Climb", Hang: "Hang", Crawl: "Crouch", Scared: "Hit", Celebrate: "Cheer", Wave: "Wave" } },
-    pedro:   { kind: "character", model: "assets/runtime/pedro/Pedro.qml", sprite: null, representation: "model", scale: 1.127, footOffset: 0.51, height: 1.15, unitWidth: 0.9, unitHeight: 1.02, rotation: 0,
+    pedro:   { kind: "character", model: "assets/runtime/pedro/Pedro.qml", sprite: null, representation: "model", scale: 1.127, footOffset: 0.51, height: 1.15, unitWidth: 0.9, unitHeight: 1.02, rotation: 180,
                collider: { w: 0.5, h: 1.15, d: 0.45 }, shadow: { cast: true, receive: false }, status: "generated",
                placeholder: { color: "#2f6fd6", skin: "#f1c7a8", hair: "#2a1a10", w: 0.5, h: 1.15, d: 0.35 },
                clips: { Idle: "Idle", Walk: "Walk", Run: "Run", JumpStart: "Jump", JumpLoop: "Jump", Land: "Land", Push: "Push", Interact: "Pickup",
