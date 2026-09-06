@@ -1,6 +1,6 @@
 // All game audio. Sounds are original, synthesized by scripts/gen-audio.py and shipped as WAV
-// resources, played through Clayground.Sound. Music loops are `Sound`s re-triggered by a Timer
-// (the pattern that works on WebAssembly as well as desktop).
+// resources. Desktop: Clayground.Sound (Qt Multimedia), music loops re-triggered by a Timer.
+// WebAssembly: the WebAudio bridge (browser AudioContext) - Clayground.Sound stalls the page there.
 import QtQuick
 import Clayground.Sound
 
@@ -23,14 +23,18 @@ Item {
 
     Component { id: soundComp; Sound { volume: audio.sfxVolume; lazyLoading: false } }
     Component { id: musicComp; Sound { volume: audio.musicVolume; lazyLoading: true } }
+    WebAudio { id: web }
+    readonly property bool useWeb: web.available
 
-    // Clayground.Sound still freezes the page on WebAssembly when the sounds are created (the desktop
-    // is fine), so the web build runs silent unless started with --audio; --no-audio silences any build.
     readonly property bool audioEnabled: Qt.application.arguments.indexOf("--no-audio") < 0
-                                         && (Qt.platform.os !== "wasm" || Qt.application.arguments.indexOf("--audio") >= 0)
     Component.onCompleted: {
-        console.log("AudioManager: audio", audioEnabled ? "on" : "off")
+        console.log("AudioManager: audio", audioEnabled ? "on" : "off", useWeb ? "(browser AudioContext)" : "(Clayground.Sound)")
         if (!audioEnabled) { soundOn = false; return }
+        if (useWeb) {
+            for (const n of _names) web.load(n, Qt.resolvedUrl("assets/audio/" + n + ".wav"))
+            for (const n in _musicLength) web.load("music_" + n, Qt.resolvedUrl("assets/audio/music_" + n + ".wav"))
+            return
+        }
         const map = {}
         for (const n of _names) map[n] = soundComp.createObject(audio, { source: Qt.resolvedUrl("assets/audio/" + n + ".wav") })
         _sounds = map
@@ -41,13 +45,15 @@ Item {
 
     function play(name, volumeScale) {
         if (!soundOn || !audioEnabled) return
-        const s = _sounds[name]
-        if (!s) return
         const now = Date.now() / 1000
         const gap = _minGap[name] || 0
         if (gap > 0 && _lastPlayed[name] && now - _lastPlayed[name] < gap) return
         _lastPlayed[name] = now
-        s.volume = sfxVolume * (volumeScale === undefined ? 1 : volumeScale)
+        const vol = sfxVolume * (volumeScale === undefined ? 1 : volumeScale)
+        if (useWeb) { web.play(name, vol); return }
+        const s = _sounds[name]
+        if (!s) return
+        s.volume = vol
         s.play()
     }
     function footstep(surface) {
@@ -63,20 +69,21 @@ Item {
     }
     function playMusic(name) {
         if (!audioEnabled) return
-        if (name === currentMusic && musicLoop.running) return
+        if (name === currentMusic && (musicLoop.running || (useWeb && !musicPaused))) return
         stopMusic()
         currentMusic = name
+        musicPaused = false
+        if (useWeb) { if (soundOn) web.playMusic("music_" + name, musicVolume, name !== "end"); return }
         const m = _music[name]
         if (!m) return
         m.volume = musicVolume
         if (soundOn) m.play()
         musicLoop.interval = (_musicLength[name] || 20000) - 150
         musicLoop.restart()
-        musicPaused = false
     }
-    function stopMusic() { musicLoop.stop(); for (const n in _music) _music[n].stop(); musicPaused = false }
-    function pauseMusic() { if (!currentMusic) return; musicLoop.stop(); const m = _music[currentMusic]; if (m) m.stop(); musicPaused = true }
-    function resumeMusic() { if (!currentMusic || !musicPaused) return; const m = _music[currentMusic]; if (m && soundOn) { m.play(); musicLoop.restart() } musicPaused = false }
-    onMusicVolumeChanged: { for (const n in _music) _music[n].volume = musicVolume }
+    function stopMusic() { musicLoop.stop(); if (useWeb) web.stopMusic(); else for (const n in _music) _music[n].stop(); musicPaused = false }
+    function pauseMusic() { if (!currentMusic) return; musicLoop.stop(); if (useWeb) web.pauseMusic(); else { const m = _music[currentMusic]; if (m) m.stop() } musicPaused = true }
+    function resumeMusic() { if (!currentMusic || !musicPaused) return; if (useWeb) { if (soundOn) web.resumeMusic() } else { const m = _music[currentMusic]; if (m && soundOn) { m.play(); musicLoop.restart() } } musicPaused = false }
+    onMusicVolumeChanged: { if (useWeb) web.setMusicVolume(musicVolume); else for (const n in _music) _music[n].volume = musicVolume }
     onSoundOnChanged: if (!soundOn) stopMusic()
 }

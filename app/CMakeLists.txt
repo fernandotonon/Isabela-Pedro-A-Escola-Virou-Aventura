@@ -41,6 +41,7 @@ clay_app(escola_aventura
     SOURCES
         src/savestore.h src/savestore.cpp
         src/gamepadbridge.h src/gamepadbridge.cpp
+        src/webaudio.h src/webaudio.cpp
 
     LINK_LIBS
         Qt::Core

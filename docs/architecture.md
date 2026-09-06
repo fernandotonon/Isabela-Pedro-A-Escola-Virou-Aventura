@@ -13,7 +13,7 @@ Main.qml (Window)  ─┐                                web-runtime/Main.qml (W
      ▼              ▼                       ▼                ▼              ▼            ▼
  GameWorld     Character ×2            LevelDirector     InputManager   AudioManager  SaveSystem
  (View3D,      (Node mirror of a       (builds level.js  (keyboard,     (Sound +      (SaveStore:
-  lights,       CharacterMotion         into Physics      GamepadBridge, Timer loops)   localStorage /
+  lights,       CharacterMotion         into Physics      GamepadBridge, WebAudio)   localStorage /
   SideCamera,   JS object)              solids + QML      touch pad)                    QSettings)
   roots)        │                       entities; runs
                 ▼                       mechanisms,

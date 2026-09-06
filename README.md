@@ -150,9 +150,10 @@ conexão lenta; `node scripts/browser-check.mjs <url> --early-shot 8` captura a 
 
 ## Limitações conhecidas
 
-* **Áudio na web**: criar os objetos `Clayground.Sound` congela a página na build WebAssembly (o desktop
-  tem áudio completo). A build web roda em silêncio por padrão; `index.html?args=--audio` ativa o áudio
-  para testar quando o Clayground corrigir o problema (issue MisterGC/clayground#216).
+* **Áudio na web**: `Clayground.Sound` (Qt Multimedia) trava a página na build WebAssembly ao abrir a saída de
+  áudio, então lá o jogo usa a ponte `WebAudio` (`app/src/webaudio.*`): os mesmos WAVs são decodificados pelo
+  `AudioContext` do navegador, música em loop nativo. O desktop continua com `Clayground.Sound`. O som começa
+  após o primeiro toque/tecla, como os navegadores exigem. `--no-audio` silencia qualquer build.
 * **Preset `high` do TRELLIS.2**: nesta máquina (24 GB) os presets `high`/`balanced` travam num command
   buffer do Metal; `scripts/generate-models.sh` detecta o travamento e usa `fast` (512). Os limites de
   triângulos (10k props / 25k personagens) e texturas (1024 / 2048) são respeitados em qualquer preset.
