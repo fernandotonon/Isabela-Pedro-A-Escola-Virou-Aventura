@@ -150,6 +150,13 @@
 
     async function init() {
         const screen = document.querySelector("#screen");
+        // Multithreaded Qt needs cross-origin isolation. On hosts without COOP/COEP headers the service worker
+        // adds them and reloads the page once; do not start (and download) Qt until that has happened.
+        if (!window.crossOriginIsolated) {
+            $("ld-status").textContent = T.prep;
+            setTimeout(() => { if (!window.crossOriginIsolated) escolaFailed(new Error(pt ? "O navegador não permitiu o isolamento (SharedArrayBuffer). Tente recarregar, ou outro navegador." : "The browser did not allow isolation (SharedArrayBuffer). Try reloading, or another browser.")); }, 15000);
+            return;
+        }
         try {
             const writePack = await loadPack();
             await qtLoad({

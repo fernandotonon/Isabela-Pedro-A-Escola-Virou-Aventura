@@ -12,8 +12,8 @@ let coepCredentialless = false;
 if (typeof window === "undefined") {
     self.addEventListener("install", () => self.skipWaiting());
     self.addEventListener("activate", (event) => event.waitUntil((async () => {
+        await self.clients.claim();                       // take the open pages first, then tidy old builds
         for (const key of await caches.keys()) if (key.startsWith("escola-") && key !== CACHE) await caches.delete(key);
-        await self.clients.claim();
     })()));
 
     self.addEventListener("message", (ev) => {
@@ -106,8 +106,19 @@ if (typeof window === "undefined") {
             }
             if (coi.shouldDeregister()) n.serviceWorker.controller.postMessage({ type: "deregister" });
         }
+        // Not isolated and not (yet) controlled - e.g. the page reloaded before the fresh worker became active:
+        // wait for the worker, then reload once more (bounded, so a browser that cannot isolate never loops).
+        if (window.crossOriginIsolated === false && n.serviceWorker && !controlling) {
+            const reloads = Number(window.sessionStorage.getItem("coiReloads") || 0);
+            if (reloads < 3) {
+                n.serviceWorker.ready.then(() => {
+                    const go = () => { window.sessionStorage.setItem("coiReloads", String(reloads + 1)); window.sessionStorage.setItem("coiReloadedBySelf", "controllerchange"); coi.doReload(); };
+                    if (n.serviceWorker.controller) go(); else n.serviceWorker.addEventListener("controllerchange", go, { once: true });
+                });
+            }
+        }
         if (window.crossOriginIsolated !== false || !coi.shouldRegister()) {
-            // already isolated: still register (or update) so caching works
+            // already isolated (or reloaded by us): still register/update so caching works and the worker activates
             if (n.serviceWorker && window.isSecureContext) n.serviceWorker.register(window.document.currentScript.src).catch(() => {});
             return;
         }
