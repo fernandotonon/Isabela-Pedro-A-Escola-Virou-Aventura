@@ -32,12 +32,15 @@ Node {
         property real t: 0
         FrameAnimation { running: root.visible; onTriggered: inner.t = elapsedTime }
         y: 0.12 + Math.sin(inner.t * 2.4 + root.spec.x) * 0.08
-        eulerRotation.y: (inner.t * 70) % 360
+        // generated models are single-view (their back is plain): sway instead of a full spin; the toon
+        // placeholders keep spinning
+        eulerRotation.y: look.representation === "model" ? Math.sin(inner.t * 1.8 + root.spec.x) * 32 : (inner.t * 70) % 360
         PropVisual {
+            id: look
             assetId: root.kind === "star" ? "star" : (root.kind === "pencil" ? "pencil_collectible" : "memory")
             w: root.size; h: root.size; d: root.size
             assetBase: root.assetBase; useModels: root.useModels
-            eulerRotation.z: root.kind === "star" ? 45 : (root.kind === "pencil" ? 30 : 0)
+            eulerRotation.z: representation === "model" ? 0 : (root.kind === "star" ? 45 : (root.kind === "pencil" ? 30 : 0))
         }
     }
     SequentialAnimation {

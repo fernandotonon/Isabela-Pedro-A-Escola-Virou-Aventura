@@ -28,7 +28,7 @@ Node {
 
     // ground slabs are long boxes tinted by surface; everything else goes through the manifest
     // a low passage marked `raised` shows its opening: the visual sits on legs above the crawl gap
-    readonly property bool raised: spec.type === "lowpass" && spec.raised === true
+    readonly property bool raised: spec.type === "lowpass" && spec.raised === true && visual.representation === "placeholder"   // real models show their own legs
     readonly property real gap: spec.gap || 0.8
     PropVisual {
         id: visual

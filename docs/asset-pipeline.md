@@ -78,3 +78,15 @@ Assets are addressed relative to the QML files that use them (`Qt.resolvedUrl`),
 works compiled into the desktop binary (`qrc:/assets/runtime/...`) and copied next to the wasm for
 the web (`file:///game/assets/...` after the loader preloads `escola-assets.json`). Directory imports
 over HTTP need the `qmldir` in `app/`.
+
+## Fit modes and raised passages
+
+`fit` in a manifest entry decides how a model is scaled into an entity's box: default is the tighter
+dimension (and wide platforms repeat the model along X), `fit: "height"` matches the box height and lets the
+width exceed it (gates, levers, flags, lamp posts), `fit: "width"` matches the width (the swing seat, whose
+hangers rise above the platform box). Low passages marked `raised: true` in `level.js` draw placeholder
+visuals on legs above the crawl gap; a real model keeps its own geometry.
+
+Concept images with light parts touching the backdrop (a white net, cream book pages) lose them to the
+pre-matte; generate those with `PREMATTE=0 scripts/generate-models.sh <id>` (QtMeshEditor's own
+background removal).

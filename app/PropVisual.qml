@@ -26,8 +26,12 @@ Node {
     // platform mostly empty (a row of planters, a long bench top), the model is repeated along X.
     readonly property real unitW: def && def.unitWidth ? def.unitWidth : 1
     readonly property real unitH: def && def.unitHeight ? def.unitHeight : 1
-    readonly property real fitScale: def && def.unitHeight ? Math.min(w / unitW, h / unitH) : (def ? def.scale || 1 : 1)
-    readonly property int copies: def && def.unitWidth && unitW * fitScale < 0.7 * w ? Math.max(1, Math.round(w / (unitW * fitScale))) : 1
+    // manifest `fit`: "height" (gates, levers, flags: match the box height, width may exceed), "width"
+    // (a swing seat with hangers above it), default: the tighter dimension
+    readonly property real fitScale: !def || !def.unitHeight ? (def ? def.scale || 1 : 1)
+                                     : def.fit === "height" ? h / unitH : def.fit === "width" ? w / unitW : Math.min(w / unitW, h / unitH)
+    // only assets marked `tile: true` (platform blocks, stands) repeat along a wide box; decor never does
+    readonly property int copies: def && def.tile && def.unitWidth && def.fit !== "width" && unitW * fitScale < 0.7 * w ? Math.max(1, Math.round(w / (unitW * fitScale))) : 1
     readonly property bool modelReady: modelRepeater.count > 0 && modelRepeater.objectAt(0) && modelRepeater.objectAt(0).status === Loader3D.Ready
     Repeater3D {
         id: modelRepeater
