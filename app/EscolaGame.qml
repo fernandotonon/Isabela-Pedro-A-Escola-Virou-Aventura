@@ -425,6 +425,7 @@ Item {
         if (s.memory !== undefined) return director.memoryFound === s.memory ? true : "memory=" + director.memoryFound
         if (s.checkpoint !== undefined) return checkpoint.id === s.checkpoint ? true : "checkpoint=" + checkpoint.id
         if (s.finished !== undefined) return (phase === "complete") === s.finished ? true : "phase=" + phase
+        if (s.bothAtDoor !== undefined) return director.finalDoor && director.finalDoor.bothPresent === s.bothAtDoor ? true : "present=" + JSON.stringify(director.finalDoor ? director.finalDoor.present : null)
         return "unknown expectation"
     }
     function finishWalkthrough() {

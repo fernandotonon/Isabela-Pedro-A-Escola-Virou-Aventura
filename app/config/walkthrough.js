@@ -100,6 +100,6 @@ var steps = [
     { do: "jump", x: 461.0, dir: 1, hold: 0.35, air: 0.35 }, { do: "expect", yMin: 1.9 }, { do: "move", x: 464.9 },
     { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3, skipIfPast: true }, { do: "move", x: 468.3 },
     { do: "crawl", x: 472.7 }, { do: "expect", xMin: 472.3 },
-    { do: "move", x: 477.7 }, { do: "interact" },
-    { do: "switch", to: "isabela" }, { do: "move", x: 475.3 }, { do: "interact" }, { do: "expect", finished: true, timeout: 4 }
+    { do: "move", x: 477.7 }, { do: "expect", bothAtDoor: true, timeout: 12 }, { do: "interact" },
+    { do: "switch", to: "isabela" }, { do: "move", x: 475.3 }, { do: "expect", bothAtDoor: true, timeout: 12 }, { do: "interact" }, { do: "expect", finished: true, timeout: 4 }
 ]
