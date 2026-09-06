@@ -34,7 +34,7 @@ def role_of(name):
     for r in SIZES:
         if r in n:
             return r
-    return "other"
+    return "diffuse"          # unnamed maps (e.g. QtMeshEditor paint layers) are colour: keep the colour budget
 
 
 def main():

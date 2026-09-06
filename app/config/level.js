@@ -67,14 +67,14 @@ var level = {
         prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
         lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8, raised: true }),              // under the bars: Pedro's way
         button("button_bars", 47, { hint: "hint.button" }),                                                  // a floor button inside
-        platform(43, 2.6, 8, 0.3, "parallel_bars_top", { ledge: true }),           // Isabela grabs the top
+        platform(43, 2.6, 8, 0.3, "stone_platform", { ledge: true }),           // Isabela grabs the top
         lever("lever_bars", 49.5, 2.9, { hint: "hint.lever" }),
         star(45, 3.6), pencil(50.5, 6.4),                                          // the pencil sits high above the bars
         platform(48.5, 5.2, 1.4, 0.25, "book_stack", { ledge: true }),
         gate("gate_bars", 54, 0, 0.8, 3.2, ["button_bars", "lever_bars"], { asset: "school_gate_small" }),
         // --- Challenge 2: the vertical ladder ----------------------------------------------
         ladder(62.4, 2.5, 1.5, { asset: "climbing_ladder", visualFrom: 0 }),        // starts out of Pedro's reach
-        platform(60, 3.65, 11.8, 0.35, "parallel_bars_top"),                       // the upper walkway (top 4.0), ends before the block
+        platform(60, 3.65, 11.8, 0.35, "stone_platform"),                       // the upper walkway (top 4.0), ends before the block
         pushable("box_ladder", 68, 0, 1.0, 1.2, 1, "backpack", { hint: "hint.push" }),    // Pedro's route: push, climb
         wall(73, 0, 3, 2.6, { asset: "tire_planter", visual: "stack" }),          // the step block
         star(66, 1.2),
@@ -88,7 +88,7 @@ var level = {
         // --- Challenge 4: the distant gate -------------------------------------------------
         trigger("story.gate", 96, 3, { narrative: "gate_far" }),
         platform(99, 0, 2.4, 1.0, "school_bench"), platform(103, 0, 2.2, 0.8, "stone_platform"),
-        platform(106.5, 1.2, 2.6, 0.3, "exercise_bar", { ledge: true }), platform(110, 0, 1.4, 1.2, "backpack"),
+        platform(106.5, 1.2, 2.6, 0.3, "stone_platform", { ledge: true }), platform(110, 0, 1.4, 1.2, "backpack"),
         moving("plane_1", 113, 2.4, 2.0, 0.3, [{ x: 113, y: 2.4 }, { x: 121, y: 3.4 }], 2.2, { asset: "paper_plane" }),
         platform(123, 0, 2.5, 1.0, "school_bench"),
         star(107.8, 2.4), star(117, 4.1),
@@ -143,7 +143,7 @@ var level = {
         trigger("hint.playground", 199, 3),
         // Isabela: up the structure, across the narrow beam, up to the high lever
         ladder(205.6, 0, 3.2, { asset: "climbing_ladder" }), platform(204.5, 3.2, 3, 0.3, "playground_deck"),
-        platform(209, 3.2, 8, 0.2, "narrow_beam", { narrow: true }), star(213, 4.2),
+        platform(209, 3.2, 8, 0.2, "stone_platform", { narrow: true }), star(213, 4.2),
         platform(218.5, 3.1, 3, 0.3, "playground_deck", { ledge: true }),
         platform(222.5, 5.0, 2.6, 0.3, "playground_deck", { ledge: true }), lever("lever_play", 223.5, 5.3, {}),
         platform(207, 6.2, 5, 0.3, "playground_roof", { ledge: true }), pencil(209.5, 7.1),
@@ -176,7 +176,7 @@ var level = {
         // the ball rolls back and forth; benches are safe
         ball("ball_patio", 292, [284.5, 300], 3.4), trigger("hint.ball", 282, 2),
         platform(287, 0, 2.4, 1.0, "school_bench"), platform(294, 0, 3.2, 1.4, "ping_pong_table"), star(295.6, 2.4),
-        platform(298.8, 3.6, 2.2, 0.3, "exercise_bar", { ledge: true }), pencil(299.9, 4.5),
+        platform(298.8, 3.6, 2.2, 0.3, "stone_platform", { ledge: true }), pencil(299.9, 4.5),
         platform(302.5, 0, 1.6, 1.2, "book_stack"), star(303.3, 2.2),
         // push the lunchbox onto the button
         pushable("lunchbox", 307, 0, 1.0, 0.8, 1, "lunchbox", { hint: "hint.pushbutton" }), button("button_patio", 313.5, { byPushable: true }),
@@ -203,7 +203,7 @@ var level = {
         // Isabela puts the bench under the wall so Pedro can get over it
         pushable("bench_court", 352, 0, 2.4, 1.0, 2, "school_bench"),
         wall(360, 0, 1.0, 2.5, { asset: "fence_yellow" }), star(360.5, 3.6),
-        platform(361.5, 4.3, 1.6, 0.3, "exercise_bar", { ledge: true }), pencil(362.3, 5.2),   // up by the hoop: Isabela only
+        platform(361.5, 4.3, 1.6, 0.3, "stone_platform", { ledge: true }), pencil(362.3, 5.2),   // up by the hoop: Isabela only
         // Pedro pushes the ball into the goal; the goal plate reacts to the ball
         pushable("ball_goal", 366, 0, 0.9, 0.9, 1, "soccer_ball", { round: true }),
         plate("plate_goal", 389, 0, { w: 2.6, byPushable: true, asset: "goal" }), prop("goal", 390.3, { z: 0.6, decor: true }),
