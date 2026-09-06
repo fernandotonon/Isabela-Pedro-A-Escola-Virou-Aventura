@@ -73,6 +73,7 @@ FocusScope {
         applySettings()
         if (autotest) { startNewGame(); autotestTimer.start() }
         if (walkthrough) { wt = Walkthrough.create(WalkSteps.steps); startNewGame(); wtGuard.start() }
+        if (photoArg) startPhotos()
         input.forceActiveFocus()
         focusReport.start()
     }
@@ -465,6 +466,27 @@ FocusScope {
     // ---- dev helpers (also used by --autotest) ----------------------------------------------------------------
     function teleportTo(x, y) { placeAt(x, y); enterSection(director.sectionAt(x), true) }
     readonly property string shotDir: { const i = args.indexOf("--shots"); return i >= 0 && i + 1 < args.length ? args[i + 1] : "" }
+    // --photo <x,x,...|collectibles> --shots <dir>: teleport both siblings to each x, let the camera settle, save a frame
+    readonly property string photoArg: { const i = args.indexOf("--photo"); return i >= 0 && i + 1 < args.length ? args[i + 1] : "" }
+    property var photoQueue: []
+    function startPhotos() { startNewGame(); photoTimer.start() }
+    function buildPhotoQueue() {
+        photoQueue = photoArg === "collectibles" ? director.collectibles.map(function (c) { return { x: c.spec.x, y: Math.max(0, c.spec.y - 1), name: c.collectibleId.replace(/:/g, "_") } })
+                                                : photoArg.split(",").map(function (v) { return { x: Number(v), y: 0, name: "x" + v } })
+        console.log("PHOTO", photoQueue.length, "frames")
+    }
+    Timer {
+        id: photoTimer; interval: 1400; repeat: true
+        property bool queued: false
+        onTriggered: {
+            if (game.phase !== "playing" || !director.built) return
+            if (!queued) { queued = true; game.buildPhotoQueue() }
+            if (photoTimer.pending) { saveShot(photoTimer.pending); photoTimer.pending = ""; return }   // grab is asynchronous: move next tick
+            if (!game.photoQueue.length) { photoTimer.stop(); Qt.exit(0); return }
+            const p = game.photoQueue.shift(); game.teleportTo(p.x - 2.5, p.y); world3d.rig.snap(p.x, p.y); photoTimer.pending = p.name
+        }
+        property string pending: ""
+    }
     function saveShot(name) {
         if (!shotDir) return
         game.grabToImage(function (result) { const p = shotDir + "/" + name + ".png"; result.saveToFile(p); console.log("AUTOTEST shot", p) })

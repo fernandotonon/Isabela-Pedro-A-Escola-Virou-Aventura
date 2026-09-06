@@ -2,6 +2,7 @@
 // Its collision box (if any) lives in the Physics world as `solid`; here is only the look.
 import QtQuick
 import QtQuick3D
+import Clayground.Canvas3D
 
 Node {
     id: root
@@ -26,15 +27,23 @@ Node {
     }
 
     // ground slabs are long boxes tinted by surface; everything else goes through the manifest
+    // a low passage marked `raised` shows its opening: the visual sits on legs above the crawl gap
+    readonly property bool raised: spec.type === "lowpass" && spec.raised === true
+    readonly property real gap: spec.gap || 0.8
     PropVisual {
         id: visual
         assetId: root.spec.asset || (root.spec.type === "ground" ? "" : "push_box")
         representation: root.spec.type === "ground" || !root.spec.asset ? "placeholder" : (def ? def.representation : "placeholder")
-        w: root.w; h: root.h; d: root.d
+        w: root.w; h: root.raised ? Math.max(0.3, root.h - root.gap) : root.h; d: root.d
+        y: root.raised ? root.gap : 0
         assetBase: root.assetBase
         useModels: root.useModels
         tint: root.surfaceTint
         visible: root.spec.type !== "ground"
+    }
+    Repeater3D {
+        model: root.raised ? 2 : 0
+        Box3D { x: (index ? 1 : -1) * (root.w / 2 - 0.25); width: 0.18; height: root.gap + 0.02; depth: root.d * 0.7; color: "#5b4a3a"; useToonShading: true; edgeThickness: 1.0; edgeColor: "#26221f" }
     }
     // a ground segment: a wide slab whose top colour depends on the surface type
     Loader3D {

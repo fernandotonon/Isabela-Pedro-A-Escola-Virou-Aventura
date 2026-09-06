@@ -65,7 +65,7 @@ var level = {
         platform(35, 2.6, 2.5, 0.4, "garden_planter", { ledge: true }), star(36.2, 3.4),
         // --- Challenge 1: the parallel bars ------------------------------------------------
         prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
-        lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8 }),              // under the bars: Pedro's way
+        lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8, raised: true }),              // under the bars: Pedro's way
         button("button_bars", 47, { hint: "hint.button" }),                                                  // a floor button inside
         platform(43, 2.6, 8, 0.3, "parallel_bars_top", { ledge: true }),           // Isabela grabs the top
         lever("lever_bars", 49.5, 2.9, { hint: "hint.lever" }),
@@ -84,7 +84,7 @@ var level = {
         platform(89.7, -2.2, 1.0, 1.0, "tire_planter"), platform(91, -2.2, 1.0, 2.2, "tire_planter"),   // steps out of the pit
         lowpass(85, -2.2, 3, 2.2, { gap: 0.8, asset: "garden_planter", secret: true }),      // secret tunnel in the pit
         wall(88, -2.2, 0.5, 2.2), memory(89.1, -1.6),
-        star(87, 2.4),
+        star(87, 3.2),
         // --- Challenge 4: the distant gate -------------------------------------------------
         trigger("story.gate", 96, 3, { narrative: "gate_far" }),
         platform(99, 0, 2.4, 1.0, "school_bench"), platform(103, 0, 2.2, 0.8, "garden_planter"),
@@ -115,7 +115,7 @@ var level = {
         platform(150, 1.8, 6, 0.4, "garden_planter"), star(152.5, 2.9), star(141, 1.2),
         wall(156, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
-        lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter" }),            // Pedro crawls in; Isabela climbs over
+        lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter", raised: true }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
         pushable("bench_garden2", 165.4, 0, 2.4, 1.0, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
         wall(169.4, 0, 0.4, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
@@ -151,7 +151,7 @@ var level = {
         lowpass(208, 0, 6, 2.6, { gap: 0.8, asset: "play_tunnel" }), star(211, 0.3),
         platform(215, 0, 1, 0.5, "slide_step"), platform(216, 0, 1, 1.0, "slide_step"), platform(217, 0, 1, 1.5, "slide_step", { slideTop: true }),
         platform(218, 0, 1, 1.0, "slide_step"), platform(219, 0, 1, 0.5, "slide_step"),
-        lowpass(226, 0, 4, 2.2, { gap: 0.8, asset: "fence_yellow_low" }), button("button_play", 231.2, {}), wall(232.2, 0, 0.5, 1.4, { asset: "fence_yellow" }),
+        lowpass(226, 0, 4, 2.2, { gap: 0.8, asset: "fence_yellow_low", raised: true }), button("button_play", 231.2, {}), wall(232.2, 0, 0.5, 1.4, { asset: "fence_yellow" }),
         star(228, 0.3), star(224, 1.2), star(202, 1.2),
         gate("gate_play", 238, 0, 0.8, 3.4, ["lever_play", "button_play"], { asset: "colored_grid" }),
         checkpoint("cp_playground", 242),
@@ -208,7 +208,7 @@ var level = {
         pushable("ball_goal", 366, 0, 0.9, 0.9, 1, "soccer_ball", { round: true }),
         plate("plate_goal", 389, 0, { w: 2.6, byPushable: true, asset: "goal" }), prop("goal", 390.3, { z: 0.6, decor: true }),
         // under the stands: only Pedro (and the ball) fit
-        lowpass(376, 0, 10, 1.6, { gap: 1.05, asset: "bleachers" }), star(381, 0.4),
+        lowpass(376, 0, 10, 1.6, { gap: 1.05, asset: "bleachers", raised: true }), star(381, 0.4),
         platform(376, 1.6, 10, 0.4, "bleachers_top"), star(380, 2.8),
         button("button_court", 394.6, {}),
         gate("gate_court", 397, 0, 0.8, 3.6, ["plate_goal", "button_court"], { asset: "school_gate_small" }),

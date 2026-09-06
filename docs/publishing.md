@@ -17,6 +17,10 @@ need plugins that are only built with the `all` target, so filter when you only 
 The `--walkthrough` run is stepped from the event loop, not from the render loop, so it keeps its pace
 when the window is occluded or the app is napped (macOS stops `FrameAnimation` in that case).
 
+More checks: `node scripts/check-reachability.mjs` simulates real jumps/crawls from every standing spot and
+lists collectibles no sibling can touch (exit 1 if any); `--photo collectibles --shots <dir>` (or
+`--photo 46,162,381`) teleports both siblings to each spot and saves a frame, to review how items read visually.
+
 `QML_DISABLE_DISK_CACHE=1` avoids a stale QML cache after big edits. F1 opens the dev tools, F2 the
 collider view (development builds only; `-DESCOLA_DEV_TOOLS=OFF` or the wasm script compile them out).
 
