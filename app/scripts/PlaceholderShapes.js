@@ -104,8 +104,12 @@ function parts(shape, w, h, d, ph) {
     }
     case "roof":
         return [part(0, h - 0.25, -d * 0.4, w, 0.25, d, c, "box", false), part(-w * 0.45, 0, -d * 0.8, 0.25, h, 0.25, c), part(w * 0.45, 0, -d * 0.8, 0.25, h, 0.25, c)]
-    case "window":
-        return [part(0, 0, 0, w, h, d, "#9fb7c9"), part(0, h, -d * 0.4, w * 0.95, 2.2, 0.08, c, "box", true), part(0, h + 1.1, -d * 0.4 + 0.02, w * 0.95, 0.06, 0.1, a, "box", false)]
+    case "window":     // a sill to stand on; the window itself is an open frame, well behind the play plane
+        return [part(0, 0, 0, w, h, d, a, "box", true),
+                part(-w * 0.47, h, -1.6, 0.1, 2.2, 0.1, c), part(w * 0.47, h, -1.6, 0.1, 2.2, 0.1, c),
+                part(0, h + 2.2, -1.6, w * 0.95, 0.1, 0.1, c, "box", false), part(0, h + 1.1, -1.6, w * 0.95, 0.06, 0.06, c, "box", false)]
+    case "block":      // a stone platform block: grey body, grassy top, like the ground slabs
+        return [part(0, 0, 0, w, Math.max(0.05, h - 0.12), d, c, "box", true), part(0, Math.max(0.05, h - 0.12), 0, w + 0.04, 0.12, d + 0.04, a, "box", true)]
     case "deskrow": {
         const out = []; const n = Math.max(1, Math.round(w / 1.6))
         for (let i = 0; i < n; ++i) { const cx = -w / 2 + (i + 0.5) * (w / n); out.push(part(cx, h - 0.08, 0, w / n - 0.2, 0.08, d, c)); out.push(part(cx - 0.5, 0, 0, 0.08, h - 0.08, d * 0.9, a)); out.push(part(cx + 0.5, 0, 0, 0.08, h - 0.08, d * 0.9, a)) }

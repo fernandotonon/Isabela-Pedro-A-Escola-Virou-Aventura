@@ -58,11 +58,11 @@ var level = {
         trigger("hint.move", 1, 6), trigger("hint.jump", 12, 4), trigger("hint.stars", 19, 3), trigger("hint.switch", 28, 4),
         trigger("hint.abilities", 40, 3), trigger("hint.crawl", 42.5, 2), trigger("hint.ledge", 42.5, 2), trigger("bell", 16, 2, { narrative: "bell" }),
         // first steps: a small step, a small gap
-        platform(14, 0, 3, 0.6, "garden_planter"),
+        platform(14, 0, 3, 0.6, "stone_platform"),
         star(15.5, 1.4),
         // switch characters: a low passage only Pedro fits and a step only Isabela reaches
         lowpass(30, 0, 3, 1.4, { asset: "school_bench" }), star(31.5, 0.3),
-        platform(35, 2.6, 2.5, 0.4, "garden_planter", { ledge: true }), star(36.2, 3.4),
+        platform(35, 2.6, 2.5, 0.4, "stone_platform", { ledge: true }), star(36.2, 3.4),
         // --- Challenge 1: the parallel bars ------------------------------------------------
         prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
         lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8, raised: true }),              // under the bars: Pedro's way
@@ -87,11 +87,11 @@ var level = {
         star(87, 3.2),
         // --- Challenge 4: the distant gate -------------------------------------------------
         trigger("story.gate", 96, 3, { narrative: "gate_far" }),
-        platform(99, 0, 2.4, 1.0, "school_bench"), platform(103, 0, 2.2, 0.8, "garden_planter"),
+        platform(99, 0, 2.4, 1.0, "school_bench"), platform(103, 0, 2.2, 0.8, "stone_platform"),
         platform(106.5, 1.2, 2.6, 0.3, "exercise_bar", { ledge: true }), platform(110, 0, 1.4, 1.2, "backpack"),
         moving("plane_1", 113, 2.4, 2.0, 0.3, [{ x: 113, y: 2.4 }, { x: 121, y: 3.4 }], 2.2, { asset: "paper_plane" }),
         platform(123, 0, 2.5, 1.0, "school_bench"),
-        star(107.8, 2.4), star(117, 4.6),
+        star(107.8, 2.4), star(117, 4.1),
         // both siblings on the marks open the gate
         plate("plate_gate_a", 126.2), plate("plate_gate_b", 127.8), trigger("hint.plates", 124, 2),
         gate("gate_school", 129.2, 0, 1.0, 3.6, ["plate_gate_a", "plate_gate_b"], { asset: "school_gate", narrative: "gate_open" }),
@@ -112,14 +112,14 @@ var level = {
         trigger("hint.pushmedium", 141, 3),
         // Isabela pushes the medium bench so Pedro can climb the planter ledge
         pushable("bench_garden", 144.5, 0, 2.4, 1.0, 2, "school_bench"),
-        platform(150, 1.8, 6, 0.4, "garden_planter"), star(152.5, 2.9), star(141, 1.2),
+        platform(150, 1.8, 6, 0.4, "stone_platform"), star(152.5, 2.9), star(141, 1.2),
         wall(156, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
         lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter", raised: true }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
         pushable("bench_garden2", 165.4, 0, 2.4, 1.0, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
         wall(169.4, 0, 0.4, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
-        platform(169.6, 4.0, 6, 0.4, "garden_planter", { ledge: true }), lever("lever_garden", 173, 4.4, {}),
+        platform(169.6, 4.0, 6, 0.4, "stone_platform", { ledge: true }), lever("lever_garden", 173, 4.4, {}),
         star(165.9, 5.0), star(171, 5.4), star(162, 0.3),
         gate("gate_garden", 180, 0, 0.8, 3.4, ["button_garden", "lever_garden"], { asset: "school_gate_small" }),
         // --- secret: Isabela's notebook reveals a hidden stair to a pencil -----------------
@@ -186,7 +186,7 @@ var level = {
         moving("plane_2", 316.5, 2.2, 2.0, 0.3, [{ x: 316.5, y: 2.2 }, { x: 325.5, y: 3.0 }], 2.4, { asset: "paper_plane" }),
         platform(324.5, -2.4, 1.0, 1.0, "tire_planter"), platform(325.8, -2.4, 1.0, 2.4, "tire_planter"), star(321, -1.4),
         plane("plane_hz_1", [{ x: 266, y: 4.6 }, { x: 283, y: 5.2 }], 3.0),          // above the hop arcs; a full jump from the tables still meets it
-        star(319.5, 4.6)
+        star(319.5, 4.1)
       ] },
 
     // =========================================================================================
