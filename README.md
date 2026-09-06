@@ -157,6 +157,8 @@ conexão lenta; `node scripts/browser-check.mjs <url> --early-shot 8` captura a 
   buffer do Metal; `scripts/generate-models.sh` detecta o travamento e usa `fast` (512). Os limites de
   triângulos (10k props / 25k personagens) e texturas (1024 / 2048) são respeitados em qualquer preset.
 * **Gamepad no desktop**: o Qt 6 não tem módulo de gamepad; controles físicos funcionam na build web.
+* **Plataformas de pedra (`stone_platform`)**: as plataformas flutuantes usam um bloco toon (pedra com grama)
+  até existir uma imagem para gerar o modelo; ela pode ser trocada no manifesto como qualquer outro asset.
 * **`book_stack` (pilha de livros)**: a geração TRELLIS.2 travou duas vezes para esta imagem; o prop usa o
   placeholder toon (caixas coloridas) até `scripts/generate-models.sh book_stack` ser repetido com outro seed.
   `school_corridor` e `sports_court` (cenários de fundo) ficam como placeholders por decisão: repetidos como
