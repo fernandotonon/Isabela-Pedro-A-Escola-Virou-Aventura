@@ -86,7 +86,8 @@ feeding the other character instead of `CompanionAI.think()`, and a camera that 
 
 `--walkthrough` plays `app/config/walkthrough.js` against the real game: high-level steps (`move`,
 `jump`, `hopOnto` a pushed object from whichever side, `crawl`, `climb`, `switch`, `interact`,
-`ability`, `expect` gate/switch/checkpoint/position) produce the input snapshot each fixed step, so the
+`ability`, `expect` gate/switch/checkpoint/position, `avoid` a hazard before taking off) produce the input
+snapshot each fixed step, so the
 route from the square to the classroom door is an executable specification (exit code 0 = completable).
 Iterate on one section with `--wt-from <step> --wt-pos <x>,<y> --wt-active pedro|isabela` and
 `--wt-trace` (per-frame body state for move/jump steps). Failure lines list the solids around the

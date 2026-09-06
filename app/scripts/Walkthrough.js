@@ -11,6 +11,7 @@
 //   { do: "hold", moveX: 1, seconds: 1 }          hold a direction for a while
 //   { do: "interact" } | { do: "ability" }        one press
 //   { do: "wait", seconds: 1 }
+//   any jump/hopOnto: avoid: "hazard id" (take off only when it is >= `clearance` m away and moving away)
 //   { do: "expect", gateOpen: "id" } | { switchOn: "id" } | { xMin: 100 } | { stars: 3 } | { finished: true }
 .pragma library
 .import "CharacterMotion.js" as Motion
@@ -37,6 +38,14 @@ function tick(w, game, dt) {
     w.time += dt
     if (w.time > (s.timeout || w.timeout) && s.do !== "wait") { finish(w, false, "timeout at x=" + game.activeX().toFixed(2) + " y=" + game.activeY().toFixed(2) + " state=" + game.activeState() + " blockers=" + game.describeBlockers()); return out }
     const x = game.activeX(), grounded = game.activeGrounded()
+    // `avoid: "hazard id"`: do not take off while that hazard is near or coming back (a paper plane crossing the hop)
+    if (s.avoid && ((s.do === "jump" && w.phase === 1) || (s.do === "hopOnto" && w.phase === 2))) {
+        const h = game.hazardInfo(s.avoid)
+        if (h) {
+            const d = h.x - x, away = Math.sign(h.dir) === Math.sign(d)
+            if (!(Math.abs(d) >= 8 || (Math.abs(d) >= (s.clearance || 4) && away))) { w.waited = (w.waited || 0) + dt; return out }
+        }
+    }
     // hanging on a ledge in the middle of a locomotion step: climb up (or drop when asked)
     if (game.activeState() === "Hang" && (s.do === "move" || s.do === "crawl" || (s.do === "jump" && !s.grab))) {
         // a target right below/next to the ledge means we came from above: drop; a far target: climb on
@@ -74,7 +83,7 @@ function tick(w, game, dt) {
             if (Math.abs(dx) < 0.25) { w.phase = 1; w.time = 0 } else out.input.moveX = Math.abs(dx) < 1.0 ? Math.sign(dx) * 0.45 : Math.sign(dx)
         } else if (w.phase === 1) {                // settle (standing still, so a narrow ledge is not walked off), then press jump
             const vx = game.activeVx()
-            out.input.moveX = 0
+            out.input.moveX = Math.abs(vx) > 0.4 ? -Math.sign(vx) * 0.6 : 0     // brake, so a narrow ledge is not slid off
             if (Math.abs(vx) > 0.4 && w.time < 0.6) break
             if (!grounded && w.time < 0.6) break
             out.input.moveX = s.stand ? 0 : dir * 0.9

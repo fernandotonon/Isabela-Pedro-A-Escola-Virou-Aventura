@@ -44,7 +44,7 @@ git submodule update --init --recursive       # se esqueceu o --recursive
 export QT_ROOT=~/Qt/6.11.1/macos
 cmake --preset desktop && cmake --build --preset desktop --target escola_aventura
 ./build-desktop/bin/escola_aventura.app/Contents/MacOS/escola_aventura     # macOS
-ctest --preset desktop                                                      # testes (headless)
+ctest --preset desktop -R "escola|Escola|physics|rules"                     # testes do jogo (headless)
 node tests/run-node.mjs                                                     # checagens rápidas sem Qt
 
 # WebAssembly + diretório estático para publicar
@@ -66,7 +66,8 @@ caminho corretamente.
 
 Linha de comando: `--autotest` (passeio roteirizado curto, imprime linhas `AUTOTEST`; `--shots <dir>` salva
 capturas), `--walkthrough` (joga a fase inteira com o roteiro de `app/config/walkthrough.js` e sai com código 0
-quando a porta da sala se abre - a prova executável de que a fase é completável), `--no-models` (placeholders),
+quando a porta da sala se abre - a prova executável de que a fase é completável; a rota completa leva ~3 min de
+tempo de jogo e roda mais rápido que o tempo real), `--no-models` (placeholders),
 `--no-dev` (desliga as ferramentas de desenvolvimento). No navegador: `index.html?args=--autotest`.
 
 ## Controles

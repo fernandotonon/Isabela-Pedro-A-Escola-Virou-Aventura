@@ -202,7 +202,7 @@ var level = {
         star(341, 1.2), star(349, 1.2),
         // Isabela puts the bench under the wall so Pedro can get over it
         pushable("bench_court", 352, 0, 2.4, 1.0, 2, "school_bench"),
-        wall(360, 0, 0.6, 2.5, { asset: "fence_yellow" }), star(360.3, 3.6),
+        wall(360, 0, 1.0, 2.5, { asset: "fence_yellow" }), star(360.5, 3.6),
         platform(361.5, 4.3, 1.6, 0.3, "exercise_bar", { ledge: true }), pencil(362.3, 5.2),   // up by the hoop: Isabela only
         // Pedro pushes the ball into the goal; the goal plate reacts to the ball
         pushable("ball_goal", 366, 0, 0.9, 0.9, 1, "soccer_ball", { round: true }),
@@ -240,8 +240,9 @@ var level = {
         gate("gate_hall", 451.4, 0, 0.6, 3.0, ["button_hall", "lever_hall"], { asset: "school_gate_small" }),
         platform(453, 0.6, 1.4, 0.3, "book_stack", { hidden: true, revealId: "hall_stairs" }),
         platform(455.5, 1.8, 1.4, 0.3, "book_stack", { hidden: true, revealId: "hall_stairs" }),
+        platform(456, -2.0, 1.0, 1.2, "tire_planter"),                             // a way out of the pit for whoever falls in
         trigger("hint.notebook2", 451.5, 1.2),
-        plane("plane_hz_3", [{ x: 458, y: 2.2 }, { x: 470, y: 3.0 }], 3.8),
+        plane("plane_hz_3", [{ x: 458, y: 3.9 }, { x: 470, y: 4.3 }], 3.8),   // flies above siblings standing on the desks; threatens the hops
         platform(460, 0, 1.4, 1.2, "book_stack"), platform(463, 0, 1.6, 2.0, "student_desk"), platform(466.5, 0, 1.4, 1.2, "book_stack"),
         lowpass(469, 0, 3, 1.8, { gap: 0.8, asset: "student_desk_row" }), platform(469, 1.8, 3, 0.3, "student_desk_top", { ledge: true }),
         star(461, 2.4), star(464, 3.2), star(470.5, 3.0),

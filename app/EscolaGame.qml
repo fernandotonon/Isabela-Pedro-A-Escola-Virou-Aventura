@@ -166,9 +166,14 @@ Item {
 
     // ---- the fixed-step loop ---------------------------------------------------------------------
     FrameAnimation {
-        running: game.phase === "playing" || game.phase === "complete"
+        running: !game.walkthrough && (game.phase === "playing" || game.phase === "complete")
         onTriggered: game.frame(Math.min(0.1, frameTime))
     }
+    // --walkthrough: pump the fixed steps from the event loop instead of the render loop (macOS stops
+    // FrameAnimation and throttles timers when the window is occluded or the app is napped), 2 steps per turn.
+    readonly property bool wtPumping: walkthrough && (phase === "playing" || phase === "complete")
+    onWtPumpingChanged: if (wtPumping) Qt.callLater(wtPump)
+    function wtPump() { if (!wtPumping) return; frame(Tuning.level.fixedStep * 2); Qt.callLater(wtPump) }
     function frame(dt) {
         frames++; fpsClock += dt
         if (fpsClock >= 0.5) { fps = Math.round(frames / fpsClock); frames = 0; fpsClock = 0 }
@@ -403,6 +408,7 @@ Item {
     function activeGrounded() { return active.motion.body.grounded }
     function activeVx() { return active.motion.body.vx }
     function pushableBox(id) { for (const p of director.pushables) if (p.spec.id === id) return { x0: p.body.x - p.w / 2, x1: p.body.x + p.w / 2, top: p.body.y + p.h }; return null }
+    function hazardInfo(id) { for (const h of director.hazards) if (h.spec.id === id) return { x: h.cx, y: h.cy, dir: h.dir }; return null }
     function activeState() { return active.motion.fsm.state }
     function activeId() { return active.characterId }
     function companionState() { return companion.motion.fsm.state }

@@ -104,11 +104,13 @@ function think(ai, follower, leader, world, dt, options) {
         for (const s of world.solids) if (s.enabled && s.kind === Physics.LOW && Physics.overlap(probe, s)) { inp.downHeld = true; break }
     }
 
-    // stuck detection: wants to move but does not
+    // stuck detection: wants to move but does not; waiting at an obstacle the leader has left behind
+    // (far away or well above) also ends in a teleport, otherwise a fallen companion stays in a pit
     if (wantMove && Math.abs(fb.x - ai.lastX) < 0.02 && !ai.waiting) ai.stuckTime += dt; else ai.stuckTime = 0
+    if (ai.waiting && wantMove && (dist > 6 || dy > 1.5)) ai.waitTime = (ai.waitTime || 0) + dt; else ai.waitTime = 0
     ai.lastX = fb.x
     ai.waiting = false
-    if (ai.stuckTime > T.stuckSeconds && leader.body.grounded) {
+    if ((ai.stuckTime > T.stuckSeconds || ai.waitTime > 4) && leader.body.grounded) {
         teleport = { x: leader.lastSafe.x - leader.facing * 1.2, y: leader.lastSafe.y }
         ai.stuckTime = 0; ai.lastTeleport = 1.0
     }

@@ -91,14 +91,14 @@ var steps = [
     { do: "move", x: 445 }, { do: "interact" }, { do: "expect", gateOpen: "gate_hall" }, { do: "move", x: 447 }, { do: "move", x: 450.6 }, { do: "expect", checkpoint: "cp_final" },
     { do: "ability" }, { do: "jump", x: 452.4, dir: 1, hold: 0.25, air: 0.3 }, { do: "expect", yMin: 0.8 }, { do: "jump", x: 454.1, dir: 1, hold: 0.4, air: 0.3 }, { do: "expect", yMin: 2.0 },
     { do: "jump", x: 456.4, dir: 1, hold: 0.45 }, { do: "expect", xMin: 457.5 },
-    { do: "hopOnto", left: 460, right: 461.4, top: 1.2, hold: 0.3 }, { do: "jump", x: 461.2, dir: 1, hold: 0.35, air: 0.35 }, { do: "expect", yMin: 1.9 }, { do: "move", x: 464.9 },
-    { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3 }, { do: "move", x: 468.2 }, { do: "jump", x: 468.5, dir: 1, hold: 0.35, air: 0.35 }, { do: "expect", yMin: 2.0 }, { do: "move", x: 472.5 },
+    { do: "hopOnto", left: 460, right: 461.4, top: 1.2, hold: 0.3 }, { do: "jump", x: 461.0, dir: 1, hold: 0.35, air: 0.35, avoid: "plane_hz_3" }, { do: "expect", yMin: 1.9 }, { do: "move", x: 464.9 },
+    { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3, avoid: "plane_hz_3" }, { do: "jump", x: 467.6, dir: 1, hold: 0.35, air: 0.4, avoid: "plane_hz_3" }, { do: "expect", yMin: 2.0 }, { do: "move", x: 472.5 },
     { do: "move", x: 475.3 },
     // the classroom door: both siblings, both interact
     // bring Pedro across the last hops too (books -> desk -> books -> desk row), then both interact
     { do: "switch", to: "pedro" }, { do: "hopOnto", left: 460, right: 461.4, top: 1.2, hold: 0.3 },
-    { do: "jump", x: 461.0, dir: 1, hold: 0.35, air: 0.35 }, { do: "expect", yMin: 1.9 }, { do: "move", x: 464.9 },
-    { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3, skipIfPast: true }, { do: "move", x: 468.3 },
+    { do: "jump", x: 461.0, dir: 1, hold: 0.35, air: 0.35, avoid: "plane_hz_3" }, { do: "expect", yMin: 1.9 }, { do: "move", x: 464.9 },
+    { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3, skipIfPast: true, avoid: "plane_hz_3" }, { do: "move", x: 468.3 },
     { do: "crawl", x: 472.7 }, { do: "expect", xMin: 472.3 },
     { do: "move", x: 477.7 }, { do: "expect", bothAtDoor: true, timeout: 12 }, { do: "interact" },
     { do: "switch", to: "isabela" }, { do: "move", x: 475.3 }, { do: "expect", bothAtDoor: true, timeout: 12 }, { do: "interact" }, { do: "expect", finished: true, timeout: 4 }

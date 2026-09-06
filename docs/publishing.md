@@ -9,8 +9,13 @@ cmake --preset desktop && cmake --build --preset desktop --target escola_aventur
 ./build-desktop/bin/escola_aventura.app/Contents/MacOS/escola_aventura --autotest # scripted pass, prints AUTOTEST lines
 ./build-desktop/bin/escola_aventura.app/Contents/MacOS/escola_aventura --walkthrough # plays the whole level (config/walkthrough.js), exit 0 = completable
 node tests/run-node.mjs                                                            # rules/physics/level checks without Qt
-ctest --preset desktop                                                             # QML suites + app smoke test (headless)
+ctest --preset desktop -R "escola|Escola|physics|rules"                            # the game's QML suites + app smoke test (headless)
 ```
+
+`ctest` without `-R` also lists Clayground's own plugin tests; two of them (`qml_world_qml`, `qml_lab_qml`)
+need plugins that are only built with the `all` target, so filter when you only built `escola_aventura`.
+The `--walkthrough` run is stepped from the event loop, not from the render loop, so it keeps its pace
+when the window is occluded or the app is napped (macOS stops `FrameAnimation` in that case).
 
 `QML_DISABLE_DISK_CACHE=1` avoids a stale QML cache after big edits. F1 opens the dev tools, F2 the
 collider view (development builds only; `-DESCOLA_DEV_TOOLS=OFF` or the wasm script compile them out).
