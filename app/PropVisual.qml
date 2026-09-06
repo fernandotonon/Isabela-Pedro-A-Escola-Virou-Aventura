@@ -18,20 +18,29 @@ Node {
     property real tint: 0                                                // 0..1 highlight (mechanisms)
     property bool castShadows: def && def.shadow ? def.shadow.cast : true
     property string shape: def && def.placeholder && def.placeholder.shape ? def.placeholder.shape : "box"
-    readonly property bool modelReady: modelLoader.status === Loader3D.Ready
     readonly property bool wantsModel: useModels && representation === "model" && def && def.model !== ""
     readonly property bool wantsSprite: representation === "sprite" && def && def.sprite
 
     // --- 3D model -------------------------------------------------------------------------------
-    Loader3D {
-        id: modelLoader
-        active: root.wantsModel
-        source: !active ? "" : (root.assetBase ? root.assetBase + root.def.model : Qt.resolvedUrl(root.def.model))
-        property real s: root.def ? (root.def.scale || 1) : 1
-        scale: Qt.vector3d(s, s, s)
-        y: root.def ? (root.def.footOffset || 0) * s : 0
-        eulerRotation.y: root.def ? (root.def.rotation || 0) : 0
-        onStatusChanged: if (status === Loader3D.Error) console.warn("PropVisual: failed to load", source)
+    // The model is fitted into the entity's box by its tighter dimension; when that leaves a wide
+    // platform mostly empty (a row of planters, a long bench top), the model is repeated along X.
+    readonly property real unitW: def && def.unitWidth ? def.unitWidth : 1
+    readonly property real unitH: def && def.unitHeight ? def.unitHeight : 1
+    readonly property real fitScale: def && def.unitHeight ? Math.min(w / unitW, h / unitH) : (def ? def.scale || 1 : 1)
+    readonly property int copies: def && def.unitWidth && unitW * fitScale < 0.7 * w ? Math.max(1, Math.round(w / (unitW * fitScale))) : 1
+    readonly property bool modelReady: modelRepeater.count > 0 && modelRepeater.objectAt(0) && modelRepeater.objectAt(0).status === Loader3D.Ready
+    Repeater3D {
+        id: modelRepeater
+        model: root.wantsModel ? root.copies : 0
+        delegate: Loader3D {
+            required property int index
+            source: root.assetBase ? root.assetBase + root.def.model : Qt.resolvedUrl(root.def.model)
+            x: root.copies > 1 ? -root.w / 2 + (index + 0.5) * root.w / root.copies : 0
+            scale: Qt.vector3d(root.fitScale, root.fitScale, root.fitScale)
+            y: (root.def.footOffset || 0) * root.fitScale
+            eulerRotation.y: root.def.rotation || 0
+            onStatusChanged: if (status === Loader3D.Error) console.warn("PropVisual: failed to load", source)
+        }
     }
 
     // --- sprite sheet ---------------------------------------------------------------------------
@@ -40,7 +49,7 @@ Node {
         sourceComponent: Sprite3D {
             sheet: root.assetBase ? root.assetBase + root.def.sprite.sheet : Qt.resolvedUrl(root.def.sprite.sheet)
             columns: root.def.sprite.columns; rows: root.def.sprite.rows
-            worldHeight: root.def.scale || root.h
+            worldHeight: root.def.height || root.h
             fps: root.def.sprite.fps || 0
             frameFrom: 0; frameTo: root.def.sprite.frames ? root.def.sprite.frames - 1 : 0
         }

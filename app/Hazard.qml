@@ -10,8 +10,8 @@ Node {
     property bool useModels: true
     property real speedScale: 1
     readonly property string kind: spec.type || ""        // ball | plane
-    property real cx: spec.x
-    property real cy: spec.y
+    property real cx: spec.x || 0
+    property real cy: spec.y || 0
     property int dir: 1
     property real t: 0
     property real spin: 0

@@ -54,6 +54,7 @@ var steps = [
     // ---- 3. playground --------------------------------------------------------------------------
     { do: "move", x: 206 }, { do: "climb", seconds: 1.6 }, { do: "expect", yMin: 3.4 },
     { do: "jump", x: 206.4, dir: 1, hold: 0.45, grab: true }, { do: "climb", seconds: 0.8 }, { do: "move", x: 209.5 }, { do: "move", x: 212.6 },
+    { do: "move", x: 216.4 }, { do: "expect", yMin: 3.3 }, { do: "jump", x: 216.6, dir: 1, hold: 0.35, air: 0.4 }, { do: "expect", yMin: 3.3 },
     { do: "move", x: 220 }, { do: "jump", x: 221, dir: 1, hold: 0.45, air: 0.45 }, { do: "expect", yMin: 5.2 }, { do: "move", x: 223.5 }, { do: "interact" },
     { do: "expect", switchOn: "lever_play" },
     { do: "switch", to: "pedro" }, { do: "move", x: 224.5 }, { do: "crawl", x: 231.2 }, { do: "expect", switchOn: "button_play" }, { do: "expect", gateOpen: "gate_play" },
@@ -79,13 +80,14 @@ var steps = [
     { do: "move", x: 399.6 }, { do: "expect", checkpoint: "cp_court" },
 
     // ---- 6. corredor ----------------------------------------------------------------------------
-    { do: "hopOnto", left: 407, right: 408.4, top: 1.0 }, { do: "jump", x: 408.2, dir: 1, hold: 0.3, air: 0.3 }, { do: "expect", yMin: 1.7 }, { do: "move", x: 411.5 }, { do: "move", x: 414 },
-    { do: "switch", to: "isabela" }, { do: "hopOnto", left: 407, right: 408.4, top: 1.0 }, { do: "hopOnto", left: 409.5, right: 410.9, top: 1.8, hold: 0.3 }, { do: "move", x: 411.5 }, { do: "move", x: 414 },
+    { do: "hopOnto", left: 407, right: 408.4, top: 1.0 }, { do: "jump", x: 408.2, dir: 1, hold: 0.3, air: 0.3 }, { do: "expect", yMin: 1.7 }, { do: "move", x: 411.5 }, { do: "hopOnto", left: 412, right: 413.4, top: 1.0 }, { do: "move", x: 414 },
+    { do: "switch", to: "isabela" }, { do: "hopOnto", left: 407, right: 408.4, top: 1.0, skipIfPast: true }, { do: "hopOnto", left: 409.5, right: 410.9, top: 1.8, hold: 0.3, skipIfPast: true }, { do: "move", x: 411.5 }, { do: "hopOnto", left: 412, right: 413.4, top: 1.0, skipIfPast: true }, { do: "move", x: 414 },
     { do: "move", x: 418.2 }, { do: "hold", moveX: 1, seconds: 3.4 },
     { do: "switch", to: "pedro" }, { do: "hopOnto", pushable: "desk_hall", hold: 0.35 }, { do: "jump", fromPushable: "desk_hall", dir: 1, hold: 0.45, air: 0.3 }, { do: "expect", yMin: 2.7 },
     { do: "move", x: 429 }, { do: "move", x: 431.5 }, { do: "move", x: 435 },
     { do: "crawl", x: 438 }, { do: "expect", switchOn: "button_hall" }, { do: "crawl", x: 440.8 },
-    { do: "switch", to: "isabela" }, { do: "move", x: 443 }, { do: "jump", x: 443.3, dir: 1, hold: 0.45, grab: true }, { do: "climb", seconds: 0.8 },
+    { do: "switch", to: "isabela" }, { do: "move", x: 435.5 }, { do: "jump", x: 435.6, dir: 1, hold: 0.45, grab: true }, { do: "climb", seconds: 0.8 }, { do: "move", x: 441.2 }, { do: "expect", yMax: 0.1 },
+    { do: "move", x: 443 }, { do: "jump", x: 443.3, dir: 1, hold: 0.45, grab: true }, { do: "climb", seconds: 0.8 },
     { do: "move", x: 445 }, { do: "interact" }, { do: "expect", gateOpen: "gate_hall" }, { do: "move", x: 447 }, { do: "move", x: 450.6 }, { do: "expect", checkpoint: "cp_final" },
     { do: "ability" }, { do: "jump", x: 452.4, dir: 1, hold: 0.25, air: 0.3 }, { do: "expect", yMin: 0.8 }, { do: "jump", x: 454.1, dir: 1, hold: 0.4, air: 0.3 }, { do: "expect", yMin: 2.0 },
     { do: "jump", x: 456.4, dir: 1, hold: 0.45 }, { do: "expect", xMin: 457.5 },
@@ -93,6 +95,11 @@ var steps = [
     { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3 }, { do: "move", x: 468.2 }, { do: "jump", x: 468.5, dir: 1, hold: 0.35, air: 0.35 }, { do: "expect", yMin: 2.0 }, { do: "move", x: 472.5 },
     { do: "move", x: 475.3 },
     // the classroom door: both siblings, both interact
-    { do: "wait", seconds: 2.5 }, { do: "switch", to: "pedro" }, { do: "move", x: 477.7 }, { do: "interact" },
+    // bring Pedro across the last hops too (books -> desk -> books -> desk row), then both interact
+    { do: "switch", to: "pedro" }, { do: "hopOnto", left: 460, right: 461.4, top: 1.2, hold: 0.3 },
+    { do: "jump", x: 461.0, dir: 1, hold: 0.35, air: 0.35 }, { do: "expect", yMin: 1.9 }, { do: "move", x: 464.9 },
+    { do: "hopOnto", left: 466.5, right: 467.9, top: 1.2, hold: 0.3, skipIfPast: true }, { do: "move", x: 468.3 },
+    { do: "crawl", x: 472.7 }, { do: "expect", xMin: 472.3 },
+    { do: "move", x: 477.7 }, { do: "interact" },
     { do: "switch", to: "isabela" }, { do: "move", x: 475.3 }, { do: "interact" }, { do: "expect", finished: true, timeout: 4 }
 ]

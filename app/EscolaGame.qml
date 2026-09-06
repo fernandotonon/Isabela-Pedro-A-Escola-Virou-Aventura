@@ -130,6 +130,7 @@ Item {
                 const from = parseInt(game.args[game.args.indexOf("--wt-from") + 1])
                 const pos = (game.args[game.args.indexOf("--wt-pos") + 1] || "4,0").split(",").map(Number)
                 game.wt.index = from
+                for (const g of director.gates) if (g.spec.x < pos[0]) g.setOpen(true)      // earlier mechanisms are assumed solved
                 game.placeAt(pos[0], pos[1])
                 if (game.args.indexOf("--wt-active") >= 0) game.setActive(game.args[game.args.indexOf("--wt-active") + 1] === "pedro" ? pedro : isabela, true)
                 console.log("WALKTHROUGH fast-forward to step", from, "at", pos.join(","), "active", game.active.characterId)

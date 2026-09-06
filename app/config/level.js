@@ -111,13 +111,13 @@ var level = {
         prop("school_wall", 133, { z: -4.5, w: 62 }),
         trigger("hint.pushmedium", 141, 3),
         // Isabela pushes the medium bench so Pedro can climb the planter ledge
-        pushable("bench_garden", 144.5, 0, 1.8, 1.1, 2, "school_bench"),
+        pushable("bench_garden", 144.5, 0, 2.4, 1.0, 2, "school_bench"),
         platform(150, 1.8, 6, 0.4, "garden_planter"), star(152.5, 2.9), star(141, 1.2),
         wall(156, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
         lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter" }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
-        pushable("bench_garden2", 165.4, 0, 1.8, 1.1, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
+        pushable("bench_garden2", 165.4, 0, 2.4, 1.0, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
         wall(169.4, 0, 0.4, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
         platform(169.6, 4.0, 6, 0.4, "garden_planter", { ledge: true }), lever("lever_garden", 173, 4.4, {}),
         star(165.9, 5.0), star(171, 5.4), star(162, 0.3),
@@ -149,8 +149,8 @@ var level = {
         platform(207, 6.2, 5, 0.3, "playground_roof", { ledge: true }), pencil(209.5, 7.1),
         // Pedro: through the tunnel, down the slide, to the floor button
         lowpass(208, 0, 6, 2.6, { gap: 0.8, asset: "play_tunnel" }), star(211, 0.3),
-        platform(215, 0, 1, 0.6, "slide_step"), platform(216, 0, 1, 1.2, "slide_step"), platform(217, 0, 1, 1.8, "slide_step", { slideTop: true }),
-        platform(218, 0, 1, 1.2, "slide_step"), platform(219, 0, 1, 0.6, "slide_step"),
+        platform(215, 0, 1, 0.5, "slide_step"), platform(216, 0, 1, 1.0, "slide_step"), platform(217, 0, 1, 1.5, "slide_step", { slideTop: true }),
+        platform(218, 0, 1, 1.0, "slide_step"), platform(219, 0, 1, 0.5, "slide_step"),
         lowpass(226, 0, 4, 2.2, { gap: 0.8, asset: "fence_yellow_low" }), button("button_play", 231.2, {}), wall(232.2, 0, 0.5, 1.4, { asset: "fence_yellow" }),
         star(228, 0.3), star(224, 1.2), star(202, 1.2),
         gate("gate_play", 238, 0, 0.8, 3.4, ["lever_play", "button_play"], { asset: "colored_grid" }),
@@ -201,7 +201,7 @@ var level = {
         trigger("hint.quadra", 337, 3),
         star(341, 1.2), star(349, 1.2),
         // Isabela puts the bench under the wall so Pedro can get over it
-        pushable("bench_court", 352, 0, 1.8, 1.1, 2, "school_bench"),
+        pushable("bench_court", 352, 0, 2.4, 1.0, 2, "school_bench"),
         wall(360, 0, 0.6, 2.5, { asset: "fence_yellow" }), star(360.3, 3.6),
         platform(361.5, 4.3, 1.6, 0.3, "exercise_bar", { ledge: true }), pencil(362.3, 5.2),   // up by the hoop: Isabela only
         // Pedro pushes the ball into the goal; the goal plate reacts to the ball

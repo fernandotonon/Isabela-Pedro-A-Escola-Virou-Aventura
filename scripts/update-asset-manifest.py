@@ -24,14 +24,24 @@ PREFER = sys.argv[sys.argv.index("--prefer") + 1] if "--prefer" in sys.argv else
 CHARACTERS = {"pedro", "isabela"}
 
 
-def min_y(glb):
+def bbox(glb):
     out = subprocess.run([Q, "info", glb], capture_output=True, text=True, env=ENV).stdout
     m = re.search(r"Bounding Box: \(([-\d.]+), ([-\d.]+), ([-\d.]+)\) to \(([-\d.]+), ([-\d.]+), ([-\d.]+)\)", out)
     if not m:
-        return None, None
+        return None
     lo = [float(m.group(i)) for i in (1, 2, 3)]
     hi = [float(m.group(i)) for i in (4, 5, 6)]
-    return -lo[1], (hi[1] - lo[1])
+    return {"footOffset": -lo[1], "w": hi[0] - lo[0], "h": hi[1] - lo[1], "d": hi[2] - lo[2]}
+
+
+def collider_of(entry_src):
+    m = re.search(r"collider:\s*\{\s*w:\s*([-\d.]+),\s*h:\s*([-\d.]+),\s*d:\s*([-\d.]+)", entry_src)
+    return (float(m.group(1)), float(m.group(2)), float(m.group(3))) if m else None
+
+
+def authored_scale(entry_src):
+    m = re.search(r"\bscale:\s*([-\d.]+)", entry_src)
+    return float(m.group(1)) if m else 1.0
 
 
 def type_name(asset_id):
@@ -71,15 +81,29 @@ def main():
             if not os.path.exists(glb):
                 glb = os.path.join(ROOT, "assets", "exported", asset_id, f"{asset_id}.glb")
             if os.path.exists(glb):
-                off, height = min_y(glb)
-                if off is not None:
-                    new = set_field(new, "footOffset", round(off, 3))
-                    new = set_field(new, "unitHeight", round(height, 3))
+                bb = bbox(glb)
+                if bb:
+                    new = set_field(new, "footOffset", round(bb["footOffset"], 3))
+                    new = set_field(new, "unitHeight", round(bb["h"], 3))
+                    new = set_field(new, "unitWidth", round(bb["w"], 3))
+                    # scale: fit the model into the suggested collider (width and height), else the
+                    # authored value is the wanted height in metres
+                    col = collider_of(entry)
+                    if col and asset_id not in CHARACTERS:
+                        fit = min(col[0] / max(bb["w"], 1e-3), col[1] / max(bb["h"], 1e-3))
+                    elif asset_id in CHARACTERS:
+                        fit = col[1] / max(bb["h"], 1e-3) if col else authored_scale(entry)
+                    else:
+                        fit = authored_scale(entry) / max(bb["h"], 1e-3)
+                    new = set_field(new, "scale", round(fit, 3))
+                    new = set_field(new, "height", round(bb["h"] * fit, 3))
             new = set_field(new, "status", "generated")
         if has_sprite:
             new = re.sub(r"sprite:\s*(null|\{[^}]*\})", 'sprite: { sheet: "assets/sprites/%s.png", columns: 8, rows: 1, frames: 8, fps: 0 }' % asset_id, new, count=1) \
                 if re.search(r"\bsprite:", new) else new.replace("{", '{ sprite: { sheet: "assets/sprites/%s.png", columns: 8, rows: 1, frames: 8, fps: 0 },' % asset_id, 1)
         rep = "model" if (has_model and (PREFER == "model" or not has_sprite)) else "sprite"
+        if re.search(r'kind:\s*"backdrop"', entry):      # scene dioramas do not work as side-scroller backdrops
+            rep = "placeholder"
         new = set_field(new, "representation", rep)
         if new != entry:
             src = src.replace(entry, new)

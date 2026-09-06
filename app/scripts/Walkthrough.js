@@ -72,11 +72,12 @@ function tick(w, game, dt) {
             if (s.fromPushable) { const b = game.pushableBox(s.fromPushable); if (b) sx = (dir > 0 ? b.x1 : b.x0) + (s.offset === undefined ? -dir * 0.3 : s.offset) }
             const dx = sx - x
             if (Math.abs(dx) < 0.25) { w.phase = 1; w.time = 0 } else out.input.moveX = Math.abs(dx) < 1.0 ? Math.sign(dx) * 0.45 : Math.sign(dx)
-        } else if (w.phase === 1) {                // settle: no momentum against the jump direction, then press jump
+        } else if (w.phase === 1) {                // settle (standing still, so a narrow ledge is not walked off), then press jump
             const vx = game.activeVx()
-            out.input.moveX = s.stand ? 0 : dir * 0.9
-            if (!s.stand && Math.sign(vx) === -dir && Math.abs(vx) > 0.3 && w.time < 0.6) break
+            out.input.moveX = 0
+            if (Math.abs(vx) > 0.4 && w.time < 0.6) break
             if (!grounded && w.time < 0.6) break
+            out.input.moveX = s.stand ? 0 : dir * 0.9
             out.input.jumpPressed = true; out.input.jumpHeld = true; w.phase = 2; w.time = 0; w.jumped = true
         } else {                                   // in the air: hold direction / jump for `hold`
             const hold = s.hold === undefined ? 0.3 : s.hold
@@ -95,6 +96,7 @@ function tick(w, game, dt) {
         if (!box) { finish(w, false, "no object " + s.pushable); break }
         const top = box.top
         if (grounded && game.activeY() >= top - 0.05 && x > box.x0 - 0.1 && x < box.x1 + 0.1) { finish(w, true, "on top at x=" + x.toFixed(2)); break }
+        if (s.skipIfPast && grounded && x > box.x1 + 0.2) { finish(w, true, "already past it"); break }
         if (w.dir === undefined || w.phase === 0) {
             w.dir = x < (box.x0 + box.x1) / 2 ? 1 : -1
             w.target = w.dir > 0 ? box.x0 - 0.28 : box.x1 + 0.28
