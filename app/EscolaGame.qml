@@ -166,6 +166,7 @@ FocusScope {
     }
     function switchCharacter() {
         if (phase !== "playing" || respawning) return
+        if (logInput) console.log("INPUT switch requested, allowed:", canSwitch())
         if (!canSwitch()) return
         setActive(companion, false)
     }
@@ -359,7 +360,7 @@ FocusScope {
             if (spec.narrative === "corridor_grows") { world3d.rig.zoom = 0.9; zoomBack.restart() }
             return
         }
-        if (id.indexOf("hint.") === 0) hint(tr(id), 5200)
+        if (id.indexOf("hint.") === 0) hint(touchShown && Strings.has(id + ".touch") ? tr(id + ".touch") : tr(id), 5200)
     }
     Timer { id: zoomBack; interval: 2600; onTriggered: world3d.rig.zoom = 1 }
     function onGateOpened(id, spec) {
@@ -529,6 +530,13 @@ FocusScope {
     }
     MouseArea { anchors.fill: parent; onPressed: (mouse) => { input.forceActiveFocus(); mouse.accepted = false } }
 
+    TouchControls {
+        id: touchControls
+        anchors.fill: parent
+        input: input
+        game: game
+    }
+    readonly property bool touchShown: touchControls.shown
     Hud {
         id: hud
         anchors.fill: parent

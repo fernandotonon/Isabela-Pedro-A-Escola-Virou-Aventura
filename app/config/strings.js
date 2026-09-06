@@ -67,6 +67,14 @@ var pt_BR = {
     "hud.tooSmall": "Só o Pedro passa por aqui!",
 
     "hint.move": "Use as SETAS ou A/D para andar. Continue andando para correr!",
+    "hint.move.touch": "Arraste o dedo na metade esquerda da tela para andar.",
+    "hint.jump.touch": "Toque em ▲ para pular. Segure para pular mais alto.",
+    "hint.switch.touch": "Toque no cartão do outro irmão para trocar de personagem.",
+    "hint.crawl.touch": "Com o Pedro, arraste o dedo para baixo para se abaixar e passar por baixo.",
+    "hint.ledge.touch": "Com a Isabela, pule em direção a uma borda para se agarrar. Arraste para cima para subir.",
+    "hint.lever.touch": "Toque em E perto da alavanca.",
+    "hint.notebook.touch": "Com a Isabela, toque em ✦ para usar o caderno e revelar pistas.",
+    "touch.jump": "pular", "touch.ability": "habilidade", "touch.interact": "usar", "touch.switch": "toque para trocar",
     "hint.jump": "Pressione ESPAÇO para pular. Segure para pular mais alto.",
     "hint.stars": "Colete as Estrelas de Coragem!",
     "hint.switch": "Pressione Q ou TAB para trocar entre Isabela e Pedro.",
@@ -149,6 +157,14 @@ var en = {
     "hint.switch": "Press Q or TAB to switch between Isabela and Pedro.",
     "hint.abilities": "Isabela jumps high and grabs ledges. Pedro is fast and crawls under things.",
     "hint.crawl": "As Pedro, hold ↓ to crouch and crawl under.",
+    "hint.move.touch": "Drag your finger on the left half of the screen to walk.",
+    "hint.jump.touch": "Tap ▲ to jump. Hold for a higher jump.",
+    "hint.switch.touch": "Tap the other sibling's card to switch characters.",
+    "hint.crawl.touch": "As Pedro, drag down to crouch and crawl under.",
+    "hint.ledge.touch": "As Isabela, jump towards a ledge to grab it. Drag up to climb.",
+    "hint.lever.touch": "Tap E next to the lever.",
+    "hint.notebook.touch": "As Isabela, tap ✦ to use the notebook and reveal clues.",
+    "touch.jump": "jump", "touch.ability": "ability", "touch.interact": "use", "touch.switch": "tap to switch",
     "hint.ledge": "As Isabela, jump towards a ledge to grab it. ↑ to climb.",
     "hint.button": "Step on the button to activate it.",
     "hint.lever": "Press E next to the lever.",
@@ -181,6 +197,7 @@ var en = {
 
 var languages = { pt_BR: pt_BR, en: en }
 
+function has(key) { return pt_BR[key] !== undefined }
 function tr(key, lang) {
     const table = languages[lang || "pt_BR"] || pt_BR
     if (table[key] !== undefined) return table[key]

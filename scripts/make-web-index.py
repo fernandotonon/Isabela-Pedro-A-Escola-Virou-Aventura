@@ -32,8 +32,9 @@ if os.path.exists(os.path.join(d, "escola-assets.json")) and "escola-assets.json
     html = html.replace("qt: {", "qt: {\n                        preload: ['escola-assets.json'],", 1)
 
 if "viewport" not in html:
-    html = re.sub(r"(<head[^>]*>)", r'\1\n<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">'
-                  '\n<style>html,body{touch-action:none;overscroll-behavior:none;-webkit-user-select:none;user-select:none;background:#f3e7c9}</style>', html, count=1)
+    html = re.sub(r"(<head[^>]*>)", r'\1\n<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">', html, count=1)
+if "touch-action:none" not in html:   # phones: no pinch-zoom, pull-to-refresh or text selection over the game
+    html = re.sub(r"(<head[^>]*>)", r'\1\n<style>html,body{touch-action:none;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;background:#f3e7c9}</style>', html, count=1)
 
 # Keyboard focus guard. Qt for WebAssembly keeps its key listeners on a focus-helper element inside
 # the shadow DOM; a click inside the canvas can drop the DOM focus to <body> (Qt prevents the default

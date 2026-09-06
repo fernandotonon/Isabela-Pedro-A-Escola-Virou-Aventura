@@ -1,9 +1,8 @@
 // Unified input: keyboard (own key handling - the platformer needs more than two buttons),
-// physical gamepad (GamepadBridge: browser Gamepad API on WebAssembly) and Clayground's
-// touchscreen gamepad on phones. The game reads one snapshot per fixed step; menus listen to the
+// physical gamepad (GamepadBridge: browser Gamepad API on WebAssembly) and the on-screen
+// TouchControls on phones/tablets (stick + buttons, fed in through touchMoveX/press()). The game reads one snapshot per fixed step; menus listen to the
 // edge signals. Bindings are data (`keys`) so the Settings screen can change them later.
 import QtQuick
-import Clayground.GameController
 
 Item {
     id: input
@@ -22,14 +21,16 @@ Item {
     property var held: ({})                       // action -> bool (keyboard)
     readonly property real keyX: (held.right ? 1 : 0) - (held.left ? 1 : 0)
     readonly property real keyY: (held.up ? 1 : 0) - (held.down ? 1 : 0)
-    readonly property real moveX: clamp(keyX + gamepad.axisX + touch.axisX)
-    readonly property real moveY: clamp(keyY - gamepad.axisY + touch.axisY)
-    readonly property bool jumpHeld: !!held.jump || gamepad.south || touch.buttonAPressed
-    readonly property bool downHeld: !!held.down || gamepad.axisY > 0.5 || touch.axisY < -0.5
+    property real touchMoveX: 0                   // written by TouchControls (on-screen stick)
+    property real touchMoveY: 0
+    property bool touchDown: false
+    readonly property real moveX: clamp(keyX + gamepad.axisX + touchMoveX)
+    readonly property real moveY: clamp(keyY - gamepad.axisY + touchMoveY)
+    readonly property bool jumpHeld: !!held.jump || gamepad.south
+    readonly property bool downHeld: !!held.down || gamepad.axisY > 0.5 || touchDown
     readonly property bool abilityHeld: !!held.ability || gamepad.east || gamepad.rightTrigger
     readonly property bool gamepadConnected: gamepad.connected
     readonly property string gamepadName: gamepad.name
-    readonly property bool touchActive: touch.vGamepadSelected
 
     // one-shot flags, consumed by snapshot()
     property bool jumpPressed: false
@@ -113,16 +114,5 @@ Item {
         }
     }
 
-    // ---- touch (phones/tablets): Clayground's on-screen gamepad ---------------------------------------
-    GameController {
-        id: touch
-        anchors.fill: parent
-        property bool pA: false; property bool pB: false
-        onButtonAPressedChanged: { if (buttonAPressed && !pA) { input.jumpPressed = true; input.menuAccept(); input.anyKey() } pA = buttonAPressed }
-        onButtonBPressedChanged: { if (buttonBPressed && !pB) { input.interactPressed = true; input.interactRequested() } pB = buttonBPressed }
-    }
-    function enableTouch() { touch.selectTouchscreenGamepad() }
-
-    // Clayground's GameController renders its own touch overlay; keyboard focus stays here.
     focus: true
 }

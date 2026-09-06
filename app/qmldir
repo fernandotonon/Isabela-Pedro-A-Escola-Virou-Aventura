@@ -25,4 +25,5 @@ ScreenFade 1.0 ScreenFade.qml
 AudioManager 1.0 AudioManager.qml
 SaveSystem 1.0 SaveSystem.qml
 Hud 1.0 Hud.qml
+TouchControls 1.0 TouchControls.qml
 MenuOverlay 1.0 MenuOverlay.qml

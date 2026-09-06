@@ -83,9 +83,13 @@ tempo de jogo e roda mais rápido que o tempo real), `--no-models` (placeholders
 | Esc / P | Start | pausar |
 | F1 / F2 | | ferramentas de desenvolvimento / colliders (apenas builds de desenvolvimento) |
 
+| Toque (celular/tablet) | | arraste o dedo na metade esquerda para andar (para cima sobe, para baixo abaixa); botões ▲ pular, ✦ habilidade, E usar, ❚❚ pausar; toque no cartão do outro irmão para trocar |
+
 Gamepads físicos são lidos pela Gamepad API do navegador (mapeamento padrão W3C) na build web.
 O Qt 6 não tem módulo de gamepad para desktop, então no computador use o teclado. Em celulares e
-tablets, o gamepad virtual do Clayground é ativado automaticamente ao tocar na tela.
+tablets os controles de toque (`app/TouchControls.qml`: analógico flutuante multitoque + botões,
+no espírito do TouchscreenGamepad do Clayground) aparecem ao primeiro toque na tela; o jogo é pensado
+para a orientação paisagem.
 
 ## Layout do repositório
 

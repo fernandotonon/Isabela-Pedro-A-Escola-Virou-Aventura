@@ -80,6 +80,7 @@ clay_app(escola_aventura
         AudioManager.qml
         SaveSystem.qml
         Hud.qml
+        TouchControls.qml
         MenuOverlay.qml
         ${ESCOLA_DEV_QML}
         scripts/Physics.js

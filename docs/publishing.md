@@ -50,6 +50,9 @@ focus-helper element inside its shadow DOM, and a click inside the canvas can dr
 `<body>`, after which no key reaches the game. `node scripts/browser-input-check.mjs "<url>?args=--log-input" <dir>`
 checks it headless (the game prints `INPUT press <action>` per received key).
 
+`node scripts/browser-touch-check.mjs "<url>?args=--log-input" <dir>` emulates a phone (touch, 900×420) and
+drives the on-screen stick, the jump button and the tap-to-switch card.
+
 Enable Pages once (Settings → Pages → Deploy from a branch → `gh-pages`, `/`). The bundled
 `coi-serviceworker.js` provides the cross-origin isolation GitHub Pages cannot set itself;
 `.wasm` is served as `application/wasm` by Pages. Assets are separate files preloaded from

@@ -25,6 +25,11 @@ Item {
                 scale: isActive ? 1 : 0.9
                 Behavior on scale { NumberAnimation { duration: 160; easing.type: Easing.OutBack } }
                 Behavior on color { ColorAnimation { duration: 160 } }
+                // tap (or click) the other sibling's card to switch
+                TapHandler { onTapped: if (game && !isActive) game.switchCharacter() }
+                Text { visible: game && game.touchShown && !isActive && game.phase === "playing"
+                       anchors { horizontalCenter: parent.horizontalCenter; top: parent.bottom; topMargin: 4 * hud.ui }
+                       text: game ? game.tr("touch.switch") : ""; color: hud.paper; font.pixelSize: 12 * hud.ui; style: Text.Outline; styleColor: hud.ink }
                 Row {
                     anchors.fill: parent; anchors.margins: 8 * hud.ui; spacing: 8 * hud.ui
                     Rectangle { width: 44 * hud.ui; height: width; radius: width / 2; color: modelData.def.color; anchors.verticalCenter: parent.verticalCenter
