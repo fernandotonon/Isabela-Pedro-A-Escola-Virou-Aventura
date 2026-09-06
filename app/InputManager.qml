@@ -54,8 +54,10 @@ Item {
 
     function actionFor(key) { for (const a in keys) if (keys[a].indexOf(key) >= 0) return a; return "" }
 
+    property bool logActions: false
     function press(action) {
         if (!action) return
+        if (logActions) console.log("INPUT press", action)
         const h = Object.assign({}, held); h[action] = true; held = h
         anyKey()
         switch (action) {

@@ -35,6 +35,26 @@ if "viewport" not in html:
     html = re.sub(r"(<head[^>]*>)", r'\1\n<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">'
                   '\n<style>html,body{touch-action:none;overscroll-behavior:none;-webkit-user-select:none;user-select:none;background:#f3e7c9}</style>', html, count=1)
 
+# Keyboard focus guard. Qt for WebAssembly keeps its key listeners on a focus-helper element inside
+# the shadow DOM; a click inside the canvas can drop the DOM focus to <body> (Qt prevents the default
+# pointer behaviour), after which the game receives no key events. Put the focus back whenever it is lost.
+focus_js = """
+        // keep keyboard focus on Qt's focus helper (a click inside the canvas can drop it to <body>)
+        const qtKeyboardFocus = () => {
+            const host = document.querySelector('#qt-shadow-container');
+            if (!host) return;
+            const helper = host.shadowRoot && host.shadowRoot.querySelector('.qt-window-focus-helper');
+            if (document.activeElement !== host) (helper || host).focus({ preventScroll: true });
+        };
+        ['pointerup', 'mouseup', 'touchend'].forEach(t => document.addEventListener(t, () => setTimeout(qtKeyboardFocus, 0), true));
+        document.addEventListener('focusout', (e) => { if (!e.relatedTarget) setTimeout(qtKeyboardFocus, 0); }, true);
+        window.addEventListener('keydown', () => { if (document.activeElement === document.body) qtKeyboardFocus(); }, true);
+        window.addEventListener('focus', () => setTimeout(qtKeyboardFocus, 0));
+"""
+if "qtKeyboardFocus" not in html:
+    html = html.replace("        async function init()", focus_js + "        async function init()", 1)
+    html = html.replace("onLoaded: () => showUi(screen),", "onLoaded: () => { showUi(screen); setTimeout(qtKeyboardFocus, 0); },", 1)
+
 html = html.replace(f"<title>{app}</title>", "<title>Isabela & Pedro: A Escola Virou Aventura</title>")
 open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(html)
 print(f"wrote {os.path.join(d, 'index.html')}")

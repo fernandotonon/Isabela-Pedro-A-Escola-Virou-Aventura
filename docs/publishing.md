@@ -41,6 +41,11 @@ python3 scripts/serve.py deploy/multithread   # local check with COOP/COEP heade
 scripts/deploy-pages.sh                    # push deploy/multithread to the gh-pages branch
 ```
 
+`make-web-index.py` also injects a keyboard-focus guard: Qt for WebAssembly listens for keys on a
+focus-helper element inside its shadow DOM, and a click inside the canvas can drop the browser focus to
+`<body>`, after which no key reaches the game. `node scripts/browser-input-check.mjs "<url>?args=--log-input" <dir>`
+checks it headless (the game prints `INPUT press <action>` per received key).
+
 Enable Pages once (Settings → Pages → Deploy from a branch → `gh-pages`, `/`). The bundled
 `coi-serviceworker.js` provides the cross-origin isolation GitHub Pages cannot set itself;
 `.wasm` is served as `application/wasm` by Pages. Assets are separate files preloaded from

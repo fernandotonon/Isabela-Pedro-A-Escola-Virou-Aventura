@@ -16,7 +16,9 @@ import "config/build.js" as Build
 import "scripts/Walkthrough.js" as Walkthrough
 import "config/walkthrough.js" as WalkSteps
 
-Item {
+// A FocusScope: the window gives focus to the game, the game delegates it to the InputManager (a plain
+// Item with several `focus: true` descendants ends up with the keyboard focus on the wrong item).
+FocusScope {
     id: game
     focus: true
 
@@ -27,6 +29,7 @@ Item {
     readonly property bool walkthrough: args.indexOf("--walkthrough") >= 0
     property var wt: null
     readonly property bool wtTrace: args.indexOf("--wt-trace") >= 0
+    readonly property bool logInput: args.indexOf("--log-input") >= 0     // print every key/button action (web debugging)
     property int wtLogged: 0
     property bool useModels: args.indexOf("--no-models") < 0
     // Model files: qrc:/ (relative) on desktop; on WebAssembly they are preloaded into the
@@ -70,7 +73,12 @@ Item {
         applySettings()
         if (autotest) { startNewGame(); autotestTimer.start() }
         if (walkthrough) { wt = Walkthrough.create(WalkSteps.steps); startNewGame(); wtGuard.start() }
+        input.forceActiveFocus()
+        focusReport.start()
     }
+    // keyboard focus must sit on the InputManager; report it (and re-take it) shortly after boot
+    Timer { id: focusReport; interval: 1500; onTriggered: { if (!input.activeFocus) input.forceActiveFocus(); console.log("EscolaGame: keyboard focus on InputManager:", input.activeFocus, "window active:", game.Window.active) } }
+    onActiveFocusChanged: if (activeFocus && !input.activeFocus) input.forceActiveFocus()
 
     function applySettings() {
         audio.musicVolume = save.settings.musicVolume
@@ -493,6 +501,7 @@ Item {
         id: input
         anchors.fill: parent
         gameplayEnabled: game.phase === "playing"
+        logActions: game.logInput
         onSwitchRequested: if (game.phase === "playing") game.switchCharacter()
         onPauseRequested: { if (game.phase === "playing") game.pause(); else if (game.phase === "paused") game.resume() }
     }
