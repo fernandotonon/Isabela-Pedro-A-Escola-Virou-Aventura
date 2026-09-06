@@ -185,7 +185,7 @@ var level = {
         // paper plane over the pit (the pit floor has tyre steps: easy route)
         moving("plane_2", 316.5, 2.2, 2.0, 0.3, [{ x: 316.5, y: 2.2 }, { x: 325.5, y: 3.0 }], 2.4, { asset: "paper_plane" }),
         platform(324.5, -2.4, 1.0, 1.0, "tire_planter"), platform(325.8, -2.4, 1.0, 2.4, "tire_planter"), star(321, -1.4),
-        plane("plane_hz_1", [{ x: 268, y: 2.6 }, { x: 282, y: 3.4 }], 3.0),
+        plane("plane_hz_1", [{ x: 266, y: 4.6 }, { x: 283, y: 5.2 }], 3.0),          // above the hop arcs; a full jump from the tables still meets it
         star(319.5, 4.6)
       ] },
 

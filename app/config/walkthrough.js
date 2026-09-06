@@ -62,7 +62,7 @@ var steps = [
     { do: "move", x: 262.5 },
 
     // ---- 4. patio -------------------------------------------------------------------------------
-    { do: "hopOnto", left: 270, right: 272.4, top: 1.0 }, { do: "move", x: 272 }, { do: "jump", x: 272.2, dir: 1, hold: 0.3, air: 0.4 }, { do: "expect", yMin: 1.4 }, { do: "move", x: 277.9 },
+    { do: "hopOnto", left: 270, right: 272.4, top: 1.0 }, { do: "move", x: 272 }, { do: "hopOnto", left: 274.5, right: 277.5, top: 1.5, hold: 0.35 }, { do: "move", x: 277.9 },
     { do: "hopOnto", left: 279.5, right: 281.9, top: 1.0 }, { do: "move", x: 282.4 },
     { do: "hopOnto", left: 287, right: 289.4, top: 1.0 }, { do: "move", x: 289.6 }, { do: "jump", x: 293.6, dir: 1, hold: 0.4, air: 0.25 }, { do: "expect", yMin: 1.3 }, { do: "move", x: 297.6 },
     { do: "move", x: 301.8 }, { do: "hopOnto", left: 302.5, right: 304.1, top: 1.2, hold: 0.3 }, { do: "move", x: 304.6 },
