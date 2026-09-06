@@ -14,21 +14,21 @@ Node {
         objectName: "qtmesh_gen3d_1_1788648667867_diffuse.png"
         generateMipmaps: true
         mipFilter: Texture.Linear
-        source: "maps/qtmesh_gen3d_1_1788648667867_diffuse.png"
+        source: "maps/qtmesh_gen3d_1_1788648667867_diffuse.jpg"
     }
     Texture {
         id: qtmesh_gen3d_1_1788648667867_roughness_png_texture
         objectName: "qtmesh_gen3d_1_1788648667867_roughness.png"
         generateMipmaps: true
         mipFilter: Texture.Linear
-        source: "maps/qtmesh_gen3d_1_1788648667867_roughness.png"
+        source: "maps/qtmesh_gen3d_1_1788648667867_roughness.jpg"
     }
     Texture {
         id: qtmesh_gen3d_1_1788648667867_normal_png_texture
         objectName: "qtmesh_gen3d_1_1788648667867_normal.png"
         generateMipmaps: true
         mipFilter: Texture.Linear
-        source: "maps/qtmesh_gen3d_1_1788648667867_normal.png"
+        source: "maps/qtmesh_gen3d_1_1788648667867_normal.jpg"
     }
     PrincipledMaterial {
         id: qtmesh_gen3d_1_1788648667867_mesh_mat_material
