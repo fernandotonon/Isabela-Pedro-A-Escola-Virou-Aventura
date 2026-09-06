@@ -35,6 +35,18 @@ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
     <div id="screen"></div>
 
     <script type="text/javascript">
+
+        // keep keyboard focus on Qt's focus helper (a click inside the canvas can drop it to <body>)
+        const qtKeyboardFocus = () => {
+            const host = document.querySelector('#qt-shadow-container');
+            if (!host) return;
+            const helper = host.shadowRoot && host.shadowRoot.querySelector('.qt-window-focus-helper');
+            if (document.activeElement !== host) (helper || host).focus({ preventScroll: true });
+        };
+        ['pointerup', 'mouseup', 'touchend'].forEach(t => document.addEventListener(t, () => setTimeout(qtKeyboardFocus, 0), true));
+        document.addEventListener('focusout', (e) => { if (!e.relatedTarget) setTimeout(qtKeyboardFocus, 0); }, true);
+        window.addEventListener('keydown', () => { if (document.activeElement === document.body) qtKeyboardFocus(); }, true);
+        window.addEventListener('focus', () => setTimeout(qtKeyboardFocus, 0));
         async function init()
         {
             const spinner = document.querySelector('#qtspinner');
@@ -59,7 +71,7 @@ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
                     qt: {
                         preload: ['escola-assets.json'],
-                        onLoaded: () => showUi(screen),
+                        onLoaded: () => { showUi(screen); setTimeout(qtKeyboardFocus, 0); },
                         onExit: exitData =>
                         {
                             status.innerHTML = 'Application exit';
