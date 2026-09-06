@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """Static server for testing the WebAssembly build the way a real host serves it.
 
-    python3 scripts/serve.py <dir> [--port 8080]
+    python3 scripts/serve.py <dir> [--port 8080] [--limit-mbps 20]
 
 * Cross-Origin-Opener-Policy / Cross-Origin-Embedder-Policy headers -> SharedArrayBuffer,
   which multithreaded Qt WebAssembly (needed for Qt Quick 3D) requires.
 * application/wasm MIME type for .wasm files. No caching.
-GitHub Pages cannot send these headers; there the bundled coi-serviceworker.js injects them.
+GitHub Pages cannot send these headers; there the bundled escola-sw.js (service worker) injects them.
 """
 import argparse
 import os
+import shutil
 import sys
+import time
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+
+LIMIT_BPS = 0        # --limit-mbps: throttle every response (to watch the loading screen like a slow visitor)
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -29,6 +33,17 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store")
         super().end_headers()
 
+    def copyfile(self, source, outputfile):
+        if LIMIT_BPS <= 0:
+            return shutil.copyfileobj(source, outputfile)
+        chunk = max(4096, LIMIT_BPS // 20)                  # ~20 chunks per second
+        while True:
+            data = source.read(chunk)
+            if not data:
+                break
+            outputfile.write(data); outputfile.flush()
+            time.sleep(len(data) / LIMIT_BPS)
+
     def log_message(self, fmt, *args):
         sys.stderr.write("%s %s\n" % (self.address_string(), fmt % args))
 
@@ -37,7 +52,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("directory")
     ap.add_argument("--port", type=int, default=8080)
+    ap.add_argument("--limit-mbps", type=float, default=0, help="throttle responses to this bandwidth (Mbit/s)")
     a = ap.parse_args()
+    global LIMIT_BPS
+    LIMIT_BPS = int(a.limit_mbps * 125000)
     os.chdir(a.directory)
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), Handler)
     print(f"Serving {os.getcwd()} at http://localhost:{a.port}/  (COOP/COEP on, no cache)")

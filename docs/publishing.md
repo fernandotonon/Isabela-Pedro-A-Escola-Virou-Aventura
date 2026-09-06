@@ -54,7 +54,8 @@ checks it headless (the game prints `INPUT press <action>` per received key).
 drives the on-screen stick, the jump button and the tap-to-switch card.
 
 Enable Pages once (Settings → Pages → Deploy from a branch → `gh-pages`, `/`). The bundled
-`coi-serviceworker.js` provides the cross-origin isolation GitHub Pages cannot set itself;
+`escola-sw.js` (a service worker derived from coi-serviceworker) provides the cross-origin isolation GitHub Pages
+cannot set itself, caches every game file per build (second visit loads from disk) and inflates the gzip meshes;
 `.wasm` is served as `application/wasm` by Pages. Assets are separate files preloaded from
 `escola-assets.json` so the wasm stays cacheable. CI (`.github/workflows/ci.yml`) builds desktop
 + tests and the wasm deploy directory on every push.

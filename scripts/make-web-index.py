@@ -1,61 +1,64 @@
 #!/usr/bin/env python3
-"""Turn Qt's generated <app>.html into the deployable index.html.
+"""Fill web/index.html for a deploy directory and stamp the service worker:
 
     make-web-index.py <deploy_dir> [app_name]
 
-* adds the coi-serviceworker.js shim (COOP/COEP for hosts that cannot set headers)
-* lets the page pass program arguments to the app:  index.html?args=--autotest%20--no-models
-* preloads escola-assets.json (asset files -> in-memory FS under /game/) when present
-* mobile viewport, page title, a warm background while the wasm loads
+* expected download size and the sprite-sheet list for the loading screen (from escola-manifest.json
+  and assets/sprites/*.png, written by make-web-pack.py / build-wasm.sh)
+* a build id (hash of the wasm + asset manifest) so the service worker caches per build
+* program arguments from the URL: index.html?args=--autotest%20--no-models
 """
+import glob
+import hashlib
 import os
-import re
+import json
 import sys
 
 d = sys.argv[1]
 app = sys.argv[2] if len(sys.argv) > 2 else "escola_aventura"
-html = open(os.path.join(d, f"{app}.html"), encoding="utf-8").read()
+root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-shim = '<script src="coi-serviceworker.js"></script>\n'
-if "coi-serviceworker" not in html:
-    html = re.sub(r"(<head[^>]*>)", r"\1\n" + shim, html, count=1)
+h = hashlib.sha1()
+for f in (f"{app}.wasm", "escola-assets.json", "escola-pack.json"):
+    p = os.path.join(d, f)
+    if os.path.exists(p):
+        h.update(open(p, "rb").read())
+build_id = h.hexdigest()[:12]
 
-args_js = ("arguments: (new URLSearchParams(location.search).get('args') || '')"
-           ".split(' ').filter(Boolean),\n"
-           # Emscripten's preload plugins would decode every preloaded .png with browser Image
-           # elements; Qt reads the raw bytes itself, and hundreds of decodes stall startup.
-           "                    noImageDecoding: true,\n                    noAudioDecoding: true,\n")
-if "URLSearchParams(location.search).get('args')" not in html:
-    html = html.replace("qtLoad({", "qtLoad({\n                    " + args_js, 1)
+manifest = json.load(open(os.path.join(d, "escola-manifest.json"))) if os.path.exists(os.path.join(d, "escola-manifest.json")) else {"expectedBytes": 0}
+# loading-screen sprites: the turntable sheets with their dark studio background keyed out (kept out of
+# assets/ so they are neither packed nor preloaded into the game's filesystem)
+sprites = []
+try:
+    from PIL import Image
+    os.makedirs(os.path.join(d, "loading"), exist_ok=True)
+    for src in sorted(glob.glob(os.path.join(d, "assets", "sprites", "*.png"))):
+        im = Image.open(src).convert("RGBA")
+        bg = im.getpixel((2, 2))[:3]
+        px = im.load()
+        w, h = im.size
+        for y in range(h):
+            for x in range(w):
+                r, g, b, a = px[x, y]
+                dist = max(abs(r - bg[0]), abs(g - bg[1]), abs(b - bg[2]))
+                if dist < 22:
+                    px[x, y] = (r, g, b, 0)
+                elif dist < 40:
+                    px[x, y] = (r, g, b, int(a * (dist - 22) / 18))
+        out = os.path.join(d, "loading", os.path.basename(src))
+        im.save(out, optimize=True)
+        sprites.append("loading/" + os.path.basename(src))
+except ImportError:
+    sprites = sorted(os.path.relpath(p, d).replace(os.sep, "/") for p in glob.glob(os.path.join(d, "assets", "sprites", "*.png")))
 
-if os.path.exists(os.path.join(d, "escola-assets.json")) and "escola-assets.json" not in html:
-    html = html.replace("qt: {", "qt: {\n                        preload: ['escola-assets.json'],", 1)
-
-if "viewport" not in html:
-    html = re.sub(r"(<head[^>]*>)", r'\1\n<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">', html, count=1)
-if "touch-action:none" not in html:   # phones: no pinch-zoom, pull-to-refresh or text selection over the game
-    html = re.sub(r"(<head[^>]*>)", r'\1\n<style>html,body{touch-action:none;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;background:#f3e7c9}</style>', html, count=1)
-
-# Keyboard focus guard. Qt for WebAssembly keeps its key listeners on a focus-helper element inside
-# the shadow DOM; a click inside the canvas can drop the DOM focus to <body> (Qt prevents the default
-# pointer behaviour), after which the game receives no key events. Put the focus back whenever it is lost.
-focus_js = """
-        // keep keyboard focus on Qt's focus helper (a click inside the canvas can drop it to <body>)
-        const qtKeyboardFocus = () => {
-            const host = document.querySelector('#qt-shadow-container');
-            if (!host) return;
-            const helper = host.shadowRoot && host.shadowRoot.querySelector('.qt-window-focus-helper');
-            if (document.activeElement !== host) (helper || host).focus({ preventScroll: true });
-        };
-        ['pointerup', 'mouseup', 'touchend'].forEach(t => document.addEventListener(t, () => setTimeout(qtKeyboardFocus, 0), true));
-        document.addEventListener('focusout', (e) => { if (!e.relatedTarget) setTimeout(qtKeyboardFocus, 0); }, true);
-        window.addEventListener('keydown', () => { if (document.activeElement === document.body) qtKeyboardFocus(); }, true);
-        window.addEventListener('focus', () => setTimeout(qtKeyboardFocus, 0));
-"""
-if "qtKeyboardFocus" not in html:
-    html = html.replace("        async function init()", focus_js + "        async function init()", 1)
-    html = html.replace("onLoaded: () => showUi(screen),", "onLoaded: () => { showUi(screen); setTimeout(qtKeyboardFocus, 0); },", 1)
-
-html = html.replace(f"<title>{app}</title>", "<title>Isabela & Pedro: A Escola Virou Aventura</title>")
+html = open(os.path.join(root, "web", "index.html"), encoding="utf-8").read()
+html = (html.replace("__APP__", app).replace("__TITLE__", "Isabela & Pedro: A Escola Virou Aventura")
+            .replace("__EXPECTED_BYTES__", str(manifest["expectedBytes"])).replace("__SPRITES__", json.dumps(sprites)).replace("__BUILD_ID__", build_id))
 open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(html)
-print(f"wrote {os.path.join(d, 'index.html')}")
+
+sw = open(os.path.join(root, "web", "escola-sw.js"), encoding="utf-8").read().replace("__BUILD_ID__", build_id)
+open(os.path.join(d, "escola-sw.js"), "w", encoding="utf-8").write(sw)
+for stale in ("coi-serviceworker.js", "qtlogo.svg"):
+    if os.path.exists(os.path.join(d, stale)):
+        os.remove(os.path.join(d, stale))
+print(f"wrote index.html (build {build_id}, {len(sprites)} loading sprites, expected {manifest['expectedBytes'] / 1048576:.1f} MB) and escola-sw.js")

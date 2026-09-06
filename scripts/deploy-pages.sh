@@ -4,7 +4,7 @@
 #   scripts/build-wasm.sh            # produces deploy/multithread
 #   scripts/deploy-pages.sh [--dry-run]
 #
-# GitHub Pages cannot set COOP/COEP headers; the bundled coi-serviceworker.js supplies them
+# GitHub Pages cannot set COOP/COEP headers; the bundled escola-sw.js (service worker) supplies them and caches the game files
 # (one automatic reload on the first visit). Enable Pages once in the repo settings:
 # Source = "Deploy from a branch", branch gh-pages, folder /(root).
 set -euo pipefail

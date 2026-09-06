@@ -126,9 +126,27 @@ e [`docs/architecture.md`](docs/architecture.md).
 A build WebAssembly é multithread (necessário para Qt Quick 3D), então a página precisa ser
 *cross-origin isolated*: envie `Cross-Origin-Opener-Policy: same-origin` e
 `Cross-Origin-Embedder-Policy: require-corp`, ou - no GitHub Pages, que não define cabeçalhos - mantenha
-o `coi-serviceworker.js` empacotado. `.wasm` deve ser servido como `application/wasm`. Abrir o
+o `escola-sw.js` empacotado (service worker derivado do coi-serviceworker, que também guarda os arquivos
+do jogo no navegador e descompacta as malhas). `.wasm` deve ser servido como `application/wasm`. Abrir o
 `index.html` do disco não funciona. `scripts/deploy-pages.sh` publica `deploy/multithread` no branch
 `gh-pages` (mesmo processo usado no Ironfang).
+
+## Carregamento na web
+
+A página (`web/index.html`) mostra uma tela de carregamento do jogo enquanto o wasm baixa: um turntable
+aleatório renderizado pelo QtMeshEditor gira, a barra segue os bytes recebidos de todos os arquivos e
+dicas se alternam. Para baixar menos e mais rápido, `scripts/build-wasm.sh` prepara a cópia de deploy:
+
+| Medida | Efeito |
+|---|---|
+| texturas PNG → JPEG (difusa 2048/1024, normal 1024/512, rugosidade 512/256) | 69 MB → 8 MB |
+| malhas `.mesh` também em `.mesh.gz`, descompactadas pelo service worker | 11 MB → 5,5 MB |
+| 454 arquivos pequenos (`.qad`, `.qml`) em um único `escola-pack.bin` | 547 → 94 requisições |
+| `escola-sw.js` guarda wasm + assets por build (Cache API) | segunda visita abre em ~1 s |
+| o `.wasm` (39 MB) é servido com gzip pelo GitHub Pages | ~17 MB na rede |
+
+Total da primeira visita: ~30 MB na rede (antes: ~125 MB). `scripts/serve.py --limit-mbps 20` simula uma
+conexão lenta; `node scripts/browser-check.mjs <url> --early-shot 8` captura a tela de carregamento.
 
 ## Limitações conhecidas
 

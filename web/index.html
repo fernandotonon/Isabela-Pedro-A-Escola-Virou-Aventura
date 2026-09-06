@@ -1,0 +1,174 @@
+<!doctype html>
+<!-- Page template for the web build (filled in by scripts/make-web-index.py). Loads the Qt wasm with
+     a game-styled loading screen: a random QtMeshEditor turntable sheet spins while the download
+     progress (bytes over all game files) fills the bar; tips rotate; the small files arrive in one pack. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
+<meta name="theme-color" content="#5fb8ea">
+<title>__TITLE__</title>
+<script src="escola-sw.js"></script>
+<style>
+  html, body { padding: 0; margin: 0; overflow: hidden; height: 100%; background: #f3e7c9;
+               touch-action: none; overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+               font-family: "Nunito", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+  #screen { width: 100%; height: 100%; }
+  #escola-loading { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+                    background: linear-gradient(#5fb8ea, #f3e7c9); color: #2b2622; transition: opacity .45s ease; z-index: 10; }
+  #escola-loading.hidden { opacity: 0; pointer-events: none; }
+  #escola-loading .bubble { position: absolute; border-radius: 50%; opacity: .16; animation: float 5s ease-in-out infinite alternate; }
+  @keyframes float { from { transform: translateY(0) } to { transform: translateY(-26px) } }
+  .card { position: relative; width: min(92vw, 560px); text-align: center; padding: 18px 20px 26px; }
+  .sprite { width: 256px; height: 256px; margin: 0 auto 6px; background-repeat: no-repeat; background-size: 2048px 256px;
+            animation: turn 1.2s steps(8) infinite; filter: drop-shadow(0 10px 10px rgba(43,38,34,.25)); }
+  @keyframes turn { from { background-position: 0 0 } to { background-position: -2048px 0 } }
+  @media (max-height: 520px) { .sprite { width: 160px; height: 160px; background-size: 1280px 160px; } @keyframes turn { from { background-position: 0 0 } to { background-position: -1280px 0 } } }
+  h1 { margin: 0; font-size: clamp(30px, 6vw, 52px); color: #fff8ea; -webkit-text-stroke: 1.5px #2b2622; text-shadow: 0 3px 0 #2b2622; letter-spacing: .5px; }
+  h2 { margin: 2px 0 14px; font-size: clamp(16px, 3.4vw, 26px); color: #f2c530; -webkit-text-stroke: .8px #2b2622; text-shadow: 0 2px 0 #2b2622; }
+  .bar { height: 22px; border-radius: 12px; background: rgba(255,248,234,.7); border: 3px solid #2b2622; overflow: hidden; }
+  .bar > div { height: 100%; width: 0%; background: linear-gradient(90deg, #f2c530, #ffb400); transition: width .25s ease-out;
+               background-size: 40px 100%; }
+  #ld-status { margin-top: 10px; font-weight: 700; font-size: 17px; }
+  #ld-tip { margin-top: 14px; min-height: 44px; font-size: 15px; color: #3a332d; opacity: .9; padding: 8px 12px; border-radius: 12px; background: rgba(255,248,234,.55); }
+  #ld-error { display: none; margin-top: 12px; }
+  #ld-error button { font: inherit; font-weight: 700; padding: 8px 18px; border-radius: 12px; border: 3px solid #2b2622; background: #f2c530; cursor: pointer; }
+  #qtstatus { display: none; }
+</style>
+</head>
+<body onload="init()">
+  <div id="escola-loading">
+    <div class="bubble" style="left:6%;top:12%;width:70px;height:70px;background:#2a5bd7"></div>
+    <div class="bubble" style="left:80%;top:8%;width:110px;height:110px;background:#3a9a4a;animation-delay:-2s"></div>
+    <div class="bubble" style="left:12%;top:70%;width:90px;height:90px;background:#e33f3f;animation-delay:-1s"></div>
+    <div class="bubble" style="left:86%;top:66%;width:60px;height:60px;background:#f2c530;animation-delay:-3s"></div>
+    <div class="card">
+      <div class="sprite" id="ld-sprite"></div>
+      <h1>Isabela &amp; Pedro</h1>
+      <h2>A Escola Virou Aventura</h2>
+      <div class="bar"><div id="ld-fill"></div></div>
+      <div id="ld-status">…</div>
+      <div id="ld-tip"></div>
+      <div id="ld-error"><div id="ld-error-text"></div><button onclick="location.reload()">Tentar de novo</button></div>
+      <div id="qtstatus"></div>
+    </div>
+  </div>
+  <div id="screen"></div>
+
+  <script>
+    // ---- loading screen ------------------------------------------------------------------------------
+    const LOADING = { expected: __EXPECTED_BYTES__, sprites: __SPRITES__, build: "__BUILD_ID__" };
+    const pt = (navigator.language || "pt").toLowerCase().startsWith("pt");
+    const T = pt ? {
+        down: (p, a, b) => `Baixando o jogo… ${p}% (${a} de ${b} MB)`, prep: "Preparando a escola…", start: "Quase lá…",
+        fail: "Não foi possível carregar o jogo. Verifique a conexão e tente de novo.",
+        tips: ["Isabela pula mais alto e se agarra em bordas.", "Pedro é rápido e passa por baixo de bancos, túneis e mesas.",
+               "Troque de irmão para resolver cada desafio (Q, TAB ou toque no cartão).", "Estrelas de Coragem recuperam a coragem perdida.",
+               "O caderno da Isabela revela caminhos escondidos.", "A curiosidade do Pedro descobre passagens secretas.",
+               "Seis lápis gigantes estão espalhados pelo caminho, um em cada área.", "Uma Memória da Família está escondida na pracinha.",
+               "Na segunda visita o jogo abre na hora: os arquivos ficam guardados no navegador."]
+    } : {
+        down: (p, a, b) => `Downloading the game… ${p}% (${a} of ${b} MB)`, prep: "Getting the school ready…", start: "Almost there…",
+        fail: "The game could not be loaded. Check your connection and try again.",
+        tips: ["Isabela jumps higher and grabs ledges.", "Pedro is fast and crawls under benches, tunnels and desks.",
+               "Switch siblings to solve each challenge (Q, TAB or tap the card).", "Courage Stars restore lost Courage.",
+               "Isabela's notebook reveals hidden paths.", "Pedro's curiosity finds secret passages.",
+               "Six giant pencils are spread along the way, one per area.", "A Family Memory is hidden in the square.",
+               "The second visit starts instantly: the files stay cached in your browser."]
+    };
+    const $ = (id) => document.getElementById(id);
+    if (LOADING.sprites.length) $("ld-sprite").style.backgroundImage = `url(${LOADING.sprites[Math.floor(Math.random() * LOADING.sprites.length)]})`;
+    let tipIndex = Math.floor(Math.random() * T.tips.length);
+    const showTip = () => { $("ld-tip").textContent = T.tips[tipIndex++ % T.tips.length]; };
+    showTip(); const tipTimer = setInterval(showTip, 4500);
+
+    let loaded = 0, ready = false, finished = false;
+    const mb = (b) => (b / 1048576).toFixed(0);
+    const render = () => {
+        if (finished) return;
+        const pct = Math.min(99, Math.floor(loaded / Math.max(1, LOADING.expected) * 100));
+        $("ld-fill").style.width = pct + "%";
+        $("ld-status").textContent = ready ? T.start : (pct >= 99 ? T.prep : T.down(pct, mb(loaded), mb(LOADING.expected)));
+    };
+    const isGameFile = (url) => /\.(wasm|js|json|bin|mesh|png|jpg)(\?|$)/.test(url) && !/escola-sw\.js/.test(url);
+    // count every byte the page receives (fetch is what Emscripten and the pack loader use)
+    const origFetch = window.fetch.bind(window);
+    window.fetch = async (input, init) => {
+        const res = await origFetch(input, init);
+        const url = typeof input === "string" ? input : (input && input.url) || "";
+        if (finished || !res.body || res.status !== 200 || !isGameFile(url)) return res;
+        const reader = res.body.getReader();
+        const stream = new ReadableStream({
+            async pull(controller) {
+                const { done, value } = await reader.read();
+                if (done) { controller.close(); return; }
+                loaded += value.byteLength; render(); controller.enqueue(value);
+            },
+            cancel() { reader.cancel(); }
+        });
+        return new Response(stream, { status: res.status, statusText: res.statusText, headers: res.headers });
+    };
+    const xhrOpen = XMLHttpRequest.prototype.open;                       // fallback for XHR-based loaders
+    XMLHttpRequest.prototype.open = function (...a) { let last = 0; this.addEventListener("progress", (e) => { loaded += e.loaded - last; last = e.loaded; render(); }); return xhrOpen.apply(this, a); };
+    render();
+
+    function escolaLoaded() {
+        finished = true; clearInterval(tipTimer);
+        $("ld-fill").style.width = "100%";
+        const ld = $("escola-loading"); ld.classList.add("hidden"); setTimeout(() => ld.remove(), 600);
+    }
+    function escolaFailed(e) {
+        console.error(e); clearInterval(tipTimer);
+        $("ld-status").textContent = T.fail; $("ld-error").style.display = "block";
+        $("ld-error-text").textContent = String(e && e.message || e).slice(0, 200);
+    }
+
+    // ---- keyboard focus guard --------------------------------------------------------------------------
+    // Qt for WebAssembly listens for keys on a focus helper inside its shadow DOM; a click inside the canvas
+    // can drop the DOM focus to <body>, after which the game receives no key events. Put it back.
+    const qtKeyboardFocus = () => {
+        const host = document.querySelector("#qt-shadow-container");
+        if (!host) return;
+        const helper = host.shadowRoot && host.shadowRoot.querySelector(".qt-window-focus-helper");
+        if (document.activeElement !== host) (helper || host).focus({ preventScroll: true });
+    };
+    ["pointerup", "mouseup", "touchend"].forEach(t => document.addEventListener(t, () => setTimeout(qtKeyboardFocus, 0), true));
+    document.addEventListener("focusout", (e) => { if (!e.relatedTarget) setTimeout(qtKeyboardFocus, 0); }, true);
+    window.addEventListener("keydown", () => { if (document.activeElement === document.body) qtKeyboardFocus(); }, true);
+    window.addEventListener("focus", () => setTimeout(qtKeyboardFocus, 0));
+
+    // ---- the small files: one download, written into Qt's in-memory FS before main() ------------------
+    async function loadPack() {
+        const [index, bin] = await Promise.all([fetch("escola-pack.json").then(r => r.json()), fetch("escola-pack.bin").then(r => r.arrayBuffer())]);
+        const bytes = new Uint8Array(bin);
+        return (module) => {
+            const FS = module.FS;
+            const mkdirs = (path) => { let p = ""; for (const part of path.split("/").slice(0, -1)) { if (!part) continue; p += "/" + part; try { FS.mkdir(p); } catch (e) { /* exists */ } } };
+            for (const f of index) { mkdirs(f.destination); FS.writeFile(f.destination, bytes.subarray(f.offset, f.offset + f.size)); }
+        };
+    }
+
+    async function init() {
+        const screen = document.querySelector("#screen");
+        try {
+            const writePack = await loadPack();
+            await qtLoad({
+                arguments: (new URLSearchParams(location.search).get("args") || "").split(" ").filter(Boolean),
+                noImageDecoding: true,                 // Qt decodes images itself; browser-side decoding of hundreds of PNGs stalls startup
+                noAudioDecoding: true,
+                preRun: [writePack],
+                qt: {
+                    preload: ["escola-assets.json"],
+                    onLoaded: () => { screen.style.display = "block"; escolaLoaded(); setTimeout(qtKeyboardFocus, 0); },
+                    onExit: (exitData) => { escolaFailed(new Error("Application exit" + (exitData.code !== undefined ? ` with code ${exitData.code}` : "") + (exitData.text ? ` (${exitData.text})` : ""))); },
+                    entryFunction: window.__APP___entry,
+                    containerElements: [screen],
+                }
+            });
+        } catch (e) { escolaFailed(e); }
+    }
+  </script>
+  <script src="__APP__.js"></script>
+  <script src="qtloader.js"></script>
+</body>
+</html>
