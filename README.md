@@ -21,6 +21,7 @@ como um labirinto. O ambiente é 3D, a movimentação acontece num plano lateral
 |---|---|---|
 | Qt | **6.10.0 ou mais novo** (desenvolvido com 6.11.1) | Clayground exige 6.10+. Kit desktop com Qt Quick 3D, Quick 3D Physics (dependência do Clayground), Quick Timeline, Multimedia, Shader Tools. Para a web: o kit `wasm_multithread` da mesma versão. |
 | Emscripten | **exatamente a versão que o seu Qt pede** (4.0.7 para Qt 6.11) | `grep QT_EMCC_VERSION <kit wasm>/mkspecs/qconfig.pri` |
+| Android (opcional) | JDK 17, SDK 36, NDK r27, kit Qt `android_arm64_v8a` | só para o APK; veja "Android (APK)" |
 | CMake ≥ 3.25, Ninja, Python 3, Node 22 | | Node só para `tests/run-node.mjs` |
 | QtMeshEditor | 3.37+ | apenas para (re)gerar assets; não é necessário para compilar ou jogar |
 
@@ -120,6 +121,16 @@ python3 scripts/update-asset-manifest.py   # aponta app/config/assets.js para o 
 Trocar um placeholder por um modelo real (ou por uma sprite sheet) é uma edição do manifesto
 `app/config/assets.js`; a lógica da fase não muda. Detalhes em [`docs/asset-pipeline.md`](docs/asset-pipeline.md)
 e [`docs/architecture.md`](docs/architecture.md).
+
+## Android (APK)
+
+`scripts/build-android.sh` compila o jogo com o kit Qt 6.11.1 `android_arm64_v8a` e gera um APK assinado
+(chave de depuração por padrão; uma chave de release entra por `ANDROID_KEYSTORE`, `ANDROID_KEYSTORE_ALIAS`,
+`ANDROID_KEYSTORE_STORE_PASS` e `ANDROID_KEYSTORE_KEY_PASS`). Requisitos: JDK 17, Android SDK com
+`platforms;android-36`, `build-tools;36.0.0` e `ndk;27.2.12479018`, OpenSSL estático para Android (bundle KDAB
+`android_openssl`) e o kit host da mesma versão. As texturas entram no APK já reduzidas (JPEG), como na web.
+O workflow `.github/workflows/android.yml` faz o mesmo no GitHub Actions e, em tags `v*`, anexa o APK ao
+Release. Instale com `adb install escola_aventura-debugsigned.apk` (Android 9+, arm64).
 
 ## Publicação web
 

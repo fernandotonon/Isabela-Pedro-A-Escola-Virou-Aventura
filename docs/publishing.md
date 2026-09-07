@@ -62,3 +62,19 @@ cannot set itself, caches every game file per build (second visit loads from dis
 
 Alternative without a local toolchain: `scripts/pack-web-runtime.sh <clayground-starter dir>` puts the
 QML next to Clayground's prebuilt Web Runtime (preview only - the C++ save/gamepad helpers are not in it).
+
+## Android
+
+```bash
+python3 -m aqt install-qt all_os android 6.11.1 android_arm64_v8a -O ~/Qt -m qtquick3d qtquick3dphysics qtquicktimeline qtmultimedia qtshadertools
+sdkmanager "platforms;android-36" "build-tools;36.0.0" "ndk;27.2.12479018"      # JDK 17 on PATH
+scripts/build-android.sh                    # -> build-android/escola_aventura-debugsigned.apk
+```
+
+`app/android/AndroidManifest.xml.in` (landscape, package `io.github.fernandotonon.escolaaventura`) replaces
+Clayground's older template at configure time; icons come from `app/android/res`. Clayground's network plugin
+needs OpenSSL for Android: the script defaults to the KDAB bundle under `$ANDROID_SDK_ROOT/android_openssl/static`,
+`ANDROID_OPENSSL_INCLUDE` / `ANDROID_OPENSSL_LIBDIR` point it elsewhere (CI uses KDAB's `ssl_3/arm64-v8a`).
+The CI workflow `android.yml` builds on every manual run and attaches the APK to the GitHub Release for `v*` tags;
+a release keystore can be supplied through the `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_ALIAS`,
+`ANDROID_KEYSTORE_STORE_PASS` and `ANDROID_KEYSTORE_KEY_PASS` repository secrets (otherwise a debug key is used).

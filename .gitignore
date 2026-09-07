@@ -18,3 +18,4 @@ browser-check*.png
 *.log
 assets/qtmesh-projects/*.png
 /tmp/
+build-android/
