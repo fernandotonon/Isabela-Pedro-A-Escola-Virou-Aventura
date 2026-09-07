@@ -20,6 +20,8 @@ jobs:
     timeout-minutes: 150
     permissions:
       contents: write
+    env:
+      HAS_RELEASE_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v4
         with: { submodules: recursive }
@@ -52,7 +54,7 @@ jobs:
           git clone --depth 1 https://github.com/KDAB/android_openssl.git "$RUNNER_TEMP/android_openssl"
           sudo apt-get update && sudo apt-get install -y ninja-build && python3 -m pip install --user pillow
       - name: Release keystore (optional)
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        if: env.HAS_RELEASE_KEYSTORE == 'true'
         run: |
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/release.keystore"
           { echo "ANDROID_KEYSTORE=$RUNNER_TEMP/release.keystore";
