@@ -127,7 +127,8 @@ var level = {
         platform(184, 1.6, 1.6, 0.3, "book_stack", { hidden: true, revealId: "garden_secret" }),
         platform(187, 3.2, 1.6, 0.3, "book_stack", { hidden: true, revealId: "garden_secret" }),
         platform(190, 4.8, 2.2, 0.3, "book_stack", { hidden: true, revealId: "garden_secret" }),
-        pencil(191, 5.6), star(187.8, 4.2)
+        pencil(191, 5.6), star(187.8, 4.2),
+        platform(186.2, 1.9, 1.6, 0.3, "stone_platform", { ledge: true })          // a visible step up to the high star (the notebook stairs are the secret route to the pencil)
       ] },
 
     // =========================================================================================
