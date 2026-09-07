@@ -35,7 +35,7 @@ Item {
             e.push({ label: tr("menu.controls"), action: "controls" }); e.push({ label: tr("menu.volume"), action: "volume" }); e.push({ label: tr("menu.gallery"), action: "gallery" })
             return e
         }
-        case "pause": return [{ label: tr("menu.resume"), action: "resume" }, { label: tr("menu.restartCheckpoint"), action: "restart" }, { label: tr("menu.controls"), action: "controls" }, { label: tr("menu.volume"), action: "volume" }, { label: tr("menu.quitToTitle"), action: "quit" }]
+        case "pause": return [{ label: tr("menu.resume"), action: "resume" }, { label: tr("menu.restartCheckpoint"), action: "restart" }, { label: tr("menu.controls"), action: "controls" }, { label: tr("menu.volume"), action: "volume" }, { label: tr("menu.gallery"), action: "gallery" }, { label: tr("menu.quitToTitle"), action: "quit" }]
         case "controls": case "gallery": return [{ label: tr("menu.back"), action: "back" }]
         case "volume": return [{ label: tr("menu.music"), action: "music", slider: true }, { label: tr("menu.effects"), action: "sfx", slider: true }, { label: tr("menu.language") + ": " + (game && game.language === "en" ? "English" : "Português (BR)"), action: "language" }, { label: tr("menu.back"), action: "back" }]
         case "complete": return [{ label: tr("menu.nextLevel"), action: "none", disabled: true }, { label: tr("menu.playAgain"), action: "new" }, { label: tr("menu.quitToTitle"), action: "quit" }]
