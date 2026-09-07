@@ -10,7 +10,9 @@ Item {
     property var input: null
     property var save: null
     property var audio: null
-    property string screen: game && game.phase === "title" ? "title" : (game && game.phase === "paused" ? "pause" : screenOverride)
+    // a sub-screen (controls / volume / gallery / complete) wins over the phase screens; "" falls back to them
+    property string screen: screenOverride !== "" ? screenOverride
+                            : (game && game.phase === "title" ? "title" : (game && game.phase === "paused" ? "pause" : ""))
     property string screenOverride: ""
     property int cursor: 0
     property bool confirmNew: false
@@ -55,7 +57,7 @@ Item {
         case "volume": screenOverride = "volume"; break
         case "gallery": screenOverride = "gallery"; break
         case "language": save.writeSettings({ language: game.language === "en" ? "pt_BR" : "en" }); break
-        case "back": screenOverride = (game.phase === "paused") ? "" : (game.phase === "complete" ? "complete" : ""); break
+        case "back": screenOverride = game.phase === "complete" ? "complete" : ""; break
         case "quit": screenOverride = ""; game.resetWorldScale(); game.quitToTitle(); break
         }
     }

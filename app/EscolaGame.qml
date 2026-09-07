@@ -488,6 +488,8 @@ FocusScope {
         }
         property string pending: ""
     }
+    property int manualShots: 0
+    Shortcut { sequence: "F12"; enabled: game.devMode && game.shotDir !== ""; onActivated: game.saveShot("manual-" + (++game.manualShots)) }   // dev builds: screenshot on demand
     function saveShot(name) {
         if (!shotDir) return
         game.grabToImage(function (result) { const p = shotDir + "/" + name + ".png"; result.saveToFile(p); console.log("AUTOTEST shot", p) })

@@ -4,7 +4,7 @@
 // every reachable standing spot (a BFS over spots). Gates count as open, pushables sit where they start,
 // moving platforms are sampled along their path, hidden platforms count as revealed. Prints every
 // star/pencil/memory that no simulated move touches.
-//   node scripts/check-reachability.mjs [--verbose]
+//   node scripts/check-reachability.mjs [--verbose] [--strict: no movers/pushables] [--no-hidden: notebook stairs absent]
 import { loadQmlJs } from "../tests/qmljs-shim.mjs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -24,6 +24,7 @@ const solids = [], collectibles = [];
 for (const s of Level.level.sections) for (const e of s.entities) {
   switch (e.type) {
     case "ground": case "platform": case "wall": case "lowpass": case "ladder": {
+      if (e.hidden && process.argv.includes("--no-hidden")) break;       // without the notebook reveals
       let kind = Physics.SOLID;
       if (e.type === "lowpass") kind = Physics.LOW; else if (e.type === "ladder") kind = Physics.LADDER; else if (e.oneway) kind = Physics.ONEWAY;
       solids.push(Physics.addSolid(world, { x: e.x, y: e.y, w: e.w, h: e.h, kind, gap: e.gap || 0.8, id: e.id || (e.type + "@" + e.x), tag: e.type }));
