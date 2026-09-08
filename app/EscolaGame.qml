@@ -30,6 +30,8 @@ FocusScope {
     property var wt: null
     readonly property bool wtTrace: args.indexOf("--wt-trace") >= 0
     readonly property bool logInput: args.indexOf("--log-input") >= 0     // print every key/button action (web debugging)
+    readonly property bool logFps: args.indexOf("--fps-log") >= 0         // print fps + position once a second (web performance debugging)
+    Timer { interval: 1000; repeat: true; running: game.logFps && game.phase === "playing"; onTriggered: console.log("FPSLOG", game.fps, "x", active ? active.px.toFixed(1) : "-", "frames", game.frames) }
     property int wtLogged: 0
     property bool useModels: args.indexOf("--no-models") < 0
     // Model files: qrc:/ (relative) on desktop; on WebAssembly they are preloaded into the
@@ -483,7 +485,7 @@ FocusScope {
             if (game.phase !== "playing" || !director.built) return
             if (!queued) { queued = true; game.buildPhotoQueue() }
             if (photoTimer.pending) { saveShot(photoTimer.pending); photoTimer.pending = ""; return }   // grab is asynchronous: move next tick
-            if (!game.photoQueue.length) { photoTimer.stop(); Qt.exit(0); return }
+            if (!game.photoQueue.length) { photoTimer.stop(); if (Qt.platform.os !== "wasm") Qt.exit(0); return }   // on the web: stay there (diagnostics)
             const p = game.photoQueue.shift(); game.teleportTo(p.x - 2.5, p.y); world3d.rig.snap(p.x, p.y); photoTimer.pending = p.name
         }
         property string pending: ""

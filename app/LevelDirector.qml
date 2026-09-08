@@ -196,7 +196,7 @@ Item {
         for (const c of characters) {
             const b = c.motion.body
             for (const col of collectibles) if (!col.collected && Math.abs(col.spec.x - b.x) < 3) col.test(b)
-            if (c.motion.invulnerable <= 0) for (const h of hazards) if (Math.abs(h.cx - b.x) < 4 && Physics.overlap(Physics.box(b), h.hitbox)) { hazardHit(c.characterId, h.cx); break }
+            if (c.motion.invulnerable <= 0) for (const h of hazards) if (Math.abs(h.cx - b.x) < 4 && h.hitbox && Physics.overlap(Physics.box(b), h.hitbox)) { hazardHit(c.characterId, h.cx); break }
         }
         if (active) {
             const ab = active.motion.body

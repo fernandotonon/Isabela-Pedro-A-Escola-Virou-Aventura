@@ -16,8 +16,10 @@ Node {
     property real t: 0
     property real spin: 0
     readonly property real r: spec.r || 0.45
-    readonly property var hitbox: kind === "ball" ? { x: cx - r * 0.85, y: cy, w: r * 1.7, h: r * 1.7 }
-                                                   : { x: cx - 0.9, y: cy, w: 1.8, h: 0.35 }
+    // parenthesised: an object literal after `? ... :` in a binding evaluated to undefined in the compiled
+    // (WebAssembly) build, which then threw once per fixed step whenever a sibling came near the ball
+    readonly property var hitbox: (kind === "ball" ? ({ x: cx - r * 0.85, y: cy, w: r * 1.7, h: r * 1.7 })
+                                                    : ({ x: cx - 0.9, y: cy, w: 1.8, h: 0.35 }))
 
     function step(dt) {
         const s = (spec.speed || 3) * speedScale
