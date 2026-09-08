@@ -12,6 +12,7 @@ import glob
 import hashlib
 import os
 import json
+import re
 import sys
 
 d = sys.argv[1]
@@ -22,7 +23,7 @@ h = hashlib.sha1()
 for f in (f"{app}.wasm", "escola-assets.json", "escola-pack.json"):
     p = os.path.join(d, f)
     if os.path.exists(p):
-        h.update(open(p, "rb").read())
+        h.update(re.sub(rb"\?v=[a-f0-9]+", b"", open(p, "rb").read()))    # stamps from a previous run must not change the id
 build_id = h.hexdigest()[:12]
 
 manifest = json.load(open(os.path.join(d, "escola-manifest.json"))) if os.path.exists(os.path.join(d, "escola-manifest.json")) else {"expectedBytes": 0}
@@ -50,6 +51,17 @@ try:
         sprites.append("loading/" + os.path.basename(src))
 except ImportError:
     sprites = sorted(os.path.relpath(p, d).replace(os.sep, "/") for p in glob.glob(os.path.join(d, "assets", "sprites", "*.png")))
+
+# Version every game file URL with the build id (?v=...): GitHub Pages caches objects for 10 minutes, so a
+# fresh index.html could otherwise be paired with a stale asset list or wasm from the previous deploy.
+for name in ("escola-assets.json", "escola-pack.json"):
+    p = os.path.join(d, name)
+    if os.path.exists(p):
+        entries = json.load(open(p))
+        for e in entries:
+            if "source" in e and "?v=" not in e["source"]:
+                e["source"] = e["source"] + "?v=" + build_id
+        json.dump(entries, open(p, "w"))
 
 html = open(os.path.join(root, "web", "index.html"), encoding="utf-8").read()
 html = (html.replace("__APP__", app).replace("__TITLE__", "Isabela & Pedro: A Escola Virou Aventura")
