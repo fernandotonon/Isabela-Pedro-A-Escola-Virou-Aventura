@@ -139,7 +139,8 @@
 
     // ---- the small files: one download, written into Qt's in-memory FS before main() ------------------
     async function loadPack() {
-        const [index, bin] = await Promise.all([fetch("escola-pack.json").then(r => r.json()), fetch("escola-pack.bin").then(r => r.arrayBuffer())]);
+        const v = "?v=" + LOADING.build;
+        const [index, bin] = await Promise.all([fetch("escola-pack.json" + v).then(r => r.json()), fetch("escola-pack.bin" + v).then(r => r.arrayBuffer())]);
         const bytes = new Uint8Array(bin);
         return (module) => {
             const FS = module.FS;
@@ -164,8 +165,9 @@
                 noImageDecoding: true,                 // Qt decodes images itself; browser-side decoding of hundreds of PNGs stalls startup
                 noAudioDecoding: true,
                 preRun: [writePack],
+                locateFile: (path) => path + "?v=" + LOADING.build,      // wasm / worker js: same build as this page
                 qt: {
-                    preload: ["escola-assets.json"],
+                    preload: ["escola-assets.json?v=" + LOADING.build],
                     onLoaded: () => { screen.style.display = "block"; escolaLoaded(); setTimeout(qtKeyboardFocus, 0); },
                     onExit: (exitData) => { escolaFailed(new Error("Application exit" + (exitData.code !== undefined ? ` with code ${exitData.code}` : "") + (exitData.text ? ` (${exitData.text})` : ""))); },
                     entryFunction: window.escola_aventura_entry,
@@ -175,7 +177,7 @@
         } catch (e) { escolaFailed(e); }
     }
   </script>
-  <script src="escola_aventura.js"></script>
-  <script src="qtloader.js"></script>
+  <script src="escola_aventura.js?v=faf38992572e"></script>
+  <script src="qtloader.js?v=faf38992572e"></script>
 </body>
 </html>

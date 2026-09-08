@@ -44,7 +44,7 @@ if (typeof window === "undefined") {
         // meshes: prefer the gzip copy and inflate it here
         if (url.pathname.endsWith(".mesh") && typeof DecompressionStream === "function") {
             try {
-                const gz = await fetch(url.href + ".gz", { cache: "no-cache" });
+                const gz = await fetch(url.origin + url.pathname + ".gz" + url.search, { cache: "no-cache" });   // keep the ?v= build stamp
                 if (gz.ok && gz.body) {
                     const headers = new Headers({ "Content-Type": "model/mesh" });
                     return new Response(gz.body.pipeThrough(new DecompressionStream("gzip")), { status: 200, headers });
