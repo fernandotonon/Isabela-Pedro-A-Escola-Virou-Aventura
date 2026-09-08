@@ -39,7 +39,7 @@ Node {
         assetBase: root.assetBase
         useModels: root.useModels
         tint: root.surfaceTint
-        visible: root.spec.type !== "ground"
+        visible: root.spec.type !== "ground" && !root.spec.invisible      // invisible: collision only (a slope built from steps under a model)
     }
     Repeater3D {
         model: root.raised ? 2 : 0

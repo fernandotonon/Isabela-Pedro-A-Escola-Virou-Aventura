@@ -158,8 +158,12 @@ var level = {
         gate("gate_play", 238, 0, 0.8, 3.4, ["lever_play", "button_play"], { asset: "colored_grid" }),
         checkpoint("cp_playground", 242),
         // the ramp and stairs, tyre planters, a stray ball
-        platform(247, 0, 1.2, 0.5, "stair_step"), platform(248.2, 0, 1.2, 1.0, "stair_step"), platform(249.4, 0, 1.2, 1.5, "stair_step"),
-        platform(250.6, 0, 4, 2.0, "ramp_and_stairs"), platform(254.6, 0, 1.2, 1.5, "stair_step"), platform(255.8, 0, 1.2, 1.0, "stair_step"), platform(257, 0, 1.2, 0.5, "stair_step"),
+        // the ramp is the way up: the model is decor in the play plane, the slope is walked over invisible
+        // half-metre steps (within stepHeight); the grey blocks on the right are the way down
+        prop("ramp_and_stairs", 248.4, { z: 0, w: 6.2, h: 2.0 }),
+        platform(248.7, 0, 0.5, 0.5, "", { invisible: true }), platform(249.2, 0, 0.5, 1.0, "", { invisible: true }),
+        platform(249.7, 0, 0.5, 1.5, "", { invisible: true }), platform(250.2, 0, 4.4, 2.0, "", { invisible: true }),
+        platform(254.6, 0, 1.2, 1.5, "stair_step"), platform(255.8, 0, 1.2, 1.0, "stair_step"), platform(257, 0, 1.2, 0.5, "stair_step"),
         star(252.5, 3.0), star(245, 1.2), star(261, 1.2)
       ] },
 
