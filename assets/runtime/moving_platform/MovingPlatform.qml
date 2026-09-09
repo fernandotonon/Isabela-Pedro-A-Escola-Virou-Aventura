@@ -43,8 +43,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788705284799
-        objectName: "qtmesh_gen3d_1_1788705284799"
+        id: moving_platform
+        objectName: "moving_platform"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788705284799_mesh_mat_material

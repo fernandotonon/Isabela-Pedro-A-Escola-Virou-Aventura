@@ -2547,8 +2547,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788647505417
-        objectName: "qtmesh_gen3d_1_1788647505417"
+        id: giant_pencil
+        objectName: "giant_pencil"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788647505417_mesh_mat_material
@@ -2712,8 +2712,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788697908922
-        objectName: "qtmesh_gen3d_1_1788697908922"
+        id: stone_platform
+        objectName: "stone_platform"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788697908922_mesh_mat_material
@@ -2822,8 +2822,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788646571496
-        objectName: "qtmesh_gen3d_1_1788646571496"
+        id: playground
+        objectName: "playground"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788646571496_mesh_mat_material
@@ -2877,8 +2877,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788649040403
-        objectName: "qtmesh_gen3d_1_1788649040403"
+        id: foosball_table
+        objectName: "foosball_table"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788649040403_mesh_mat_material
@@ -3809,8 +3809,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788648002651
-        objectName: "qtmesh_gen3d_1_1788648002651"
+        id: lunchbox
+        objectName: "lunchbox"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788648002651_mesh_mat_material
@@ -4194,8 +4194,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788705284799
-        objectName: "qtmesh_gen3d_1_1788705284799"
+        id: moving_platform
+        objectName: "moving_platform"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788705284799_mesh_mat_material
@@ -4249,8 +4249,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788700796873
-        objectName: "qtmesh_gen3d_1_1788700796873"
+        id: school_clock
+        objectName: "school_clock"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788700796873_mesh_mat_material
@@ -4469,8 +4469,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788649348476
-        objectName: "qtmesh_gen3d_1_1788649348476"
+        id: ping_pong_table
+        objectName: "ping_pong_table"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788649348476_mesh_mat_material
@@ -4524,8 +4524,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788707307734
-        objectName: "qtmesh_gen3d_1_1788707307734"
+        id: bush
+        objectName: "bush"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788707307734_mesh_mat_material
@@ -4579,8 +4579,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788647207660
-        objectName: "qtmesh_gen3d_1_1788647207660"
+        id: play_tunnel
+        objectName: "play_tunnel"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788647207660_mesh_mat_material
@@ -4634,8 +4634,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788700271684
-        objectName: "qtmesh_gen3d_1_1788700271684"
+        id: final_door
+        objectName: "final_door"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788700271684_mesh_mat_material
@@ -4689,8 +4689,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788645229333
-        objectName: "qtmesh_gen3d_1_1788645229333"
+        id: backpack
+        objectName: "backpack"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788645229333_mesh_mat_material
@@ -4799,8 +4799,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788699305715
-        objectName: "qtmesh_gen3d_1_1788699305715"
+        id: bleachers
+        objectName: "bleachers"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788699305715_mesh_mat_material
@@ -4964,8 +4964,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788705613494
-        objectName: "qtmesh_gen3d_1_1788705613494"
+        id: pencil_collectible
+        objectName: "pencil_collectible"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788705613494_mesh_mat_material

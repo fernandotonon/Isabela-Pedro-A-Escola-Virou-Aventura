@@ -43,8 +43,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788700796873
-        objectName: "qtmesh_gen3d_1_1788700796873"
+        id: school_clock
+        objectName: "school_clock"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788700796873_mesh_mat_material

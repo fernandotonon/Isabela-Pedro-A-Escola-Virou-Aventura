@@ -43,8 +43,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788649348476
-        objectName: "qtmesh_gen3d_1_1788649348476"
+        id: ping_pong_table
+        objectName: "ping_pong_table"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788649348476_mesh_mat_material
