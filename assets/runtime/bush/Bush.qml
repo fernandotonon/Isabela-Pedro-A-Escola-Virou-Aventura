@@ -43,8 +43,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788707307734
-        objectName: "qtmesh_gen3d_1_1788707307734"
+        id: bush
+        objectName: "bush"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788707307734_mesh_mat_material

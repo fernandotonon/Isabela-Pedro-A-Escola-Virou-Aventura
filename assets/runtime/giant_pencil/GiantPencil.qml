@@ -43,8 +43,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788647505417
-        objectName: "qtmesh_gen3d_1_1788647505417"
+        id: giant_pencil
+        objectName: "giant_pencil"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788647505417_mesh_mat_material

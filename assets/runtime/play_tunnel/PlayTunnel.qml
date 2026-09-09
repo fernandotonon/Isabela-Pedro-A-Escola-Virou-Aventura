@@ -43,8 +43,8 @@ Node {
 
     // Nodes:
     Model {
-        id: qtmesh_gen3d_1_1788647207660
-        objectName: "qtmesh_gen3d_1_1788647207660"
+        id: play_tunnel
+        objectName: "play_tunnel"
         source: "meshes/meshes_0__mesh.mesh"
         materials: [
             qtmesh_gen3d_1_1788647207660_mesh_mat_material

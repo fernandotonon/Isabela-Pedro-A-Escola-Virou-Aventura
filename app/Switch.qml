@@ -51,9 +51,11 @@ Node {
         assetBase: root.assetBase; useModels: root.useModels
         tint: root.active ? 0.9 : 0
         scale: Qt.vector3d(1, root.active && root.kind !== "lever" ? 0.55 : 1, 1)
-        eulerRotation.z: root.kind === "lever" ? (root.active ? -35 : 35) : 0
+        // the lever model is a whole base plus handle: tilting it looked broken, so it stays upright and
+        // flips to face the other way when switched
+        eulerRotation.y: root.kind === "lever" && root.active ? 180 : 0
         Behavior on scale { Vector3dAnimation { duration: 120 } }
-        Behavior on eulerRotation.z { NumberAnimation { duration: 180; easing.type: Easing.OutBack } }
+        Behavior on eulerRotation.y { NumberAnimation { duration: 220; easing.type: Easing.InOutQuad } }
     }
     // active glow ring
     Model {

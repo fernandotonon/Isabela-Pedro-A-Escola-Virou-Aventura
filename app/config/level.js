@@ -61,11 +61,12 @@ var level = {
         platform(14, 0, 3, 0.6, "stone_platform"),
         star(15.5, 1.4),
         // switch characters: a low passage only Pedro fits and a step only Isabela reaches
-        lowpass(30, 0, 3, 1.4, { asset: "school_bench" }), star(31.5, 0.3),
+        // a giant bench: the gap under the seat is the way through for Pedro
+        lowpass(30, 0, 3.4, 1.5, { asset: "school_bench", raised: true, legColor: "#7d8288" }), star(31.5, 0.3),
         platform(35, 2.6, 2.5, 0.4, "stone_platform", { ledge: true }), star(36.2, 3.4),
         // --- Challenge 1: the parallel bars ------------------------------------------------
         prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
-        lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8, raised: true }),              // under the bars: Pedro's way
+        lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8 }),              // under the bars: Pedro's way
         button("button_bars", 47, { hint: "hint.button" }),                                                  // a floor button inside
         platform(43, 2.6, 8, 0.3, "stone_platform", { ledge: true }),           // Isabela grabs the top
         lever("lever_bars", 49.5, 2.9, { hint: "hint.lever" }),
@@ -115,7 +116,7 @@ var level = {
         platform(150, 1.8, 6, 0.4, "stone_platform"), star(152.5, 2.9), star(141, 1.2),
         wall(156, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
-        lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter", raised: true }),            // Pedro crawls in; Isabela climbs over
+        lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter", raised: true, legColor: "#8a7d6a" }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
         pushable("bench_garden2", 165.4, 0, 2.4, 1.0, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
         wall(169.4, 0, 0.4, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
@@ -150,10 +151,10 @@ var level = {
         platform(222.5, 5.0, 2.6, 0.3, "playground_deck", { ledge: true }), lever("lever_play", 223.5, 5.3, {}),
         platform(207, 6.2, 5, 0.3, "playground_roof", { ledge: true }), pencil(209.5, 7.1),
         // Pedro: through the tunnel, down the slide, to the floor button
-        lowpass(208, 0, 6, 2.6, { gap: 0.8, asset: "play_tunnel" }), star(211, 0.3),
+        lowpass(208, 0, 6, 2.6, { gap: 0.8, asset: "play_tunnel", raised: true, legColor: "#2a5bd7" }), star(211, 0.3),
         platform(215, 0, 1, 0.5, "slide_step"), platform(216, 0, 1, 1.0, "slide_step"), platform(217, 0, 1, 1.5, "slide_step", { slideTop: true }),
         platform(218, 0, 1, 1.0, "slide_step"), platform(219, 0, 1, 0.5, "slide_step"),
-        lowpass(226, 0, 4, 2.2, { gap: 0.8, asset: "fence_yellow_low", raised: true }), button("button_play", 231.2, {}), wall(232.2, 0, 0.5, 1.4, { asset: "fence_yellow" }),
+        lowpass(226, 0, 4, 2.2, { gap: 0.8, asset: "fence_yellow_low", raised: true, legColor: "#f2c530" }), button("button_play", 231.2, {}), wall(232.2, 0, 0.5, 1.4, { asset: "fence_yellow" }),
         star(228, 0.3), star(224, 1.2), star(202, 1.2),
         gate("gate_play", 238, 0, 0.8, 3.4, ["lever_play", "button_play"], { asset: "colored_grid" }),
         checkpoint("cp_playground", 242),
@@ -214,7 +215,7 @@ var level = {
         pushable("ball_goal", 366, 0, 0.9, 0.9, 1, "soccer_ball", { round: true }),
         plate("plate_goal", 389, 0, { w: 2.6, byPushable: true, asset: "goal" }), prop("goal", 390.3, { z: 0.6, decor: true }),
         // under the stands: only Pedro (and the ball) fit
-        lowpass(376, 0, 10, 1.6, { gap: 1.05, asset: "bleachers", raised: true }), star(381, 0.4),
+        lowpass(376, 0, 10, 1.6, { gap: 1.05, asset: "bleachers", raised: true, legColor: "#8f949a" }), star(381, 0.4),
         platform(376, 1.6, 10, 0.4, "bleachers_top"), star(380, 2.8),
         button("button_court", 394.6, {}),
         gate("gate_court", 397, 0, 0.8, 3.6, ["plate_goal", "button_court"], { asset: "school_gate_small" }),
@@ -239,7 +240,7 @@ var level = {
         platform(424.6, 2.4, 5.4, 0.4, "window_ledge", { ledge: true }), star(426.5, 3.6), pencil(429, 3.6),
         wall(430, 0, 0.5, 2.4, { asset: "corridor_wall" }),
         // low obstacles and a high lever
-        lowpass(436, 0, 4, 2.0, { gap: 0.8, asset: "student_desk_row" }), button("button_hall", 438, {}), star(437.5, 0.3),
+        lowpass(436, 0, 4, 2.0, { gap: 0.8, asset: "student_desk_row", raised: true, legColor: "#2a5bd7" }), button("button_hall", 438, {}), star(437.5, 0.3),
         platform(444, 3.4, 2.4, 0.3, "book_stack", { ledge: true }), lever("lever_hall", 445, 3.7, {}), star(445, 4.6),
         checkpoint("cp_final", 450),
         // final challenge: platforms at different heights appear with the mechanisms, planes cross
@@ -250,7 +251,7 @@ var level = {
         trigger("hint.notebook2", 451.5, 1.2),
         plane("plane_hz_3", [{ x: 458, y: 3.9 }, { x: 470, y: 4.3 }], 3.8),   // flies above siblings standing on the desks; threatens the hops
         platform(460, 0, 1.4, 1.2, "book_stack"), platform(463, 0, 1.6, 2.0, "student_desk"), platform(466.5, 0, 1.4, 1.2, "book_stack"),
-        lowpass(469, 0, 3, 1.8, { gap: 0.8, asset: "student_desk_row" }), platform(469, 1.8, 3, 0.3, "student_desk_top", { ledge: true }),
+        lowpass(469, 0, 3, 1.8, { gap: 0.8, asset: "student_desk_row", raised: true, legColor: "#2a5bd7" }), platform(469, 1.8, 3, 0.3, "student_desk_top", { ledge: true }),
         star(461, 2.4), star(464, 3.2), star(470.5, 3.0),
         // the classroom door: two interaction points, both siblings needed
         { type: "finaldoor", id: "door_final", x: 476.5, y: 0, w: 1.6, h: 3.0, asset: "final_door" },

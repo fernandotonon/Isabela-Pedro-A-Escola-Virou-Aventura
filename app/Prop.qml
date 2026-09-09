@@ -27,8 +27,9 @@ Node {
     }
 
     // ground slabs are long boxes tinted by surface; everything else goes through the manifest
-    // a low passage marked `raised` shows its opening: the visual sits on legs above the crawl gap
-    readonly property bool raised: spec.type === "lowpass" && spec.raised === true && visual.representation === "placeholder"   // real models show their own legs
+    // A low passage marked `raised` is lifted onto visible legs, so the gap under it reads as a way through
+    // (the level teaches the crawl by shape: a bench, a tunnel, the bleachers standing clear of the ground).
+    readonly property bool raised: spec.type === "lowpass" && spec.raised === true
     readonly property real gap: spec.gap || 0.8
     PropVisual {
         id: visual
@@ -43,7 +44,8 @@ Node {
     }
     Repeater3D {
         model: root.raised ? 2 : 0
-        Box3D { x: (index ? 1 : -1) * (root.w / 2 - 0.25); width: 0.18; height: root.gap + 0.02; depth: root.d * 0.7; color: "#5b4a3a"; useToonShading: true; edgeThickness: 1.0; edgeColor: "#26221f" }
+        Box3D { x: (index ? 1 : -1) * (root.w / 2 - 0.22); width: 0.22; height: root.gap + 0.02; depth: root.d * 0.8
+                color: root.spec.legColor || "#6b5a48"; useToonShading: true; edgeThickness: 1.0; edgeColor: "#26221f"; receivesShadows: true }
     }
     // a ground segment: a wide slab whose top colour depends on the surface type
     Loader3D {
