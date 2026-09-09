@@ -109,7 +109,7 @@ var level = {
       camera: { distance: 13.5, height: 2.6 }, sky: "#8fd0f4", far: "#d8ecf7",
       entities: [
         ground(133, 195, "concrete"),
-        prop("outdoor_tree", 140, { z: -5, scale: 1.3 }), prop("outdoor_tree", 176, { z: -6 }), prop("garden_planter", 137, { z: -2.6 }),
+        prop("outdoor_tree", 140, { z: -4.2, scale: 1.3 }), prop("outdoor_tree", 176, { z: -4.2 }), prop("garden_planter", 137, { z: -2.6 }),
         prop("tire_planter", 148.5, { z: -2.4 }), prop("bush", 155, { z: -3 }), prop("school_bin", 190, { z: -2.5 }), prop("bush", 183, { z: -3.2 }),
         prop("school_wall", 133, { z: -4.5, w: 62 }),
         trigger("hint.pushmedium", 141, 3),
@@ -143,7 +143,7 @@ var level = {
       camera: { distance: 14, height: 3.2 }, sky: "#8fd0f4", far: "#d8ecf7",
       entities: [
         ground(195, 265, "rubber"),
-        prop("playground", 210, { z: -2.2, scale: 1.0, decor: true }), prop("outdoor_tree", 200, { z: -6 }), prop("outdoor_tree", 258, { z: -6, scale: 1.2 }),
+        prop("playground", 210, { z: -2.2, scale: 1.0, decor: true }), prop("outdoor_tree", 200, { z: -4.6 }), prop("outdoor_tree", 258, { z: -4.6, scale: 1.2 }),
         prop("tire_planter", 198, { z: -2.5 }), prop("soccer_ball", 249, { z: -2 }), prop("school_wall", 195, { z: -5, w: 70 }),
         prop("fence_yellow", 195, { z: -3.4, w: 70 }),
         trigger("hint.playground", 199, 3),
