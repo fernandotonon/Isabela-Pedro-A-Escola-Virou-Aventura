@@ -136,7 +136,18 @@ endif()
 if(ANDROID)
     # Clayground's clay_app writes an old-style manifest (no android:exported, gradle 7); replace it with
     # the Qt 6.11 template plus the game's settings, and ship our launcher icons.
-    set(ESCOLA_ANDROID_VERSION_CODE 1)
+    # version code and name come from the git tag when there is one (v0.1.3 -> code 103, name 0.1.3), so a
+    # newer APK installs over an older one instead of being refused as a downgrade
+    set(ESCOLA_ANDROID_VERSION_NAME "${PROJECT_VERSION}")
+    execute_process(COMMAND git describe --tags --abbrev=0 WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+                    OUTPUT_VARIABLE ESCOLA_GIT_TAG OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+    if(ESCOLA_GIT_TAG MATCHES "^v?([0-9]+)\\.([0-9]+)\\.([0-9]+)$")
+        set(ESCOLA_ANDROID_VERSION_NAME "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}.${CMAKE_MATCH_3}")
+        math(EXPR ESCOLA_ANDROID_VERSION_CODE "${CMAKE_MATCH_1} * 10000 + ${CMAKE_MATCH_2} * 100 + ${CMAKE_MATCH_3}")
+    else()
+        set(ESCOLA_ANDROID_VERSION_CODE 1)
+    endif()
+    message(STATUS "Android package version ${ESCOLA_ANDROID_VERSION_NAME} (code ${ESCOLA_ANDROID_VERSION_CODE})")
     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/android/AndroidManifest.xml.in" "${CMAKE_CURRENT_BINARY_DIR}/android/AndroidManifest.xml" @ONLY)
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/android/res" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/android")
     file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/android/gradle.properties")
@@ -145,7 +156,7 @@ if(ANDROID)
         QT_ANDROID_MIN_SDK_VERSION 28
         QT_ANDROID_TARGET_SDK_VERSION 36
         QT_ANDROID_COMPILE_SDK_VERSION 36        # Qt 6.11's androidx dependencies need compileSdk 36
-        QT_ANDROID_VERSION_NAME "${PROJECT_VERSION}"
+        QT_ANDROID_VERSION_NAME "${ESCOLA_ANDROID_VERSION_NAME}"
         QT_ANDROID_VERSION_CODE ${ESCOLA_ANDROID_VERSION_CODE}
         QT_ANDROID_APP_NAME "Isabela & Pedro"
         QT_ANDROID_APP_ICON "@drawable/icon")

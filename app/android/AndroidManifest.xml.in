@@ -5,9 +5,20 @@
     package="io.github.fernandotonon.escolaaventura"
     android:installLocation="auto"
     android:versionCode="@ESCOLA_ANDROID_VERSION_CODE@"
-    android:versionName="@PROJECT_VERSION@">
+    android:versionName="@ESCOLA_ANDROID_VERSION_NAME@">
     <!-- %%INSERT_PERMISSIONS -->
     <!-- %%INSERT_FEATURES -->
+    <!-- Qt Multimedia pulls in camera/microphone/bluetooth permissions, and Android turns those into
+         required hardware features, which blocks installation on devices without them. The game needs
+         none of it, so every implied feature is declared optional. -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+    <uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="false" />
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"

@@ -62,6 +62,11 @@ if [ ! -f "$KS" ]; then
 fi
 OUT="$BUILD_DIR/escola_aventura-$([ -n "${ANDROID_KEYSTORE:-}" ] && echo release || echo debugsigned).apk"
 "$BT/zipalign" -p -f 4 "$UNSIGNED" "$BUILD_DIR/aligned.apk"
-"$BT/apksigner" sign --ks "$KS" --ks-pass "pass:$SPASS" --key-pass "pass:$KPASS" --ks-key-alias "$ALIAS" --out "$OUT" "$BUILD_DIR/aligned.apk"
-"$BT/apksigner" verify "$OUT" && rm -f "$BUILD_DIR/aligned.apk"
+# Sign with v1 + v2 + v3. apksigner only emits the older schemes when its SDK range covers the versions
+# that need them, so the range is declared explicitly (24..34): with --min-sdk-version 28 alone it writes a
+# v3-only signature, and side-loading installers that look for v1/v2 then fail with "app not installed".
+"$BT/apksigner" sign --ks "$KS" --ks-pass "pass:$SPASS" --key-pass "pass:$KPASS" --ks-key-alias "$ALIAS" \
+    --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
+    --min-sdk-version 24 --max-sdk-version 34 --out "$OUT" "$BUILD_DIR/aligned.apk"
+"$BT/apksigner" verify --min-sdk-version 24 --verbose "$OUT" | head -6 && rm -f "$BUILD_DIR/aligned.apk"
 echo "APK: $OUT ($(du -h "$OUT" | cut -f1))"
