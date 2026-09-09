@@ -38,7 +38,7 @@ var steps = [
     { do: "switch", to: "isabela" }, { do: "move", x: 143.6 }, { do: "hold", moveX: 1, seconds: 2.5 },
     { do: "hopOnto", pushable: "bench_garden" }, { do: "jump", fromPushable: "bench_garden", dir: 1, hold: 0.45, air: 0.45 }, { do: "expect", yMin: 2.1 }, { do: "move", x: 151.5 },
     { do: "switch", to: "pedro" }, { do: "hopOnto", pushable: "bench_garden" }, { do: "jump", fromPushable: "bench_garden", dir: 1, hold: 0.45, air: 0.45 }, { do: "expect", yMin: 2.1 },
-    { do: "move", x: 155.5 }, { do: "move", x: 158.6 }, { do: "expect", yMax: 0.1 },
+    { do: "move", x: 155.5 }, { do: "move", x: 159.2 }, { do: "expect", yMax: 0.1 },
     // main challenge: Pedro crawls through the planter passage to the button and out the far side;
     // Isabela climbs over, pushes the bench under the high planter and grabs up to the lever
     { do: "move", x: 159.6 }, { do: "crawl", x: 162 }, { do: "expect", switchOn: "button_garden" }, { do: "crawl", x: 164.7 }, { do: "expect", xMin: 164.3 },

@@ -77,7 +77,9 @@ var level = {
         ladder(62.4, 2.5, 1.5, { asset: "climbing_ladder", visualFrom: 0 }),        // starts out of Pedro's reach
         platform(60, 3.65, 11.8, 0.35, "stone_platform"),                       // the upper walkway (top 4.0), ends before the block
         pushable("box_ladder", 68, 0, 1.0, 1.2, 1, "backpack", { hint: "hint.push" }),    // Pedro's route: push, climb
-        wall(73, 0, 3, 2.6, { asset: "tire_planter", visual: "stack" }),          // the step block
+        // the step block: one 3 m x 2.6 m box, drawn as a wall of planters (tile: true repeats the model,
+        // so the collision and the visual now cover the same volume)
+        wall(73, 0, 3, 2.6, { asset: "tire_planter" }),
         star(66, 1.2),
         // --- Challenge 3: the swinging equipment -------------------------------------------
         moving("swing_1", 84, 1.9, 2.2, 0.35, [{ x: 84, y: 1.9 }, { x: 89, y: 2.6 }], 1.7, { asset: "moving_platform", swing: true }),
@@ -114,12 +116,13 @@ var level = {
         // Isabela pushes the medium bench so Pedro can climb the planter ledge
         pushable("bench_garden", 144.5, 0, 2.4, 1.0, 2, "school_bench"),
         platform(150, 1.8, 6, 0.4, "stone_platform"), star(152.5, 2.9), star(141, 1.2),
-        wall(157.4, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),      // clear of the platform edge, so Pedro has room to jump
+        // a stack of planters: one box per visible planter, so the collision matches what is drawn
+        wall(157.4, 0, 1.0, 1.0, { asset: "tire_planter" }), wall(157.4, 1.0, 1.0, 1.0, { asset: "tire_planter" }),
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
         lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter", raised: true, legColor: "#8a7d6a" }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
         pushable("bench_garden2", 165.4, 0, 2.4, 1.0, 2, "school_bench"),            // Isabela slides it under the high planter for a boost
-        wall(169.4, 0, 0.4, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
+        wall(169.4, 0, 0.8, 0.8, { asset: "tire_planter" }),                       // stops the bench under the planter's edge
         platform(169.6, 4.0, 6, 0.4, "stone_platform", { ledge: true }), lever("lever_garden", 173, 4.4, {}),
         star(165.9, 5.0), star(171, 5.4), star(162, 0.3),
         gate("gate_garden", 180, 0, 0.8, 3.4, ["button_garden", "lever_garden"], { asset: "school_gate_small" }),
@@ -187,11 +190,11 @@ var level = {
         platform(302.5, 0, 1.6, 1.2, "book_stack"), star(303.3, 2.2),
         // push the lunchbox onto the button
         pushable("lunchbox", 307, 0, 1.0, 0.8, 1, "lunchbox", { hint: "hint.pushbutton" }), button("button_patio", 313.5, { byPushable: true }),
-        wall(314.6, 0, 0.4, 1.2, { asset: "tire_planter" }),                      // stops the lunchbox on the button
+        wall(314.6, 0, 0.8, 0.9, { asset: "tire_planter" }),                      // stops the lunchbox on the button
         gate("gate_patio", 331.5, 0, 0.8, 3.4, ["button_patio"], { asset: "school_gate_small" }),
         // paper plane over the pit (the pit floor has tyre steps: easy route)
         moving("plane_2", 316.5, 2.2, 2.0, 0.3, [{ x: 316.5, y: 2.2 }, { x: 325.5, y: 3.0 }], 2.4, { asset: "paper_plane" }),
-        platform(324.5, -2.4, 1.0, 1.0, "tire_planter"), platform(325.8, -2.4, 1.0, 2.4, "tire_planter"), star(321, -1.4),
+        platform(324.5, -2.4, 1.0, 1.0, "tire_planter"), platform(325.8, -2.4, 1.0, 1.0, "tire_planter"), platform(325.8, -1.4, 1.0, 1.0, "tire_planter"), star(321, -1.4),
         plane("plane_hz_1", [{ x: 266, y: 4.6 }, { x: 283, y: 5.2 }], 3.0),          // above the hop arcs; a full jump from the tables still meets it
         star(319.5, 4.1)
       ] },
@@ -238,7 +241,6 @@ var level = {
         // the desk under the window
         pushable("desk_hall", 419, 0, 1.6, 1.4, 2, "student_desk", { hint: "hint.desk" }), wall(424.6, 0, 0.4, 1.0, { asset: "book_stack" }),
         platform(424.6, 2.4, 5.4, 0.4, "window_ledge", { ledge: true }), star(426.5, 3.6), pencil(429, 3.6),
-        wall(430, 0, 0.5, 2.4, { asset: "corridor_wall" }),
         // low obstacles and a high lever
         lowpass(436, 0, 4, 2.0, { gap: 0.8, asset: "student_desk_row", raised: true, legColor: "#2a5bd7" }), button("button_hall", 438, {}), star(437.5, 0.3),
         // a taller pile so the lever rests on it and the ledge Isabela grabs matches the books
