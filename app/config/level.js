@@ -114,7 +114,7 @@ var level = {
         // Isabela pushes the medium bench so Pedro can climb the planter ledge
         pushable("bench_garden", 144.5, 0, 2.4, 1.0, 2, "school_bench"),
         platform(150, 1.8, 6, 0.4, "stone_platform"), star(152.5, 2.9), star(141, 1.2),
-        wall(156, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),
+        wall(157.4, 0, 0.6, 2.2, { asset: "tire_planter", visual: "stack" }),      // clear of the platform edge, so Pedro has room to jump
         // --- main challenge: Pedro through the planters, Isabela moves a bench ------------
         lowpass(160, 0, 4, 2.4, { gap: 0.8, asset: "garden_planter", raised: true, legColor: "#8a7d6a" }),            // Pedro crawls in; Isabela climbs over
         button("button_garden", 162, {}),                                          // inside the passage
@@ -241,7 +241,8 @@ var level = {
         wall(430, 0, 0.5, 2.4, { asset: "corridor_wall" }),
         // low obstacles and a high lever
         lowpass(436, 0, 4, 2.0, { gap: 0.8, asset: "student_desk_row", raised: true, legColor: "#2a5bd7" }), button("button_hall", 438, {}), star(437.5, 0.3),
-        platform(444, 3.4, 2.4, 0.3, "book_stack", { ledge: true }), lever("lever_hall", 445, 3.7, {}), star(445, 4.6),
+        // a taller pile so the lever rests on it and the ledge Isabela grabs matches the books
+        platform(443.6, 2.0, 3.0, 1.7, "book_stack", { ledge: true }), lever("lever_hall", 445, 3.7, {}), star(445, 4.6),
         checkpoint("cp_final", 450),
         // final challenge: platforms at different heights appear with the mechanisms, planes cross
         gate("gate_hall", 451.4, 0, 0.6, 3.0, ["button_hall", "lever_hall"], { asset: "school_gate_small" }),

@@ -153,7 +153,9 @@ function startHang(c, ledge) {
     c.hang = ledge
     b.vx = 0; b.vy = 0; c.jumping = false
     b.x = ledge.x - ledge.dir * (b.w / 2 + 0.02)
-    b.y = ledge.y - b.h * 0.82
+    // hang from the hands: the rig raises the arms overhead, so the body hangs a full height below the
+    // ledge (at 0.82 the ledge lined up with the shoulders and the arms stuck through it)
+    b.y = ledge.y - b.h * 1.02
     c.facing = ledge.dir
     emit(c, "grab")
     FSM.set(c.fsm, c, "Hang")

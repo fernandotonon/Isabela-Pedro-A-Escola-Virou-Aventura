@@ -61,12 +61,19 @@ Node {
         bodyWidth: root.def ? root.def.width : 0.6
     }
 
-    // cheap blob shadow: reads as grounded even when real shadows are off
+    // Cheap blob shadow: it reads as grounded even when real shadows are off. Off the ground it shrinks
+    // away (and grows back on landing), so a jump no longer leaves a shadow stuck to the feet.
     Model {
+        id: blob
         source: "#Cylinder"
         y: 0.006
-        scale: Qt.vector3d((root.def ? root.def.width : 0.6) * 0.016, 0.0001, (root.def ? root.def.width : 0.6) * 0.012)
-        opacity: root.grounded ? 0.28 : 0.14
+        readonly property real baseW: (root.def ? root.def.width : 0.6) * 0.016
+        readonly property real baseD: (root.def ? root.def.width : 0.6) * 0.012
+        property real amount: root.grounded ? 1 : 0                     // 1 = on the ground, 0 = airborne
+        visible: amount > 0.02
+        scale: Qt.vector3d(baseW * amount, 0.0001, baseD * amount)
+        opacity: 0.28 * amount
+        Behavior on amount { NumberAnimation { duration: 140; easing.type: Easing.OutQuad } }
         materials: PrincipledMaterial { baseColor: "#102030"; lighting: PrincipledMaterial.NoLighting; alphaMode: PrincipledMaterial.Blend }
         castsShadows: false; receivesShadows: false
     }

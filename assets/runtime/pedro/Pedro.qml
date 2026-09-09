@@ -49,24 +49,24 @@ Node {
             spine,
             spine1,
             spine2,
-            neck,
             leftArm,
             leftForeArm,
             leftHand,
             joint_9,
             joint_10,
-            joint_11,
             rightArm,
             rightForeArm,
             rightHand,
             joint_16,
             joint_17,
-            joint_18,
             leftUpLeg,
             leftLeg,
-            leftFoot,
             rightUpLeg,
             rightLeg,
+            neck,
+            joint_11,
+            joint_18,
+            leftFoot,
             rightFoot,
             head,
             joint_12,
@@ -79,24 +79,24 @@ Node {
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.00603053, 0, 0, 1, -0.0248357, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.0647616, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.135239, 0, 0, 1, -0.0326666, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.213547, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0329249, 0, 1, 0, -0.201801, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.107318, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.205203, 0, 1, 0, -0.170478, 0, 0, 1, -0.0483282, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.330496, 0, 1, 0, -0.178308, 0, 0, 1, -0.0483282, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.397058, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, 0.408804, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0375525, 0, 1, 0, -0.201801, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.111945, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.20983, 0, 1, 0, -0.170478, 0, 0, 1, -0.0444128, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.335123, 0, 1, 0, -0.178308, 0, 0, 1, -0.0483282, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.39777, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.413432, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0485865, 0, 1, 0, 0.076193, 0, 0, 1, -0.0209203, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0759943, 0, 1, 0, 0.271963, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, 0.091656, 0, 1, 0, 0.440326, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0532141, 0, 1, 0, 0.076193, 0, 0, 1, -0.0209203, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.080622, 0, 1, 0, 0.271963, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.213547, 0, 0, 1, -0.036582, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, 0.408804, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.413432, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, 0.091656, 0, 1, 0, 0.440326, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0962836, 0, 1, 0, 0.440326, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.268363, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.424466, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
@@ -283,6 +283,16 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Cheer") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_0.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_0.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_0.qad"
@@ -291,11 +301,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_0.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_0.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -323,19 +328,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_0.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_0.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_0.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_0.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_0.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -374,6 +374,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_1.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_1.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_1.qad"
@@ -382,11 +392,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_1.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_1.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -414,19 +419,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_1.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_1.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_1.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_1.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_1.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -465,6 +465,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_2.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_2.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_2.qad"
@@ -473,11 +483,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_2.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_2.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -505,16 +510,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_2.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_2.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_2.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_2.qad"
@@ -523,6 +518,11 @@ Node {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_2.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_2.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -561,6 +561,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_3.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_3.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_3.qad"
@@ -569,11 +579,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_3.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_3.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -601,16 +606,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_3.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_3.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_3.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_3.qad"
@@ -619,6 +614,11 @@ Node {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_3.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_3.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -657,6 +657,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_4.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_4.qad"
@@ -665,11 +680,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_4.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_4.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -697,21 +707,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_4.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_4.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_4.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_4.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_4.qad"
@@ -725,6 +720,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_4.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -763,6 +763,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_5.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_5.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_5.qad"
@@ -771,11 +781,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_5.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_5.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -803,19 +808,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_5.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_5.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_5.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_5.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_5.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -855,6 +855,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Hit") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_6.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_6.qad"
@@ -863,11 +878,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_6.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_6.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -895,21 +905,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_6.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_6.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_6.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_6.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_6.qad"
@@ -918,6 +913,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_6.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -956,6 +956,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_7.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_7.qad"
@@ -964,11 +979,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_7.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_7.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -996,21 +1006,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_7.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_7.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_7.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_7.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_7.qad"
@@ -1019,6 +1014,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_7.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1058,6 +1058,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Jump") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_8.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_8.qad"
@@ -1066,11 +1081,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_8.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_8.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1098,21 +1108,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_8.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_8.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_8.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_8.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             Keyframe {
@@ -1124,6 +1119,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_8.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1161,6 +1161,16 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Land") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_9.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_9.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_9.qad"
@@ -1169,11 +1179,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_9.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_9.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1201,19 +1206,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_9.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_9.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_9.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_9.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_9.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1253,6 +1253,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Pickup") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_10.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_10.qad"
@@ -1261,11 +1276,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_10.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_10.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1293,21 +1303,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_10.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_10.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_10.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_10.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_10.qad"
@@ -1321,6 +1316,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_10.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1359,6 +1359,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_11.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_11.qad"
@@ -1367,11 +1382,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_11.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_11.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1399,21 +1409,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_11.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_11.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_11.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_11.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_11.qad"
@@ -1422,6 +1417,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_11.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1460,6 +1460,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_12.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_12.qad"
@@ -1468,11 +1483,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_12.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_12.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1500,21 +1510,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_12.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_12.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_12.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_12.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             Keyframe {
@@ -1526,6 +1521,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_12.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1564,6 +1564,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_13.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_13.qad"
@@ -1572,11 +1587,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_13.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_13.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1604,21 +1614,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_13.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_13.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_13.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_13.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_13.qad"
@@ -1627,6 +1622,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_13.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1666,6 +1666,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Wave") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_14.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_14.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_14.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_14.qad"
@@ -1674,11 +1689,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_14.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_14.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1706,21 +1716,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_14.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_14.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_14.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_14.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_14.qad"
@@ -1729,6 +1724,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_14.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_14.qad"
         }
         KeyframeGroup {
             target: leftForeArm

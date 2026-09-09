@@ -55,7 +55,7 @@ Node {
         // flips to face the other way when switched
         eulerRotation.y: root.kind === "lever" && root.active ? 180 : 0
         Behavior on scale { Vector3dAnimation { duration: 120 } }
-        Behavior on eulerRotation.y { NumberAnimation { duration: 220; easing.type: Easing.InOutQuad } }
+        // no rotation animation: the handle simply appears on the other side, which reads more naturally
     }
     // active glow ring
     Model {
