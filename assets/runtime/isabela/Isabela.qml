@@ -12,11 +12,11 @@ Node {
 
     // Resources
     Texture {
-        id: qtmesh_gen3d_6_1788751927380_diffuse_png_texture
-        objectName: "qtmesh_gen3d_6_1788751927380_diffuse.png"
+        id: qmepaint_isabela_rigged_1_png_texture
+        objectName: "QMEPaint_isabela_rigged_1.png"
         generateMipmaps: true
         mipFilter: Texture.Linear
-        source: "maps/qtmesh_gen3d_6_1788751927380_diffuse.jpg"
+        source: "maps/QMEPaint_isabela_rigged_1.jpg"
     }
     Texture {
         id: qtmesh_gen3d_6_1788751927380_roughness_png_texture
@@ -35,7 +35,7 @@ Node {
     PrincipledMaterial {
         id: qtmesh_gen3d_6_1788751927380_mesh_mat_material
         objectName: "qtmesh_gen3d_6_1788751927380_mesh_mat"
-        baseColorMap: qtmesh_gen3d_6_1788751927380_diffuse_png_texture
+        baseColorMap: qmepaint_isabela_rigged_1_png_texture
         metalnessMap: qtmesh_gen3d_6_1788751927380_roughness_png_texture
         roughnessMap: qtmesh_gen3d_6_1788751927380_roughness_png_texture
         roughness: 1
@@ -53,23 +53,23 @@ Node {
             leftForeArm,
             leftHand,
             joint_9,
+            rightArm,
+            rightForeArm,
+            rightHand,
+            joint_28,
+            leftUpLeg,
+            rightUpLeg,
             joint_10,
             joint_13,
             joint_16,
             joint_19,
             joint_22,
-            rightArm,
-            rightForeArm,
-            rightHand,
-            joint_28,
             joint_29,
             joint_32,
             joint_35,
             joint_38,
             joint_41,
-            leftUpLeg,
             leftLeg,
-            rightUpLeg,
             rightLeg,
             neck,
             joint_11,
@@ -107,23 +107,23 @@ Node {
             Qt.matrix4x4(1, 0, 0, 0.0883621, 0, 1, 0, -0.225821, 0, 0, 1, 0.00227712, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.190102, 0, 1, 0, -0.221908, 0, 0, 1, 0.0179295, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.307495, 0, 1, 0, -0.221908, 0, 0, 1, 0.0414079, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.0329435, 0, 1, 0, -0.241473, 0, 0, 1, 0.00227712, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.0916397, 0, 1, 0, -0.225821, 0, 0, 1, 0.00227712, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.19338, 0, 1, 0, -0.221908, 0, 0, 1, 0.0179295, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.310772, 0, 1, 0, -0.221908, 0, 0, 1, 0.0414079, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, 0.0531443, 0, 1, 0, 0.0715732, 0, 0, 1, 0.00619021, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.056422, 0, 1, 0, 0.0715732, 0, 0, 1, -0.00554904, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.319234, 0, 1, 0, -0.23756, 0, 0, 1, 0.0492341, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.350539, 0, 1, 0, -0.23756, 0, 0, 1, 0.0570603, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.350539, 0, 1, 0, -0.225821, 0, 0, 1, 0.0570603, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.350539, 0, 1, 0, -0.210169, 0, 0, 1, 0.0570603, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.342712, 0, 1, 0, -0.198429, 0, 0, 1, 0.0570603, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.0329435, 0, 1, 0, -0.241473, 0, 0, 1, 0.00227712, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.0916397, 0, 1, 0, -0.225821, 0, 0, 1, 0.00227712, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.19338, 0, 1, 0, -0.221908, 0, 0, 1, 0.0179295, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.310772, 0, 1, 0, -0.221908, 0, 0, 1, 0.0414079, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.322512, 0, 1, 0, -0.23756, 0, 0, 1, 0.0492341, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.353816, 0, 1, 0, -0.23756, 0, 0, 1, 0.0609734, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.353816, 0, 1, 0, -0.221908, 0, 0, 1, 0.0609734, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.353816, 0, 1, 0, -0.210169, 0, 0, 1, 0.0609734, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.34599, 0, 1, 0, -0.198429, 0, 0, 1, 0.0609734, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, 0.0531443, 0, 1, 0, 0.0715732, 0, 0, 1, 0.00619021, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0687967, 0, 1, 0, 0.237278, 0, 0, 1, -0.0251145, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.056422, 0, 1, 0, 0.0715732, 0, 0, 1, -0.00554904, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0720743, 0, 1, 0, 0.237684, 0, 0, 1, -0.0368537, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0016388, 0, 1, 0, -0.245386, 0, 0, 1, 0.00227712, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.32706, 0, 1, 0, -0.2493, 0, 0, 1, 0.0570603, 0, 0, 0, 1),
@@ -156,8 +156,8 @@ Node {
 
     // Nodes:
     Node {
-        id: isabela
-        objectName: "isabela"
+        id: isabela_rigged
+        objectName: "isabela_rigged"
         Node {
             id: bela
             objectName: "bela"
@@ -423,8 +423,8 @@ Node {
             }
         }
         Model {
-            id: isabela_mesh
-            objectName: "isabela_mesh"
+            id: isabela_rigged_mesh
+            objectName: "isabela_rigged_mesh"
             source: "meshes/meshes_0__mesh.mesh"
             skin: skin
             materials: [
@@ -466,14 +466,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_0.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_0.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_0.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_0.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -557,14 +557,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_1.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_1.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_1.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_1.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -648,14 +648,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_2.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_2.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_2.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_2.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -744,14 +744,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_3.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_3.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_3.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_3.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -845,14 +845,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_4.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_4.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_4.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -947,14 +947,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_5.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_5.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_5.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_5.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1043,14 +1043,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_6.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_6.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_6.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1145,14 +1145,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_7.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_7.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_7.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1243,14 +1243,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_8.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_8.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_8.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1345,14 +1345,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_9.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_9.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_9.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_9.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1446,14 +1446,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_10.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_10.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_10.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1547,14 +1547,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_11.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_11.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_11.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1651,14 +1651,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_12.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_12.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_12.qad"
         }
         KeyframeGroup {
             target: leftUpLeg
@@ -1753,14 +1753,14 @@ Node {
             keyframeSource: "animations/rightLeg_rotation_13.qad"
         }
         KeyframeGroup {
-            target: rightUpLeg
-            property: "rotation"
-            keyframeSource: "animations/rightUpLeg_rotation_13.qad"
-        }
-        KeyframeGroup {
             target: leftLeg
             property: "rotation"
             keyframeSource: "animations/leftLeg_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: rightUpLeg
+            property: "rotation"
+            keyframeSource: "animations/rightUpLeg_rotation_13.qad"
         }
         KeyframeGroup {
             target: leftUpLeg

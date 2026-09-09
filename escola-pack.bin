@@ -49,24 +49,24 @@ Node {
             spine,
             spine1,
             spine2,
-            neck,
             leftArm,
             leftForeArm,
             leftHand,
             joint_9,
             joint_10,
-            joint_11,
             rightArm,
             rightForeArm,
             rightHand,
             joint_16,
             joint_17,
-            joint_18,
             leftUpLeg,
             leftLeg,
-            leftFoot,
             rightUpLeg,
             rightLeg,
+            neck,
+            joint_11,
+            joint_18,
+            leftFoot,
             rightFoot,
             head,
             joint_12,
@@ -79,24 +79,24 @@ Node {
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.00603053, 0, 0, 1, -0.0248357, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.0647616, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.135239, 0, 0, 1, -0.0326666, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.213547, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0329249, 0, 1, 0, -0.201801, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.107318, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.205203, 0, 1, 0, -0.170478, 0, 0, 1, -0.0483282, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.330496, 0, 1, 0, -0.178308, 0, 0, 1, -0.0483282, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.397058, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, 0.408804, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0375525, 0, 1, 0, -0.201801, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.111945, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.20983, 0, 1, 0, -0.170478, 0, 0, 1, -0.0444128, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.335123, 0, 1, 0, -0.178308, 0, 0, 1, -0.0483282, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.39777, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, -0.413432, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0485865, 0, 1, 0, 0.076193, 0, 0, 1, -0.0209203, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.0759943, 0, 1, 0, 0.271963, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
-            Qt.matrix4x4(1, 0, 0, 0.091656, 0, 1, 0, 0.440326, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0532141, 0, 1, 0, 0.076193, 0, 0, 1, -0.0209203, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.080622, 0, 1, 0, 0.271963, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.213547, 0, 0, 1, -0.036582, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, 0.408804, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, -0.413432, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
+            Qt.matrix4x4(1, 0, 0, 0.091656, 0, 1, 0, 0.440326, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.0962836, 0, 1, 0, 0.440326, 0, 0, 1, -0.036582, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, -0.00231381, 0, 1, 0, -0.268363, 0, 0, 1, -0.0287511, 0, 0, 0, 1),
             Qt.matrix4x4(1, 0, 0, 0.424466, 0, 1, 0, -0.178308, 0, 0, 1, -0.0404974, 0, 0, 0, 1),
@@ -283,6 +283,16 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Cheer") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_0.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_0.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_0.qad"
@@ -291,11 +301,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_0.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_0.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -323,19 +328,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_0.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_0.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_0.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_0.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_0.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -374,6 +374,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_1.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_1.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_1.qad"
@@ -382,11 +392,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_1.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_1.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -414,19 +419,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_1.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_1.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_1.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_1.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_1.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -465,6 +465,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_2.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_2.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_2.qad"
@@ -473,11 +483,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_2.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_2.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -505,16 +510,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_2.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_2.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_2.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_2.qad"
@@ -523,6 +518,11 @@ Node {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_2.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_2.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -561,6 +561,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_3.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_3.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_3.qad"
@@ -569,11 +579,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_3.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_3.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -601,16 +606,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_3.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_3.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_3.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_3.qad"
@@ -619,6 +614,11 @@ Node {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_3.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_3.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -657,6 +657,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_4.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_4.qad"
@@ -665,11 +680,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_4.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_4.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -697,21 +707,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_4.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_4.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_4.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_4.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_4.qad"
@@ -725,6 +720,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_4.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_4.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -763,6 +763,16 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_5.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_5.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_5.qad"
@@ -771,11 +781,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_5.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_5.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -803,19 +808,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_5.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_5.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_5.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_5.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_5.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -855,6 +855,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Hit") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_6.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_6.qad"
@@ -863,11 +878,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_6.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_6.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -895,21 +905,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_6.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_6.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_6.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_6.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_6.qad"
@@ -918,6 +913,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_6.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_6.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -956,6 +956,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_7.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_7.qad"
@@ -964,11 +979,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_7.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_7.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -996,21 +1006,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_7.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_7.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_7.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_7.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_7.qad"
@@ -1019,6 +1014,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_7.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_7.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1058,6 +1058,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Jump") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_8.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_8.qad"
@@ -1066,11 +1081,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_8.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_8.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1098,21 +1108,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_8.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_8.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_8.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_8.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             Keyframe {
@@ -1124,6 +1119,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_8.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_8.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1161,6 +1161,16 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Land") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_9.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_9.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_9.qad"
@@ -1169,11 +1179,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_9.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_9.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1201,19 +1206,14 @@ Node {
             keyframeSource: "animations/rightArm_rotation_9.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_9.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_9.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_9.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_9.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1253,6 +1253,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Pickup") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_10.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_10.qad"
@@ -1261,11 +1276,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_10.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_10.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1293,21 +1303,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_10.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_10.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_10.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_10.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "position"
             keyframeSource: "animations/hips_position_10.qad"
@@ -1321,6 +1316,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_10.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_10.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1359,6 +1359,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_11.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_11.qad"
@@ -1367,11 +1382,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_11.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_11.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1399,21 +1409,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_11.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_11.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_11.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_11.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_11.qad"
@@ -1422,6 +1417,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_11.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_11.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1460,6 +1460,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_12.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_12.qad"
@@ -1468,11 +1483,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_12.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_12.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1500,21 +1510,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_12.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_12.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_12.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_12.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             Keyframe {
@@ -1526,6 +1521,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_12.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_12.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1564,6 +1564,21 @@ Node {
             loops: Animation.Infinite
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_13.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_13.qad"
@@ -1572,11 +1587,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_13.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_13.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1604,21 +1614,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_13.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_13.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_13.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_13.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_13.qad"
@@ -1627,6 +1622,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_13.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_13.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -1666,6 +1666,21 @@ Node {
             onFinished: Qt.callLater(function() { if (node) node.clipFinished("Wave") })
         }
         KeyframeGroup {
+            target: leftFoot
+            property: "rotation"
+            keyframeSource: "animations/leftFoot_rotation_14.qad"
+        }
+        KeyframeGroup {
+            target: rightFoot
+            property: "rotation"
+            keyframeSource: "animations/rightFoot_rotation_14.qad"
+        }
+        KeyframeGroup {
+            target: neck
+            property: "rotation"
+            keyframeSource: "animations/neck_rotation_14.qad"
+        }
+        KeyframeGroup {
             target: rightLeg
             property: "rotation"
             keyframeSource: "animations/rightLeg_rotation_14.qad"
@@ -1674,11 +1689,6 @@ Node {
             target: rightUpLeg
             property: "rotation"
             keyframeSource: "animations/rightUpLeg_rotation_14.qad"
-        }
-        KeyframeGroup {
-            target: leftFoot
-            property: "rotation"
-            keyframeSource: "animations/leftFoot_rotation_14.qad"
         }
         KeyframeGroup {
             target: leftLeg
@@ -1706,21 +1716,6 @@ Node {
             keyframeSource: "animations/rightArm_rotation_14.qad"
         }
         KeyframeGroup {
-            target: leftArm
-            property: "rotation"
-            keyframeSource: "animations/leftArm_rotation_14.qad"
-        }
-        KeyframeGroup {
-            target: rightFoot
-            property: "rotation"
-            keyframeSource: "animations/rightFoot_rotation_14.qad"
-        }
-        KeyframeGroup {
-            target: neck
-            property: "rotation"
-            keyframeSource: "animations/neck_rotation_14.qad"
-        }
-        KeyframeGroup {
             target: hips
             property: "rotation"
             keyframeSource: "animations/hips_rotation_14.qad"
@@ -1729,6 +1724,11 @@ Node {
             target: spine2
             property: "rotation"
             keyframeSource: "animations/spine2_rotation_14.qad"
+        }
+        KeyframeGroup {
+            target: leftArm
+            property: "rotation"
+            keyframeSource: "animations/leftArm_rotation_14.qad"
         }
         KeyframeGroup {
             target: leftForeArm
@@ -3091,7 +3091,7 @@ hú¹c¹­úBÈ  ú?z<Çú>Xpú¹İ­éúº*;úCUV ú?z+çú>YBPúºÒ¬úºl+@úC&ª« ú?zåú>Zyúºè9Ãú
 ÑLú¾ãpúD–   ú>ğæWú?ËŞú¿ü„ú¾ã%üúDš*« ú>ğ!sú>øÊú¿ûsú¾âè,úDUV ú>ôö ú>éïú¿—3ú¾õ…¸úD¢€ ú>ıãeú>Ø&ú¿ïú¿¹úD¦ª« ú?:Üú>Ä[¥ú¾înú¿`İúDªÕV ú??ú>¿ìEú¾ãâlú¿ ü.úD¯  ú?µUú>»Y«ú¾Ù‰ú¿$yëúD³*« ú?,4ú>¾ãËú¾Ötú¿#EúD·UV ú?]œú>Êzcú¾Úÿú¿PÖúD»€ ú?	gBú>ÕÕÖú¾Şn"ú¿.¶úD¿ª« ú?øú>éëú¾è|ú¿ïúDÃÕV ú?p½ú>ûŠÔú¾ñÙWú¿vmúDÈ  ú>ı)	ú? ú¾ıÒú¾ş©äúDÌ*¬ ú>õ]éú?³‘ú¿Pñú¾ó—–úDĞUV ú>í/éú?ú¿‚ºú¾è##úDÔ€  ú>ğòÆú?’ú¿pú¾æœ’úDØª¬ ú>ô­>ú?åú¿Xtú¾åÉúDÜÕV ú>ù÷zú>ıÙUú¿n¼ú¾ï²ôúDá  ú? ^ú>ôâNú¿Wsú¿ôêúDå*« ú?¹ú>ë	Áú¾ñKú¿—ÉúDéUV ú?uú>á¡çú¾éˆâú¿·3úDí€ ú>ÿöèú>×ÜÄú¾á ôú¿˜·úDñª« ú>ÿUú>ÓŠú¾ÜBú¿ ÚMúDõÕW ú? ¨Õú>Õ(Ïú¾ÜE ú¿ªüúDú   ú?¥ ú>Ö°‚ú¾Ûé-ú¿yÍúDş*¬ ú?L¥ú>ÛÇ6ú¾Øééú¿‹¢úE*« ú?çú>àÈùú¾ÕÖú¿®úE@ ú?	-“ú>ä|6ú¾Ô•>ú¿ úEUV ú?$ú>æçPú¾Õ-ÿú¿”-úEj« ú?ªú>éE~ú¾ÕºÒú¿;úE	€  ú?0ú>èä7ú¾Ü9†ú¿èúE•U ú?A-ú>èm\ú¾â£éú¿ ¤úEª¬ ú?Yú>çƒ‹ú¾ç¨¹ú¿oÉúEÀ ú?K»ú>æ,¦ú¾ëM¸ú¿÷úEÕV ú?ğ”ú>äÈ€ú¾îäğú¾ÿQQúEê« ú?ÀŠú>ç„@ú¾é”ú¾óÆúE   ú?bØú>éû;ú¾ãşÑú¾çòIúEV ú?'jú>ì—‡ú¾Ùj»ú¾ØNúE*« ú?1vú>îÔÑú¾Éd@ú¾ÄgÕúE@ ú?:Êú>ğ‡ú¾¸Œÿú¾¯µğúEUV ú?G6ú>ä…ùú¾¤ Ìú¾›Ò˜úE j« ú?Rqºú>×“5ú¾yOú¾‡ €úE"€ ú?] Ìú>Äíú¾vgú¾a½†úE$•V ú?gú>«mAú¾Tfßú¾2ğ&úE&ª« ú?oCìú>‘Mú¾0äşú¾İíúE(À  ú?tŸú>s¢àú¾#Ó«ú½’Ç¡úE*ÕV ú?xqÔú>C²ëú¾ÎÚú¼wÇ«úE,ê¬ ú?zcÁú>•ú¾
 	Êú=&«ÅúE/  ú?z¿Òú> $:ú¾ È@ú=Ã æúE1V ú?z"]ú=Åv½ú½î*ú>”˜úE3*« ú?y4Pú=©¶Nú½Óñ=ú>?3úE5@  ú?wÙëú=¬ú½¹y0ú>d2µúE7UV ú?v:ú=qú½Ÿçú>È0úE9j¬ ú?u¹›ú=T×øú½‡iKú>ˆş+úE;€ ú?t´Xú=8…2ú½]³1ú>’úE=•V ú?t[ú=)•Sú½:?]ú>•`ÕúE?ª« ú?sùpú=Ÿsú½Ä¢ú>˜¶–úEAÀ ú?sĞdú=á|ú¼öÇú>šVéúECÕV ú?säpú<ú»Ùú¼Î!ú>šD¸úEEê« ú?sö2ú<İ²|ú¼¦Âú>š1úEH  ú?t6¨ú<Âvxú¼‘İøú>˜ĞzúEJV ú?tuŒú<§9 ú¼{^Gú>—nŞúEL*¬ ú?t­$ú<•Wßú¼Só=ú>–(úEN@ ú?tŞú<ŒÒåú¼-{1ú>”ü‘úEPUV ú?u0ú<„Mzú¼§ú>“Ğ”úERj« ú?u ú<a)ú»åFú>“SãúET€  ú?u1¤ú<štªú»¼õú>’×úEV•V ú?u?®ú<¢ú»¥åÊú>’rúEXª¬ ú?uJWú<¦5,ú»¢pİú>’&°úEZÀ ú?uTöú<ªY¤ú»ûòú>‘ÚÄúE\ÕV ú?uZşú<§Lñú»§Sú>‘µ%ÿÿŸrQTimelineKeyframesŸú     ú?{7Lú=æ¼ú¾^Oú=·9úBUV ú?{ìKú=±kú¾ó	ú==ôúB…UV ú?|v_ú=z1¯ú¾mú=!©èúBÈ  ú?|÷Uú=`fú¾Ó’ú=&íƒúCUV ú?}\›ú:š“aú¾+ú=,û©úC&ª« ú?}~ú¼÷påú¾=<ú=2ÛdúCH  ú?}Ö‰ú½&ˆú½âø<ú=[ö$úCiUV ú?~ƒú½Q@Sú½½V/ú=‚yúC…UV ú?~BYú½<=¬ú½¡lú=”MúC–   ú?~zjú¼ÏDú½=2ú=¢ÛèúC¦ª« ú?~ú»•ÆJú½yó¼ú=±†/úC·UV ú?~r‘ú==ú½ƒ¥éú=ªÜoúCÈ  ú?~ eú=ŠÇ•ú½Š%ú=£ø†úCØª¬ ú?}s‡ú=ÌçÈú½‹®ú=’ûÍúCéUV ú?|ÜÄú>Œ^ú½ˆIiú=oë	úCú   ú?|óú> ƒ‹ú½„ÂBú=9¡ úDUV ú?{ô’ú>)xÔú½Qâñú=¢úDª¬ ú?{ÍXú>2_lú½/.ú<âåJúD   ú?{Ãìú>4(^ú½ìIú<Æ‰úDUV ú?{âÇú>.ÚÆú½9"Wú<ÖÆúD&ª« ú?{ù»ú>)‡Íú½`Qúú<åŸxúD/  ú?{¹™ú>)ú½´‘ú=7´úD7UV ú?{*¥ú>fŒú½÷ÍÀú=u(úD?ª« ú?zªFú>öú¾¨ú=+ˆ‡ÿÿŸrQTimelineKeyframesŸú     ú?Tòú½èú<İ[àú?õ}úBUV ú?T·Gú½†~ú<Óq_ú?û¹úB…UV ú?U\Oú½ü1ú<É…‹ú?úBÈ  ú?VWú½Ù×ú<4òú?6úCUV ú?V¿Òú½%ú;s³7ú?
 ÷úC&ª« ú?WgÉú½+QJú¼  ú?	åŸúCH  ú?Wüzú¼½Ä†ú¼üsKú?	@úCiUV ú?Xd¢ú»’ımú½T5Úú?"úC…UV ú?XuÄú=ÒWú½ Èú?bóúC–   ú?W”Àú=Ø~®ú½~:¿ú?rpúC¦ª« ú?U¹Cú>0ŒUú½|-Zú?å¹úC·UV ú?Q,ú>!›ú½fÏŠú?î©úCÈ  ú?K6Öú>©»ú½OäXú?túCØª¬ ú?E.=ú>É3ú½pD'ú>ÿkÒúCéUV ú??
-ú>á­Äú½¤.÷ú>úT°úCú   ú?9hûú>ùh–ú½Ï°Jú>ôhÈúDUV ú?7‰iú>ÿãIú½ğççú>ñq²ÿÿŸrQTimelineKeyframesŸú     ú?//âú½"Htú>ê_ú¿+ñ¥úBUV ú?.÷éú½ &¶ú>ë£ú¿,,VúB…UV ú?.¿Şú½ú>ìØú¿,fíúBÈ  ú?.‡®ú½ñIú>ş;ú¿,*úCUV ú?.OSú½ë—ú>Ñú¿,ÏúC&ª« ú?.ëú½åãú>Aaú¿- ñúCH  ú?-âú½à:ú>`Wú¿-/£úCiUV ú?-­)ú½Ú‡ú>Dú¿-^FúC…UV ú?-zú½Õ›ú>œ§ú¿-Š¿úC–   ú?-J…ú½Ñ‘ú>¸~ú¿-´ıúC¦ª« ú?-Yú½Í|ú>ÔOú¿-ß8úC·UV ú?,ğùú½Æøú>ìvú¿._úCÈ  ú?,Çú½Àzú>‘Ÿú¿.'}úCØª¬ ú?,¢ú½¼ú>‘Yú¿.H,úCéUV ú?,€gú½¹Ğú>‘-¬ú¿.etúCú   ú?,^Çú½·ú>‘@ñú¿.‚±úDUV ú?,Eûú½µ¤ú>‘OXú¿.˜/úDª¬ ú?,-'ú½³Æú>‘]²ú¿.­°úD   ú?,ú½°†ú>‘iQú¿.¿"úDUV ú?,	ú½¬4ú>‘r@ú¿.Ì€úD&ª« ú?+úú½§Îú>‘{+ú¿.ÙáúD/  ú?+õ3ú½¨nú>‘}öú¿.ŞúD7UV ú?+ğVú½¨øú>‘€Àú¿.âMúDH  ú?+õ3ú½¨lú>‘}÷ú¿.ŞúDPUV ú?+úú½§Îú>‘{+ú¿.ÙáúDXª¬ ú?,	ú½¬6ú>‘rAú¿.ÌúDa  ú?,ú½°†ú>‘iQú¿.¿"úDiUV ú?,-'ú½³Æú>‘]²ú¿.­°úDqª« ú?,Eúú½µ¤ú>‘OWú¿.˜0úDz   ú?,^Çú½·ú>‘@ñú¿.‚±úD*« ú?,€gú½¹Ğú>‘-¬ú¿.etúD…UV ú?,¢ú½¼ú>‘Xú¿.H+úD‰€  ú?,Çú½Àyú>‘Ÿú¿.'~úDª¬ ú?,ğúú½Æøú>ìvú¿.^úD‘ÕV ú?-Yú½Í|ú>ÔOú¿-ß8úD–   ú?-J…ú½Ñ‘ú>¸~ú¿-´ıúDš*« ú?-zŸú½Õœú>œ©ú¿-Š¾úDUV ú?-­)ú½Ú…ú>Dú¿-^FúD¢€ ú?-âú½à=ú>`Yú¿-/¥úD¦ª« ú?.ëú½åáú>Aaú¿- ñúDªÕV ú?.OSú½ëŸú>Òú¿,ÏúD¯  ú?.‡®ú½ñGú>ş>ú¿,+úD³*« ú?.À»ú½÷ú>ÜPú¿,jwúD·UV ú?.ú€ú½ı6ú>º&ú¿,6òúD»€ ú?/47ú½/ú>—âú¿,]úD¿ª« ú?/môú½	æú>u`ú¿+Ï©úDÃÕV ú?/§ú½iú>Rµú¿+›ëúDÈ  ú?/àmú½\ú>0}ú¿+hÒúDÌ*¬ ú?0bú½Çú>®ú¿+6búDĞUV ú?0PMú½!ú>ìÌú¿+ÜúDÔ€  ú?0„[ú½&Vú>Íjú¿*Ô¬úDØª¬ ú?0¸aú½+¬ú>­óú¿*¥kúDÜÕV ú?0éüú½1Uú>Ôú¿*xDúDá  ú?17ú½7/ú>rıú¿*M7úDå*« ú?1Hcú½<ûú>Vú¿*" úDéUV ú?1pÎú½Aîú>=ú¿)ıúDí€ ú?1™3ú½Fú>%ú¿)×ıúDñª« ú?1½âú½Jú>¥ú¿)¶IúDõÕW ú?1ŞÕú½Kòú>úGú¿)˜úDú   ú?1ÿÉú½Måú>åìú¿)y®úDş*¬ ú?2Ëú½Pƒú>×Fú¿)cúE*« ú?2/Ïú½Rùú>È›ú¿)MMúE@ ú?2CEú½Töú>¼¥ú¿);PúEUV ú?2R;ú½Veú>³`ú¿)-|úEj« ú?2a,ú½W×ú>ªú¿)©úE	€  ú?2fú½Z=ú>¦Ïú¿).úE•U ú?2jùú½\Íú>£}ú¿)²úEÀ ú?2fú½Z=ú>¦Îú¿)/úEÕV ú?2a,ú½W×ú>ªú¿)©úEê« ú?2R:ú½Vaú>³_ú¿)-{úE   ú?2CEú½Töú>¼¥ú¿);PúEV ú?2/Îú½R÷ú>Èšú¿)MNúE*« ú?2Ëú½Pƒú>×Eú¿)cúE@ ú?1ÿÉú½Måú>åìú¿)y®úEUV ú?1ŞÕú½Kòú>úGú¿)˜úE j« ú?1½âú½Jú>¥ú¿)¶IúE"€ ú?1™4ú½Fú>%ú¿)×ÿúE$•V ú?1pÎú½Aîú>=ú¿)ıúE&ª« ú?1Hcú½<ûú>Vú¿*" úE(À  ú?17ú½7*ú>rüú¿*M7úE*ÕV ú?0éıú½1Sú>Óú¿*xDúE,ê¬ ú?0¸cú½+¬ú>­ğú¿*¥júE/  ú?0„\ú½&\ú>Íkú¿*Ô¬úE1V ú?0PMú½!ú>ìÌú¿+ÜúE3*« ú?0bú½Çú>®ú¿+6búE5@  ú?/àoú½Xú>0~ú¿+hÓúE7UV ú?/¨zú½mú>B=ú¿+ŸqúE9j¬ ú?/p…ú½ßÎú>CÖú¿+Ú<úE;€ ú?/8xú½½ú>E_ú¿,öÿÿŸrQTimelineKeyframesŸú     ú?tÔëú=tÅ™ú½˜Çğú>X¥úB…UM ú?tÕBú=tèÓú½˜™¡ú>XtúBÇÿô ú?tÖú=u.ú½˜<…ú>WuúCUM ú?tÖÏú=usú½—ßfú>VrúC&ª° ú?tÛú=˜:8ú½“)”ú>‹»«úCH  ú?tÑ?ú=µ²Ìú½k>ú>ŠÎúCiUV ú?t©Òú=æs*ú½ˆrÈú>†ûÁúC…UU ú?t6üú>&_ú½&ìú>‚KjúC•ÿş ú?syJú>6ådú½sg)ú>zæ>úC¦ª¨ ú?r…‚ú>SÁ ú½gé£ú>sˆ4úC·UR ú?q[Ûú>pm·ú½\8Àú>kôúCÇÿû ú?p›„ú>€itú½V·Hú>g9kúCØª­ ú?pkÎú>‚‹sú½W‰§ú>e~§úCéUV ú?p:Îú>„¬Éú½XZîú>cÂËúCú   ú?qTğú>uèëú½z#uú>dÆúDUU ú?rSeú>b\	ú½ç§ú>e¯*úDªª ú?soú>I¬¨ú½¢&İú>f•èúDÿş ú?tÏú>+Èú½¹»:ú>ga9úDUS ú?um«ú>¸ú½Ñ×ú>gñ)úD&ª¬ ú?v‰ú=Üc_ú½è Ğú>hWjúD/  ú?v}Pú=İú½şáŸú>h}rúD7UV ú?v–ú=KÆú¾	 ú>iêúD?ªª ú?vxîú<Û\èú¾ ú>jÇúDGÿÿ ú?v6–ú;xdú¾îú>jó'úDPUT ú?uõïú»£š²ú¾Ï*ú>mü~úDXª© ú?u¯¥ú¼a³>ú¾Ìú>q )úDa  ú?ud!ú¼ŒTcú¾}úú>tğ´úDiUV ú?uLú¼v²Aú¾¡dú>yĞáÿÿŸrQTimelineKeyframesŸú     ú?v›ú;Óûú>³.ú>t_úBUV ú?v^‘ú;±Å,ú>	mú>qÚ‹úB…UV ú?v«âú;ú>&ú>oTcúE*« ú?{Y ú=’V¨ú=•À×ú>#¶-úE@ ú?zDêú=‚Z¶ú=¿dú>5³¾úEUV ú?yO½ú=pÆ®ú=ßâú>BöçúE j« ú?x>)ú=\¼Šú=ş°7ú>P#ÜúE"€ ú?w^1ú=G‡Ûú>
+ú>á­Äú½¤.÷ú>úT°úCú   ú?9hûú>ùh–ú½Ï°Jú>ôhÈúDUV ú?7‰iú>ÿãIú½ğççú>ñq²ÿÿŸrQTimelineKeyframesŸú     ú?//âú½"Htú>ê_ú¿+ñ¥úBUV ú?.÷éú½ &¶ú>ë£ú¿,,VúB…UV ú?.¿Şú½ú>ìØú¿,fíúBÈ  ú?.‡®ú½ñIú>ş;ú¿,*úCUV ú?.OSú½ë—ú>Ñú¿,ÏúC&ª« ú?.ëú½åãú>Aaú¿- ñúCH  ú?-âú½à:ú>`Wú¿-/£úCiUV ú?-­)ú½Ú‡ú>Dú¿-^FúC…UV ú?-zú½Õ›ú>œ§ú¿-Š¿úC–   ú?-J…ú½Ñ‘ú>¸~ú¿-´ıúC¦ª« ú?-Yú½Í|ú>ÔOú¿-ß8úC·UV ú?,ğùú½Æøú>ìvú¿._úCÈ  ú?,Çú½À{ú>‘ ú¿.'~úCØª¬ ú?,¢ú½¼ú>‘Yú¿.H,úCéUV ú?,€gú½¹Ğú>‘-¬ú¿.etúCú   ú?,^Çú½·ú>‘@ñú¿.‚±úDUV ú?,Eúú½µ£ú>‘OWú¿.˜.úDª¬ ú?,-'ú½³Æú>‘]²ú¿.­°úD   ú?,ú½°†ú>‘iQú¿.¿"úDUV ú?,	ú½¬3ú>‘r?ú¿.ÌúD&ª« ú?+úú½§Îú>‘{+ú¿.ÙáúD/  ú?+õ3ú½¨nú>‘}öú¿.ŞúD7UV ú?+ğVú½¨øú>‘€Àú¿.âMúDH  ú?+õ2ú½¨kú>‘}öú¿.ŞúDPUV ú?+úú½§Îú>‘{+ú¿.ÙáúDXª¬ ú?,	ú½¬6ú>‘rAú¿.ÌúDa  ú?,ú½°†ú>‘iQú¿.¿"úDiUV ú?,-'ú½³Æú>‘]²ú¿.­°úDqª« ú?,Eúú½µ¤ú>‘OWú¿.˜0úDz   ú?,^Çú½·ú>‘@ñú¿.‚±úD*« ú?,€gú½¹Ğú>‘-¬ú¿.etúD…UV ú?,¢ú½¼ú>‘Xú¿.H+úD‰€  ú?,Çú½Àyú>‘Ÿú¿.'~úDª¬ ú?,ğúú½Æøú>ìvú¿.^úD‘ÕV ú?-Yú½Í|ú>ÔOú¿-ß8úD–   ú?-J…ú½Ñ‘ú>¸~ú¿-´ıúDš*« ú?-zŸú½Õœú>œ©ú¿-Š¾úDUV ú?-­)ú½Ú…ú>Dú¿-^FúD¢€ ú?-âú½à<ú>`Xú¿-/¤úD¦ª« ú?.ëú½åáú>Aaú¿- ñúDªÕV ú?.OSú½ëŸú>Òú¿,ÏúD¯  ú?.‡­ú½ñFú>ş=ú¿,*úD³*« ú?.À»ú½÷ú>ÜPú¿,jwúD·UV ú?.ú€ú½ı6ú>º&ú¿,6òúD»€ ú?/47ú½/ú>—âú¿,]úD¿ª« ú?/môú½	æú>u`ú¿+Ï©úDÃÕV ú?/§ú½iú>Rµú¿+›ëúDÈ  ú?/ànú½]ú>0~ú¿+hÓúDÌ*¬ ú?0bú½Çú>®ú¿+6búDĞUV ú?0PMú½!ú>ìÌú¿+ÜúDÔ€  ú?0„[ú½&Vú>Íjú¿*Ô¬úDØª¬ ú?0¸aú½+¬ú>­óú¿*¥kúDÜÕV ú?0éüú½1Uú>Ôú¿*xDúDá  ú?16ú½7.ú>rüú¿*M6úDå*« ú?1Hcú½<ûú>Vú¿*" úDéUV ú?1pÎú½Aîú>=ú¿)ıúDí€ ú?1™4ú½Fú>%ú¿)×şúDñª« ú?1½âú½Jú>¥ú¿)¶IúDõÕW ú?1ŞÕú½Kòú>úGú¿)˜úDú   ú?1ÿÉú½Måú>åìú¿)y®úDş*¬ ú?2Ëú½Pƒú>×Fú¿)cúE*« ú?2/Ïú½Rùú>È›ú¿)MMúE@ ú?2CEú½Töú>¼¥ú¿);PúEUV ú?2R;ú½Veú>³`ú¿)-|úEj« ú?2a,ú½W×ú>ªú¿)©úE	€  ú?2fú½Z=ú>¦Ïú¿).úE•U ú?2jøú½\Ìú>£|ú¿)±úEÀ ú?2fú½Z=ú>¦Îú¿)/úEÕV ú?2a,ú½W×ú>ªú¿)©úEê« ú?2R;ú½Vbú>³`ú¿)-|úE   ú?2CEú½Töú>¼¥ú¿);PúEV ú?2/Îú½R÷ú>Èšú¿)MNúE*« ú?2Ëú½Pƒú>×Eú¿)cúE@ ú?1ÿÉú½Måú>åìú¿)y®úEUV ú?1ŞÕú½Kòú>úGú¿)˜úE j« ú?1½âú½Jú>¥ú¿)¶IúE"€ ú?1™3ú½Fœú>%ú¿)×şúE$•V ú?1pÎú½Aîú>=ú¿)ıúE&ª« ú?1Hcú½<ûú>Vú¿*" úE(À  ú?17ú½7*ú>rüú¿*M7úE*ÕV ú?0éıú½1Sú>Óú¿*xDúE,ê¬ ú?0¸cú½+¬ú>­ğú¿*¥júE/  ú?0„\ú½&\ú>Íkú¿*Ô¬úE1V ú?0PMú½!ú>ìÌú¿+ÜúE3*« ú?0bú½Çú>®ú¿+6búE5@  ú?/àoú½Xú>0~ú¿+hÓúE7UV ú?/¨zú½mú>B=ú¿+ŸqúE9j¬ ú?/p…ú½ßÎú>CÖú¿+Ú<úE;€ ú?/8xú½½ú>E_ú¿,öÿÿŸrQTimelineKeyframesŸú     ú?tÔëú=tÅ™ú½˜Çğú>X¥úB…UM ú?tÕBú=tèÓú½˜™¡ú>XtúBÇÿô ú?tÖú=u.ú½˜<…ú>WuúCUM ú?tÖÏú=usú½—ßfú>VrúC&ª° ú?tÛú=˜:8ú½“)”ú>‹»«úCH  ú?tÑ?ú=µ²Ìú½k>ú>ŠÎúCiUV ú?t©Òú=æs*ú½ˆrÈú>†ûÁúC…UU ú?t6üú>&_ú½&ìú>‚KjúC•ÿş ú?syJú>6ådú½sg)ú>zæ>úC¦ª¨ ú?r…‚ú>SÁ ú½gé£ú>sˆ4úC·UR ú?q[Ûú>pm·ú½\8Àú>kôúCÇÿû ú?p›„ú>€itú½V·Hú>g9kúCØª­ ú?pkÎú>‚‹sú½W‰§ú>e~§úCéUV ú?p:Îú>„¬Éú½XZîú>cÂËúCú   ú?qTğú>uèëú½z#uú>dÆúDUU ú?rSeú>b\	ú½ç§ú>e¯*úDªª ú?soú>I¬¨ú½¢&İú>f•èúDÿş ú?tÏú>+Èú½¹»:ú>ga9úDUS ú?um«ú>¸ú½Ñ×ú>gñ)úD&ª¬ ú?v‰ú=Üc_ú½è Ğú>hWjúD/  ú?v}Pú=İú½şáŸú>h}rúD7UV ú?v–ú=KÆú¾	 ú>iêúD?ªª ú?vxîú<Û\èú¾ ú>jÇúDGÿÿ ú?v6–ú;xdú¾îú>jó'úDPUT ú?uõïú»£š²ú¾Ï*ú>mü~úDXª© ú?u¯¥ú¼a³>ú¾Ìú>q )úDa  ú?ud!ú¼ŒTcú¾}úú>tğ´úDiUV ú?uLú¼v²Aú¾¡dú>yĞáÿÿŸrQTimelineKeyframesŸú     ú?v›ú;Óûú>³.ú>t_úBUV ú?v^‘ú;±Å,ú>	mú>qÚ‹úB…UV ú?v«âú;ú>&ú>oTcúE*« ú?{Y ú=’V¨ú=•À×ú>#¶-úE@ ú?zDêú=‚Z¶ú=¿dú>5³¾úEUV ú?yO½ú=pÆ®ú=ßâú>BöçúE j« ú?x>)ú=\¼Šú=ş°7ú>P#ÜúE"€ ú?w^1ú=G‡Ûú>
 ³rú>ZŸ<úE$•V ú?v¾^ú=15Êú>¤ƒú>buúE&ª« ú?v´ú=İ¾ú>?ú>jB²úE(À  ú?uãÏú=p½ú>Æ¯ú>n9 úE*ÕV ú?u¯ú<Ü ú>ûOú>r,€úE,ê¬ ú?u—ú<µpŒú>éú>tÓ@úE/  ú?uLú<•'¨ú>²ú>v.:úE1V ú?u£©ú<i»çú>7iú>w‡ÂúE3*« ú?uü6ú<-îú>SVú>sçËÿÿŸrQTimelineKeyframesŸú     ú?xeiú¼÷vmú=cxú>oìúBUV ú?ua^ú¼¿ÿú=a‰ğú>°§úB…UV ú?qÑbú¼†Xú=_3ú>¥xúBÈ  ú?n`+ú¼?Urú=Yªâú>¸˜áúCUV ú?kDuú¼~ú=Qlú>ÈúC&ª« ú?gè$ú»Úú—ú=HóÀú>×[1úCH  ú?gè]ú»è"Bú=G”Íú>×^qúCiUV ú?gè•ú»õIìú=F5Úú>×a°úC…UV ú?jåUú¼)Ünú=KÕBú>Éå§úC–   ú?pF„ú¼€ Gú=Wî<ú>®kúC¦ª« ú?tÙú¼«ã¹ú=cM‚ú>’ZzúC·UV ú?}\ú½f„ú=|Xú> úCÈ  ú?Xú½ICÄú=‡J¬ú¼À†úCØª¬ ú?{’öú½v… ú=Œ­Ùú¾$ëúCéUV ú?t¢¡ú½Œşëú=$œú¾@)úCú   ú?j)nú½œ±Àú=‰éú¾ÇüúDUV ú?fk£ú½ æ\ú=Bxú¾Ø~úDª¬ ú?bc²ú½¤ç2ú=Ìíú¾è¹ÆúD   ú?_‚ïú½§{ú=c£ú¾óúDUV ú?]ù“ú½¨Æhú=$êú¾ù]úD&ª« ú?\g•ú½ª
 –ú=à¥ú¾ş}àúD/  ú?^¦÷ú½¨6ú=AUú¾ö›DúD7UV ú?`Ôzú½¦Sàú=–ú¾î¤rúD?ª« ú?mdªú½˜–1ú=£íú¾¸T1úDH  ú?{ôú½s¬¦ú=Œhú¾·øúDPUV ú?~¾ùú½*Ëpú=‚cú=€üiúDXª¬ ú?zàZú¼øàú=t$Õú>?ıúDa  ú?sú¼˜5³ú=_, ú>7×úDiUV ú?nºÊú¼`séú=U£7ú>¶Ë¼úDqª« ú?pÎmú¼‚â8ú=Z%^ú>«iõúDz   ú?r¿'ú¼•wú=^‡çú>ŸïRúD*« ú?uú¼­²ú=d ú>¿çúD…UV ú?w-Êú¼ÅÁ]ú=ii@ú>loúD‰€  ú?xŠQú¼Öø—ú=mú>l›´úDª¬ ú?yO¹ú¼át8ú=oTú>^ñÿÿŸrQTimelineKeyframesŸú     ú?\{Ìú>À–ãú½RÖéú¾¬ï€úBUV ú?Xcú>îÜöú½Ùï7ú¾s‡ÒúB…UV ú?O§!ú?Gú¾"ã¨ú¾øúBÈ  ú?Vµú>ÿó‹ú¾]iTú½‡&‹úCUV ú?h6ú>£‡iú¾‹â…ú½m.úC&ª« ú?p}mú> ›üú¾£>Şú¼Y
 úCH  ú?rÇ¢ú<ŠMú¾ Šçú½7°úCiUV ú?qÙ²ú½¼†Ãú¾›µ÷ú½¥m$úC…UV ú?u(5ú¾Õú¾Aı«ú¾(ólúC–   ú?ráöú½ûéQú=lú¾“ò”úC¦ª« ú?`‹
@@ -3368,9 +3368,8 @@ tìú½–úD?ªª ú?yb;ú>d÷¶ú9¯‡ú½júDGÿÿ ú?yM]ú>fTaú9H_ú½š³úDPUT ú?z“ú>Y(èú:›ô
 ÇúDéUV ú?í;ú>Ì"§ú>œ]úú?#¶úDí€ ú?³áú>Áï³ú>–ú? «úDñª« ú?lÙú>º«ú>’{ú?!x.úDõÕW ú?")Ùú>¶kú>¡àú? H-úDú   ú?$İêú>²!5ú>#}ú?wúDş*¬ ú?''Kú>·yú>‹äú?ë™úE*« ú?)`ú>¼¿‰ú>‡êlú?¸>úE@ ú?*ÿÀú>Ã¨Qú>†n ú?)úEUV ú?, eú>Ì,~ú>‡‡ú?Í·úEj« ú?,è1ú>Ô“ú>‡§aú?QúE	€  ú?-„×ú>Ù|ˆú>‹6ú?ôõúE•U ú?.€ú>ŞS(ú>¸Œú?\´úEª¬ ú?.ø
 ú>âÆú>Áú?Ğ€úEÀ ú?08ú>æ/ú>‘Q˜ú>ü¤¡úEÕV ú?1l7ú>éÁÊú>‘Øaú>õ—¢úEê« ú?5*ú>ïaú>‹İÍú>èşªúE   ú?8[ú>ô©ú>…½“ú>Ü&äúEV ú?=wïú>øÖú>xBú>Ë	úE*« ú?Cƒöú>ılú>]µ÷ú>µ[•úE@ ú?Hõ<ú? J6ú>Bzdú>Ÿ™úEUV ú?QÅ}ú>ù±`ú>ú>†NşúE j« ú?Yoçú>ñp¡ú=×îú>Y†ªúE"€ ú?`áoú>ä* ú=‡8Óú>#.MúE$•V ú?gäÿú>ÑÅóú<ù~ú=Ó‡õúE&ª« ú?miqú>¾6ú»±W‹ú=>«ÛúE(À  ú?q}&ú>©’ú¼£+-ú¼	úE*ÕV ú?tWú>”@†ú½–aú½„áúE,ê¬ ú?uÊú>€Ëøú½'p7ú½ëzúE/  ú?vSú>^ç=ú½"2ßú¾'€àúE1V ú?u•ú>;nBú½cÄú¾X¤úE3*« ú?tñKú>Ğú½=Âú¾y$ÀúE5@  ú?sÛ‹ú>iàú½Ò ú¾Œ™úE7UV ú?rĞÛú=ÏH”ú½U
 ú¾˜ „úE9j¬ ú?r«ú=¢Á5ú½äQú¾ ÂëúE;€ ú?q½ú=l6lú½VØú¾¨ÆïúE=•V ú?p‰ú=<Sëú½-çµú¾¬M¥úE?ª« ú?oüôú=fú½<pú¾¯ËŸúEAÀ ú?o¡ú<ĞLú½Kc	ú¾±àYúECÕV ú?o|ú<Ÿ(ÿú½ZÆœú¾²ÿúEEê« ú?oSÓú<\oú½j',ú¾³?CúEH  ú?o‘ú;ò)ú½t³Ùú¾±Ó#úEJV ú?oÌ ú:°Uú½=_ú¾°dúEL*¬ ú?p6ú»‡gêú½„<Hú¾®¼QúEN@ ú?p[>ú¼2$ú½ˆ3ú¾¬ÚˆúEPUV ú?p¤¢ú¼d®Dú½Œ(Kú¾ªöØúERj« ú?pÓûú¼b£ú½¹¶ú¾©ËÅúET€  ú?q½ú¼mŞú½JÈú¾¨ 2úEV•V ú?q*wú¼›ªiú½÷ú¾§¶ÄúEXª¬ ú?qKnú¼£Šú½ŒÀcú¾§¹úEZÀ ú?ql(ú¼ª†wú½Š‰ú¾¦h}úE\ÕV ú?qŠãú¼­vYú½‡ïú¾¥ßÆÿÿŸrQTimelineKeyframesŸú     ú?wÄú¾Aå¼ú>ß[ú½­$éúBUV ú?xÌ»ú¾19ú>Ïú½¢œĞúB…UV ú?yÀ±ú¾ Gğú>
-&qú½˜?úBÈ  ú?zÄú¾¿*ú>¨ßú½™^úCUV ú?{ÍÚú½ó ıú=õ ú½ƒOúC&ª« ú?|¶¤ú½ÊcÚú=â¾+ú½qçGúCH  ú?|Æú½ĞØ ú=×=ú½uY]úCiUV ú?|Ó¼ú½×Iğú=Ë¹zú½xÈÄúC…UV ú?|X8ú½ë	Èú=İä>ú½pb4úC–   ú?{-ú¾ù ú>Ì¼ú½\(úC¦ª« ú?yËˆú¾PRú>Š#ú½GpcúC·UV ú?wœÈú¾/Tªú>:‹Ïú½4å‹úCÈ  ú?uİú¾H|ú>VHÔú½"<úCØª¬ ú?rÂ…ú¾døú>c5Êú½)NşúCéUV ú?p»cú¾‚`øú>a[Şú½J‘¬úCú   ú?no:ú¾’Tú>_ATú½kšBúDUV ú?m„œú¾Ôµú>GÔNú½ŸûúDª¬ ú?lAmú¾©ú>0Ãú½ÉKúD   ú?locú¾ª…²ú>2Tú½ß’“úDUV ú?n=ûú¾¢7¸ú>:Şú½ã&cúD&ª« ú?oóˆú¾™Ø³ú>3¼ú½æ¢aúD/  ú?r¤Íú¾ˆÖ´ú>Tüú½Ğ §úD7UV ú?u—ú¾oJ)ú>Cùú½¹VrúD?ª« ú?vœú¾TQ=ú>}oú½©~ÿÿŸrQTimelineKeyframesŸú     ú?W¸ú¼éç{ú½JÖ‹ú¿	ñúBUV ú?WZ>ú½àÖú½W&cú¿	pwúB…UV ú?V÷ãú½8Ë ú½cqÙú¿	ÍúBÈ  ú?W ×ú½E8^ú½Nìmú¿	œGúCUV ú?WĞ£ú½<$xú½`ú¿ÛúC&ª« ú?Xuæú½3œú¼È\Hú¿9úCH  ú?Z™–ú¼­66ú»ú©ú¿ãúCiUV ú?\…ú:¼ï€ú<ÌÄú¿ –úC…UV ú?^2îú=0+fú<ıú¾ı(9úC–   ú?_%'ú=ÓÅÑú<ùú¾õèúC¦ª« ú?_8+ú>'Qú<Òú¾ì"fúC·UV ú?ZéÚú>uİ´ú<ÜuÑú¾êÖ®úCÈ  ú?U<_ú>¡oşú=ü˜ú¾èCúCØª¬ ú?MËzú>Ä©%ú=]Ç˜ú¾æÚßúCéUV ú?Dµ¼ú>ät@ú=¤}ú¾çGŠúCú   ú?:|Yú?vPú=ØeÙú¾æ]JúDUV ú?5,ú?Şıú=õóvú¾ç;¼ÿÿŸrQTimelineKeyframesŸú     ú?(Xú½cı ú¾¤Î–ú?.úBUV ú?(<~ú½e˜äú¾¤ß†ú?-ŞÇúB…UV ú?(u’ú½g4|ú¾¤ğNú?-¡[úBÈ  ú?(®„ú½gÇú¾¤ğÃú?-i(úCUV ú?(çgú½gRú¾¤àùú?-6 úC&ª« ú?) 2ú½fÜ{ú¾¤Ñú?-úCH  ú?)U(ú½fpYú¾¤Áÿú?,ÓfúCiUV ú?)Šú½fú¾¤²Ïú?,£¬úC…UV ú?)¼¡ú½eœ$ú¾¤¤}ú?,uîúC–   ú?)ìÎú½e8€ú¾¤—ú?,J5úC¦ª« ú?*ñú½dÔÁú¾¤‰yú?,núC·UV ú?*F
-ú½d€ãú¾¤}ú?+ùúCÈ  ú?*o ú½d,Ùú¾¤qvú?+Ó¬úCØª¬ ú?*”nú½càeú¾¤f‚ú?+±¨úCéUV ú?*µøú½c›@ú¾¤\¤ú?+“úCú   ú?*×|ú½cVú¾¤R¸ú?+tgúDUV ú?*ïîú½c# ú¾¤K¢ú?+]üúDª¬ ú?+Yú½bïğú¾¤DŠú?+G•úD   ú?+(ú½bÇ†ú¾¤>ßú?+5\úDUV ú?++gú½b©ú¾¤:…ú?+'TúD&ª« ú?+:ú½b‹³ú¾¤6<ú?+IúD/  ú?+?ú½b6ú¾¤4›ú?+ÈúD7UV ú?+D|ú½bv¼ú¾¤2öú?+MúDH  ú?+?ú½b6ú¾¤4›ú?+ÈúDPUV ú?+:ú½b‹³ú¾¤6<ú?+IúDXª¬ ú?++eú½b©†ú¾¤:„ú?+'SúDa  ú?+)ú½bÇ…ú¾¤>Şú?+5[úDiUV ú?+Yú½bïõú¾¤D‹ú?+G•úDqª« ú?*ïïú½c#ú¾¤K¥ú?+]üúDz   ú?*×|ú½cVú¾¤R¸ú?+tgúD*« ú?*µøú½c›@ú¾¤\¤ú?+“úD…UV ú?*”oú½càaú¾¤fú?+±§úD‰€  ú?*o ú½d,Øú¾¤qtú?+Ó¬úDª¬ ú?*Fú½d€åú¾¤}‚ú?+ùúD‘ÕV ú?*ñú½dÔÁú¾¤‰yú?,núD–   ú?)ìÎú½e8€ú¾¤—ú?,J5úDš*« ú?)¼¡ú½eœ"ú¾¤¤zú?,uîúDUV ú?)Šú½fú¾¤²Íú?,£­úD¢€ ú?)U)ú½fpVú¾¤Áşú?,ÓeúD¦ª« ú?) 2ú½fÜvú¾¤Ñú?-úDªÕV ú?(çfú½gRú¾¤àùú?-6 úD¯  ú?(®†ú½gÇŸú¾¤ğÃú?-i(úD³*« ú?(t¿ú½h>„ú¾¥ ßú?-œÖúD·UV ú?(:ú½h¶ ú¾¥)ú?-Ñ4úD»€ ú?'ÿJú½i.Åú¾¥!tú?.†úD¿ª« ú?'Äú½i¥qú¾¥1fú?.9ÁúDÃÕV ú?'‰µú½jıú¾¥AKú?.mõúDÈ  ú?'Oºú½j×ú¾¥Q
-ú?.¡=úDÌ*¬ ú?'ú½k Ôú¾¥`˜ú?.Ó«úDĞUV ú?&İRú½kqÜú¾¥pú?/úDÔ€  ú?&§ú½kà[ú¾¥~šú?/5KúDØª¬ ú?&q¥ú½lNÒú¾¥ú?/dxúDÜÕV ú?&>Kú½l¸ú¾¥š¢ú?/‘dúDá  ú?&xú½m'ú¾¥§Uú?/¼úDå*« ú?%Üœú½m€Uú¾¥´ú?/æ£úDéUV ú?%²…ú½mÏ<ú¾¥¿„ú?01úDí€ ú?%ˆmú½nú¾¥Êæú?0/«úDñª« ú?%bKú½niú¾¥Õú?0P¬úDõÕW ú?%@'ú½n°*ú¾¥İúú?0n7úDú   ú?%÷ú½n÷Hú¾¥æãú?0‹¾úDş*¬ ú?%·ú½o)Õú¾¥í5ú?0¡˜úE*« ú?$ëiú½o\~ú¾¥óú?0·vúE@ ú?$Öıú½o„ú¾¥øÙú?0ÉúEUV ú?$Çsú½o¢ú¾¥ıú?0ÖeúEj« ú?$·ëú½o¿”ú¾¦Cú?0ã¹úE	€  ú?$²Çú½oËªú¾¦=ú?0è5úE•U ú?$­²ú½o×¨ú¾¦4ú?0ì¨úEÀ ú?$²Çú½oËªú¾¦<ú?0è6úEÕV ú?$·ëú½o¿”ú¾¦Cú?0ã¹úEê« ú?$Çtú½o¢ú¾¥ıú?0ÖcúE   ú?$Öıú½o„ú¾¥øÙú?0ÉúEV ú?$ëiú½o\ú¾¥óú?0·uúE*« ú?%¶ú½o)Ôú¾¥í5ú?0¡˜úE@ ú?%÷ú½n÷Hú¾¥æãú?0‹¾úEUV ú?%@'ú½n°'ú¾¥İùú?0n6úE j« ú?%bKú½niú¾¥Õú?0P­úE"€ ú?%ˆnú½nú¾¥Êçú?0/«úE$•V ú?%²…ú½mÏ9ú¾¥¿ƒú?01úE&ª« ú?%Üœú½m€Uú¾¥´ú?/æ£úE(À  ú?&yú½m,ú¾¥§Vú?/¼úE*ÕV ú?&>Lú½l¸ú¾¥š¢ú?/‘cúE,ê¬ ú?&q¤ú½lNÔú¾¥ú?/dxúE/  ú?&§€ú½kàXú¾¥~˜ú?/5KúE1V ú?&İRú½kqÜú¾¥pú?/úE3*« ú?'‘ú½k Ôú¾¥`˜ú?.ÓªúE5@  ú?'O»ú½jÚú¾¥Qú?.¡=úE7UV ú?'ˆéú½k&Oú¾¥Qßú?.icúE9j¬ ú?'Âú½lÄlú¾¥c#ú?.,%úE;€ ú?'û"ú½nbxú¾¥tXú?-îËÿÿŸrQTimelineKeyframesŸú     ú?l9„ú=‚h¢ú>90ú¾«+ZúBUM ú?l9Œú=‚g'ú>90Wú¾«+PúB…UM ú?l8Mú=‚3‚ú>9P¸ú¾«+ÛúBÇÿô ú?l5Íú=Íyú>9‘Àú¾«,äúCUM ú?l3Oú=gˆú>9Ò«ú¾«-éúC&ª° ú?k«ú=.‘ú>BgĞú¾«#™úCH  ú?k2ú=˜ññú>J÷¤ú¾«§úCiUV ú?iáhú=¶±ú>ZZú¾«HÊúC…UU ú?gÌûú=æHlú>peÑú¾« XúC•ÿş ú?eyú>
+&qú½˜?úBÈ  ú?zÄú¾¿*ú>¨ßú½™^úCUV ú?{ÍÚú½ó ıú=õ ú½ƒOúC&ª« ú?|¶¤ú½ÊcÚú=â¾+ú½qçGúCH  ú?|Æú½ĞØ ú=×=ú½uY]úCiUV ú?|Ó¼ú½×Iğú=Ë¹zú½xÈÄúC…UV ú?|X8ú½ë	Èú=İä>ú½pb4úC–   ú?{-ú¾ù ú>Ì¼ú½\(úC¦ª« ú?yËˆú¾PRú>Š#ú½GpcúC·UV ú?wœÈú¾/Tªú>:‹Ïú½4å‹úCÈ  ú?uİú¾H|ú>VHÔú½"<úCØª¬ ú?rÂ…ú¾døú>c5Êú½)NşúCéUV ú?p»cú¾‚`øú>a[Şú½J‘¬úCú   ú?no:ú¾’Tú>_ATú½kšBúDUV ú?m„œú¾Ôµú>GÔNú½ŸûúDª¬ ú?lAmú¾©ú>0Ãú½ÉKúD   ú?locú¾ª…²ú>2Tú½ß’“úDUV ú?n=ûú¾¢7¸ú>:Şú½ã&cúD&ª« ú?oóˆú¾™Ø³ú>3¼ú½æ¢aúD/  ú?r¤Íú¾ˆÖ´ú>Tüú½Ğ §úD7UV ú?u—ú¾oJ)ú>Cùú½¹VrúD?ª« ú?vœú¾TQ=ú>}oú½©~ÿÿŸrQTimelineKeyframesŸú     ú?W¸ú¼éç{ú½JÖ‹ú¿	ñúBUV ú?WZ>ú½àÖú½W&cú¿	pwúB…UV ú?V÷ãú½8Ë ú½cqÙú¿	ÍúBÈ  ú?W ×ú½E8^ú½Nìmú¿	œGúCUV ú?WĞ£ú½<$xú½`ú¿ÛúC&ª« ú?Xuæú½3œú¼È\Hú¿9úCH  ú?Z™–ú¼­66ú»ú©ú¿ãúCiUV ú?\…ú:¼ï€ú<ÌÄú¿ –úC…UV ú?^2îú=0+fú<ıú¾ı(9úC–   ú?_%'ú=ÓÅÑú<ùú¾õèúC¦ª« ú?_8+ú>'Qú<Òú¾ì"fúC·UV ú?ZéÚú>uİ´ú<ÜuÑú¾êÖ®úCÈ  ú?U<_ú>¡oşú=ü˜ú¾èCúCØª¬ ú?MËzú>Ä©%ú=]Ç˜ú¾æÚßúCéUV ú?Dµ¼ú>ät@ú=¤}ú¾çGŠúCú   ú?:|Yú?vPú=ØeÙú¾æ]JúDUV ú?5,ú?Şıú=õóvú¾ç;¼ÿÿŸrQTimelineKeyframesŸú     ú?(Xú½cı ú¾¤Î–ú?.úBUV ú?(<~ú½e˜äú¾¤ß†ú?-ŞÇúB…UV ú?(u’ú½g4|ú¾¤ğNú?-¡[úBÈ  ú?(®„ú½gÇú¾¤ğÃú?-i(úCUV ú?(çgú½gRú¾¤àùú?-6 úC&ª« ú?) 2ú½fÜ{ú¾¤Ñú?-úCH  ú?)U(ú½fpYú¾¤Áÿú?,ÓfúCiUV ú?)Šú½fú¾¤²Ïú?,£¬úC…UV ú?)¼¡ú½eœ$ú¾¤¤}ú?,uîúC–   ú?)ìÍú½e8~ú¾¤—ú?,J4úC¦ª« ú?*ñú½dÔÁú¾¤‰yú?,núC·UV ú?*Fú½d€åú¾¤}‚ú?+ùúCÈ  ú?*o ú½d,Ùú¾¤qvú?+Ó¬úCØª¬ ú?*”nú½càeú¾¤f‚ú?+±¨úCéUV ú?*µøú½c›@ú¾¤\¤ú?+“úCú   ú?*×{ú½cVú¾¤R·ú?+tfúDUV ú?*ïîú½c# ú¾¤K¢ú?+]üúDª¬ ú?+Yú½bïğú¾¤DŠú?+G•úD   ú?+(ú½bÇ†ú¾¤>ßú?+5\úDUV ú?++fú½b©‹ú¾¤:„ú?+'SúD&ª« ú?+:ú½b‹±ú¾¤6;ú?+HúD/  ú?+?ú½b4ú¾¤4šú?+ÇúD7UV ú?+D|ú½bv¼ú¾¤2öú?+MúDH  ú?+?ú½b6ú¾¤4›ú?+ÈúDPUV ú?+:ú½b‹±ú¾¤6;ú?+HúDXª¬ ú?++eú½b©†ú¾¤:„ú?+'SúDa  ú?+)ú½bÇ…ú¾¤>Şú?+5[úDiUV ú?+Yú½bïõú¾¤D‹ú?+G•úDqª« ú?*ïîú½c# ú¾¤K¤ú?+]ûúDz   ú?*×{ú½cVú¾¤R·ú?+tfúD*« ú?*µøú½c›@ú¾¤\¤ú?+“úD…UV ú?*”oú½càaú¾¤fú?+±§úD‰€  ú?*o ú½d,Øú¾¤qtú?+Ó¬úDª¬ ú?*Fú½d€ãú¾¤}ú?+ùúD‘ÕV ú?*ñú½dÔÁú¾¤‰yú?,núD–   ú?)ìÍú½e8~ú¾¤—ú?,J4úDš*« ú?)¼¡ú½eœ"ú¾¤¤zú?,uîúDUV ú?)Šú½fú¾¤²Íú?,£­úD¢€ ú?)U)ú½fpVú¾¤Áşú?,ÓeúD¦ª« ú?) 2ú½fÜvú¾¤Ñú?-úDªÕV ú?(çfú½gRú¾¤àùú?-6 úD¯  ú?(®…ú½gÇú¾¤ğÂú?-i'úD³*« ú?(t¿ú½h>„ú¾¥ ßú?-œÖúD·UV ú?(:ú½h¶ ú¾¥)ú?-Ñ4úD»€ ú?'ÿJú½i.Åú¾¥!tú?.†úD¿ª« ú?'Äú½i¥qú¾¥1fú?.9ÁúDÃÕV ú?'‰µú½jıú¾¥AKú?.mõúDÈ  ú?'Oºú½j×ú¾¥Q
+ú?.¡=úDÌ*¬ ú?'ú½k Ôú¾¥`˜ú?.Ó«úDĞUV ú?&İRú½kqÜú¾¥pú?/úDÔ€  ú?&§ú½kà[ú¾¥~šú?/5KúDØª¬ ú?&q¥ú½lNÒú¾¥ú?/dxúDÜÕV ú?&>Kú½l¸ú¾¥š¢ú?/‘dúDá  ú?&wú½m%ú¾¥§Tú?/¼úDå*« ú?%Üú½m€Wú¾¥´ú?/æ¤úDéUV ú?%²„ú½mÏ:ú¾¥¿ƒú?00úDí€ ú?%ˆmú½nú¾¥Êæú?0/«úDñª« ú?%bKú½niú¾¥Õú?0P¬úDõÕW ú?%@&ú½n°(ú¾¥İùú?0n6úDú   ú?%÷ú½n÷Hú¾¥æãú?0‹¾úDş*¬ ú?%¶ú½o)Óú¾¥í4ú?0¡—úE*« ú?$ëiú½o\~ú¾¥óú?0·vúE@ ú?$Öıú½o„ú¾¥øÙú?0ÉúEUV ú?$Çsú½o¢ú¾¥ıú?0ÖeúEj« ú?$·ëú½o¿”ú¾¦Cú?0ã¹úE	€  ú?$²Èú½oË¬ú¾¦>ú?0è6úE•U ú?$­²ú½o×¨ú¾¦4ú?0ì¨úEÀ ú?$²Çú½oËªú¾¦<ú?0è6úEÕV ú?$·ëú½o¿”ú¾¦Cú?0ã¹úEê« ú?$Çtú½o¢ú¾¥ıú?0ÖcúE   ú?$Öıú½o„ú¾¥øÙú?0ÉúEV ú?$ëiú½o\ú¾¥óú?0·uúE*« ú?%¶ú½o)Ôú¾¥í5ú?0¡˜úE@ ú?%÷ú½n÷Hú¾¥æãú?0‹¾úEUV ú?%@'ú½n°'ú¾¥İùú?0n6úE j« ú?%bKú½niú¾¥Õú?0P­úE"€ ú?%ˆnú½nú¾¥Êçú?0/«úE$•V ú?%²„ú½mÏ7ú¾¥¿‚ú?00úE&ª« ú?%Üú½m€Wú¾¥´ú?/æ¤úE(À  ú?&xú½m*ú¾¥§Uú?/¼úE*ÕV ú?&>Lú½l¸ú¾¥š¢ú?/‘cúE,ê¬ ú?&q¥ú½lNÖú¾¥ú?/dyúE/  ú?&§€ú½kàXú¾¥~˜ú?/5KúE1V ú?&İRú½kqÜú¾¥pú?/úE3*« ú?'‘ú½k Ôú¾¥`˜ú?.ÓªúE5@  ú?'O»ú½jÚú¾¥Qú?.¡=úE7UV ú?'ˆêú½k&Qú¾¥Qàú?.idúE9j¬ ú?'Âú½lÄlú¾¥c#ú?.,%úE;€ ú?'û"ú½nbxú¾¥tXú?-îËÿÿŸrQTimelineKeyframesŸú     ú?l9„ú=‚h¢ú>90ú¾«+ZúBUM ú?l9Œú=‚g'ú>90Wú¾«+PúB…UM ú?l8Mú=‚3‚ú>9P¸ú¾«+ÛúBÇÿô ú?l5Íú=Íyú>9‘Àú¾«,äúCUM ú?l3Oú=gˆú>9Ò«ú¾«-éúC&ª° ú?k«ú=.‘ú>BgĞú¾«#™úCH  ú?k2ú=˜ññú>J÷¤ú¾«§úCiUV ú?iáhú=¶±ú>ZZú¾«HÊúC…UU ú?gÌûú=æHlú>peÑú¾« XúC•ÿş ú?eyú>
 Ğ?ú>ƒÒú¾«ÈîúC¦ª¨ ú?c6ú>#8üú>‹’öú¾«ÃmúC·UR ú?`½—ú>;{Nú>“í7ú¾«•úCÇÿû ú?_V@ú>K½qú>—]xú¾«HBúCØª­ ú?_$©ú>Tú>•ûiú¾ª÷¨úCéUV ú?^îÃú>\xZú>”–tú¾ª£âúCú   ú?auLú>X ú>‡M*ú¾©¦HúDUU ú?cÎUú>T™ú>sÑú¾¨†eúDªª ú?fexú>NXú>Tùú¾§0ÂúDÿş ú?iú>Eú>/A±ú¾¥ÏúDUS ú?kw„ú>; Cú>
 0dú¾£­™úD&ª¬ ú?lx›ú>5ä˜ú=áÆFú¾¤ZÜúD/  ú?mQÒú>0
 Bú=¯êú¾¤ìBúD7UV ú?mE$ú>0,qú=”‹gú¾¦ÈøúD?ªª ú?ll‘ú>6^¡ú=’k?ú¾ªúDGÿÿ ú?k­ú><Œ¶ú=GÖú¾­9úDPUT ú?jšú>F4œú=³3#ú¾°gàúDXª© ú?h…‹ú>OÅ‹ú=Ö	¼ú¾³‚úDa  ú?ghú>U-ú=ó8®ú¾µ7…úDiUV ú?fÎˆú>WÇpú>e•ú¾µ’DÿÿŸrQTimelineKeyframesŸú     ú?vh:ú½ nöú¼ª½ú¾‰ÙßúBUV ú?vndú½Fùú»óeéú¾‰–UúB…UV ú?vtSú½Ùú»Ûvú¾‰R±úBÈ  ú?vzÃú½½)ú»Åï“ú¾‰®úCUV ú?v…ú½!!Åú»²Òú¾ˆ£1úC&ª« ú?v‡Ôú½+†ú»Ÿ´0ú¾ˆDuúCH  ú?vŒ¢ú½4£¿ú»¥ˆ4ú¾‡òúCiUV ú?v‘ú½=Á!ú»«\ú¾‡Ÿ[úC…UV ú?v”çú½GÁ´ú»±Bú¾‡I¸úC–   ú?v—ëú½R¥`ú»·;øú¾†ñúC¦ª« ú?vštú½]ˆ¨ú»½5ú¾†˜'úC·UV ú?v™(ú½gaú»µ:ú¾†`úCÈ  ú?v—|ú½q9ú»­?ú¾†'µúCØª¬ ú?v•gú½z«üú»›Cú¾…òşúCéUV ú?v’ôú½Üìú»~ŒÆú¾…ÁåúCú   ú?v ú½†c©ú»F’úú¾…›úDUV ú?v‘Øú½uúº»Âàú¾…ºúDª¬ ú?v’•ú½”…÷ú9--ú¾„TúD   ú?v“£ú½œ[ú:ÿîú¾ƒüúDUV ú?v”·ú½¤)&ú;€É+ú¾ƒSøúD&ª« ú?v”yú½¬:ú;Á•Ãú¾‚«úD/  ú?v”Íú½²Ó*ú;öâuú¾‚ëúD7UV ú?v”8ú½¹k¥ú<ú¾~<úD?ª« ú?v“Lú½¿ˆmú<*júú¾€ğSúDH  ú?v’Gú½Å)½ú<8löú¾€k?úDPUV ú?v«ú½ÊÊ„ú<Fnú¾ËÏúDXª¬ ú?vJú½ÏNú<Rú¾~ïÄúDa  ú?v†ú½ÓÒ&ú<]»2ú¾~YúDiUV ú?vŠ~ú½×Ïvú<iÚú¾}a&úDqª« ú?v†Jú½ÛF€ú<tıú¾|Ù‰úDz   ú?vßú½Ş½_ú<)çú¾|Q¢úD*« ú?vyú½áõú<É<ú¾|6úD…UV ú?vp8ú½ä^nú<ƒı}ú¾|iúD‰€  ú?vgÑú½çZIú<†=1ú¾{êîúDª¬ ú?v_àú½ê‹ú<ˆˆú¾{§«úD‘ÕV ú?vWÅú½í¨œú<ŠÓ«ú¾{dQúD–   ú?vRµú½ï‚ú<‹²Öú¾{A/úDš*« ú?vM›ú½ñ\[ú<Œ‘÷ú¾{ğúDUV ú?vI5ú½ò5ú<Éú¾{eúD¢€ ú?vE‹ú½ó"ú<;Vú¾{0 úD¦ª« ú?vAäú½óú<aàú¾{HÇúDªÕV ú?v<çú½õ)'ú<øú¾{2¦úD¯  ú?v7äú½öµ1ú<Ôú¾{vúD³*« ú?v3ëú½÷0ú<’B×ú¾{B=úD·UV ú?v1ú½ö+$ú<“gmú¾{¤úD»€ ú?v.ú½õKú<”‹òú¾|áúD¿ª« ú?v:øú½ëÆåú<šƒ
