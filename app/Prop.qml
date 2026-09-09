@@ -42,10 +42,21 @@ Node {
         tint: root.surfaceTint
         visible: root.spec.type !== "ground" && !root.spec.invisible      // invisible: collision only (a slope built from steps under a model)
     }
-    Repeater3D {
-        model: root.raised ? 2 : 0
-        Box3D { x: (index ? 1 : -1) * (root.w / 2 - 0.22); width: 0.22; height: root.gap + 0.02; depth: root.d * 0.8
-                color: root.spec.legColor || "#6b5a48"; useToonShading: true; edgeThickness: 1.0; edgeColor: "#26221f"; receivesShadows: true }
+    // The supports under a raised passage: slim posts at the very ends plus a lintel, so the opening reads
+    // as a little doorway to duck through instead of a solid block.
+    Node {
+        visible: root.raised
+        Repeater3D {
+            model: root.raised ? 2 : 0
+            Box3D { required property int index
+                    x: (index ? 1 : -1) * (root.w / 2 - 0.11); width: 0.2; height: root.gap; depth: root.d * 0.42
+                    color: root.spec.legColor || "#6b5a48"; useToonShading: true; edgeThickness: 1.0; edgeColor: "#26221f"; receivesShadows: true }
+        }
+        // the lintel closes the top of the opening; a shallow shadow strip on the floor gives it depth
+        Box3D { y: root.gap - 0.12; width: root.w - 0.1; height: 0.14; depth: root.d * 0.42
+                color: root.spec.legColor || "#6b5a48"; useToonShading: true; edgeThickness: 1.0; edgeColor: "#26221f" }
+        Box3D { y: 0.005; z: -root.d * 0.12; width: root.w - 0.5; height: 0.01; depth: root.d * 0.36
+                color: "#2b2622"; opacity: 0.35; useToonShading: false; showEdges: false; castsShadows: false }
     }
     // a ground segment: a wide slab whose top colour depends on the surface type
     Loader3D {

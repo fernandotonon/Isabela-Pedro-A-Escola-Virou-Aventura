@@ -61,8 +61,8 @@ var level = {
         platform(14, 0, 3, 0.6, "stone_platform"),
         star(15.5, 1.4),
         // switch characters: a low passage only Pedro fits and a step only Isabela reaches
-        // a giant bench: the gap under the seat is the way through for Pedro
-        lowpass(30, 0, 3.4, 1.5, { asset: "school_bench", raised: true, legColor: "#7d8288" }), star(31.5, 0.3),
+        // a giant bench: its own legs already show the gap under the seat
+        lowpass(30, 0, 3.4, 1.5, { asset: "school_bench" }), star(31.5, 0.3),
         platform(35, 2.6, 2.5, 0.4, "stone_platform", { ledge: true }), star(36.2, 3.4),
         // --- Challenge 1: the parallel bars ------------------------------------------------
         prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
