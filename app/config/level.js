@@ -66,12 +66,12 @@ var level = {
         platform(35, 2.6, 2.5, 0.4, "stone_platform", { ledge: true }), star(36.2, 3.4),
         // --- Challenge 1: the parallel bars ------------------------------------------------
         prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
-        lowpass(43, 0, 8, 2.6, { asset: "parallel_bars", gap: 0.8 }),              // under the bars: Pedro's way
+        lowpass(43, 0, 8, 1.7, { asset: "parallel_bars", gap: 0.8 }),              // low frame: Pedro ducks under, Isabela climbs over
         button("button_bars", 47, { hint: "hint.button" }),                                                  // a floor button inside
-        platform(43, 2.6, 8, 0.3, "stone_platform", { ledge: true }),           // Isabela grabs the top
-        lever("lever_bars", 49.5, 2.9, { hint: "hint.lever" }),
-        star(45, 3.6), pencil(50.5, 6.4),                                          // the pencil sits high above the bars
-        platform(48.5, 5.2, 1.4, 0.25, "book_stack", { ledge: true }),
+        platform(43, 1.7, 8, 0.3, "stone_platform", { ledge: true }),           // Isabela grabs the top of the frame
+        lever("lever_bars", 49.5, 2.0, { hint: "hint.lever" }),
+        star(45, 2.7), pencil(50.5, 5.6),                                          // the pencil sits high above the bars
+        platform(48.5, 4.3, 1.4, 0.25, "book_stack", { ledge: true }),
         gate("gate_bars", 54, 0, 0.8, 3.2, ["button_bars", "lever_bars"], { asset: "school_gate_small" }),
         // --- Challenge 2: the vertical ladder ----------------------------------------------
         ladder(62.4, 2.5, 1.5, { asset: "climbing_ladder", visualFrom: 0 }),        // starts out of Pedro's reach
