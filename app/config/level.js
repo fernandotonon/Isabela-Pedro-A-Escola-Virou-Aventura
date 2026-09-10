@@ -69,7 +69,7 @@ var level = {
         // underneath. No invisible collision, the shape says it all.
         lowpass(43, 0, 8, 1.1, { asset: "stone_platform", gap: 0.8, raised: true, noPosts: true }),
         button("button_bars", 47, { hint: "hint.button" }),                        // the button lives under the slab
-        prop("parallel_bars", 38.5, { z: -2.6, decor: true }), prop("parallel_bars", 56, { z: -2.8, decor: true }),   // gym bars as scenery
+        prop("exercise_bars", 38.5, { z: -2.6, decor: true }), prop("parallel_bars", 56, { z: -2.8, decor: true }),   // gym equipment as scenery: one of each
         lever("lever_bars", 49.5, 1.1, { hint: "hint.lever" }),
         star(45, 2.0), pencil(50.5, 4.6),                                          // the pencil sits high above the walkway
         platform(48.5, 3.4, 1.4, 0.25, "book_stack", { ledge: true }),
