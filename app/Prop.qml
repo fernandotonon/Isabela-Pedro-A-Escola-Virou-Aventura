@@ -33,6 +33,7 @@ Node {
     readonly property real gap: spec.gap || 0.8
     PropVisual {
         id: visual
+        visible: root.spec.type !== "ground" && !root.spec.invisible      // invisible: collision only (a slope built from steps under a model)
         assetId: root.spec.asset || (root.spec.type === "ground" ? "" : "push_box")
         representation: root.spec.type === "ground" || !root.spec.asset ? "placeholder" : (def ? def.representation : "placeholder")
         w: root.w; h: root.raised ? Math.max(0.3, root.h - root.gap) : root.h; d: root.d
@@ -40,12 +41,11 @@ Node {
         assetBase: root.assetBase
         useModels: root.useModels
         tint: root.surfaceTint
-        visible: root.spec.type !== "ground" && !root.spec.invisible      // invisible: collision only (a slope built from steps under a model)
     }
     // The supports under a raised passage: slim posts at the very ends plus a lintel, so the opening reads
     // as a little doorway to duck through instead of a solid block.
     Node {
-        visible: root.raised
+        visible: root.raised && !root.spec.noPosts      // noPosts: the slab simply floats, no frame around it
         Repeater3D {
             model: root.raised ? 2 : 0
             Box3D { required property int index

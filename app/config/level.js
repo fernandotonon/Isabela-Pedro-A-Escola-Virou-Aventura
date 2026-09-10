@@ -64,14 +64,15 @@ var level = {
         // a giant bench: its own legs already show the gap under the seat
         lowpass(30, 0, 3.4, 1.5, { asset: "school_bench" }), star(31.5, 0.3),
         platform(35, 2.6, 2.5, 0.4, "stone_platform", { ledge: true }), star(36.2, 3.4),
-        // --- Challenge 1: the parallel bars ------------------------------------------------
-        prop("exercise_bars", 47, { z: -1.4, scale: 1.0, decor: true }),
-        lowpass(43, 0, 8, 1.7, { asset: "parallel_bars", gap: 0.8 }),              // low frame: Pedro ducks under, Isabela climbs over
-        button("button_bars", 47, { hint: "hint.button" }),                                                  // a floor button inside
-        platform(43, 2.6, 8, 0.3, "stone_platform", { ledge: true }),           // Isabela grabs the walkway above the bars
-        lever("lever_bars", 49.5, 2.9, { hint: "hint.lever" }),
-        star(45, 3.6), pencil(50.5, 6.4),                                          // the pencil sits high above the bars
-        platform(48.5, 5.2, 1.4, 0.25, "book_stack", { ledge: true }),
+        // --- Challenge 1: the low walkway --------------------------------------------------
+        // A solid slab at 0.8 m: Isabela walks on top, Pedro has to crouch (0.62 m) to reach the button
+        // underneath. No invisible collision, the shape says it all.
+        lowpass(43, 0, 8, 1.1, { asset: "stone_platform", gap: 0.8, raised: true, noPosts: true }),
+        button("button_bars", 47, { hint: "hint.button" }),                        // the button lives under the slab
+        prop("parallel_bars", 38.5, { z: -2.6, decor: true }), prop("parallel_bars", 56, { z: -2.8, decor: true }),   // gym bars as scenery
+        lever("lever_bars", 49.5, 1.1, { hint: "hint.lever" }),
+        star(45, 2.0), pencil(50.5, 4.6),                                          // the pencil sits high above the walkway
+        platform(48.5, 3.4, 1.4, 0.25, "book_stack", { ledge: true }),
         gate("gate_bars", 54, 0, 0.8, 3.2, ["button_bars", "lever_bars"], { asset: "school_gate_small" }),
         // --- Challenge 2: the vertical ladder ----------------------------------------------
         ladder(62.4, 2.5, 1.5, { asset: "climbing_ladder", visualFrom: 0 }),        // starts out of Pedro's reach
