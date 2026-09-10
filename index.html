@@ -57,7 +57,7 @@
 
   <script>
     // ---- loading screen ------------------------------------------------------------------------------
-    const LOADING = { expected: 87037636, sprites: ["loading/backpack.png", "loading/basket_hoop.png", "loading/bleachers.png", "loading/book_stack.png", "loading/bush.png", "loading/checkpoint_marker.png", "loading/climbing_ladder.png", "loading/colored_grid.png", "loading/exercise_bars.png", "loading/final_door.png", "loading/foosball_table.png", "loading/garden_planter.png", "loading/giant_pencil.png", "loading/goal.png", "loading/lamp_post.png", "loading/lever.png", "loading/lunchbox.png", "loading/memory.png", "loading/moving_platform.png", "loading/outdoor_tree.png", "loading/paper_plane.png", "loading/parallel_bars.png", "loading/pencil_collectible.png", "loading/ping_pong_table.png", "loading/play_tunnel.png", "loading/playground.png", "loading/push_box.png", "loading/ramp_and_stairs.png", "loading/school_bench.png", "loading/school_bin.png", "loading/school_clock.png", "loading/school_corridor.png", "loading/school_gate.png", "loading/soccer_ball.png", "loading/sports_court.png", "loading/star.png", "loading/stone_platform.png", "loading/student_desk.png", "loading/tire_planter.png"], build: "9d98e55454ec" };
+    const LOADING = { expected: 87037718, sprites: ["loading/backpack.png", "loading/basket_hoop.png", "loading/bleachers.png", "loading/book_stack.png", "loading/bush.png", "loading/checkpoint_marker.png", "loading/climbing_ladder.png", "loading/colored_grid.png", "loading/exercise_bars.png", "loading/final_door.png", "loading/foosball_table.png", "loading/garden_planter.png", "loading/giant_pencil.png", "loading/goal.png", "loading/lamp_post.png", "loading/lever.png", "loading/lunchbox.png", "loading/memory.png", "loading/moving_platform.png", "loading/outdoor_tree.png", "loading/paper_plane.png", "loading/parallel_bars.png", "loading/pencil_collectible.png", "loading/ping_pong_table.png", "loading/play_tunnel.png", "loading/playground.png", "loading/push_box.png", "loading/ramp_and_stairs.png", "loading/school_bench.png", "loading/school_bin.png", "loading/school_clock.png", "loading/school_corridor.png", "loading/school_gate.png", "loading/soccer_ball.png", "loading/sports_court.png", "loading/star.png", "loading/stone_platform.png", "loading/student_desk.png", "loading/tire_planter.png"], build: "4393f073e676" };
     const pt = (navigator.language || "pt").toLowerCase().startsWith("pt");
     const T = pt ? {
         down: (p, a, b) => `Baixando o jogo… ${p}% (${a} de ${b} MB)`, prep: "Preparando a escola…", start: "Quase lá…",
@@ -177,7 +177,7 @@
         } catch (e) { escolaFailed(e); }
     }
   </script>
-  <script src="escola_aventura.js?v=9d98e55454ec"></script>
-  <script src="qtloader.js?v=9d98e55454ec"></script>
+  <script src="escola_aventura.js?v=4393f073e676"></script>
+  <script src="qtloader.js?v=4393f073e676"></script>
 </body>
 </html>
