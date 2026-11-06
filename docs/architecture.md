@@ -45,7 +45,8 @@ Main.qml (Window)  ─┐                                web-runtime/Main.qml (W
 * `assets.js` — the manifest: id → model path, sprite sheet, representation, scale, footOffset, rotation,
   suggested collider, shadow, placeholder look, status. `scripts/update-asset-manifest.py` maintains it.
 * `tuning.js` — movement feel, per-character abilities, companion, camera, Courage, fixed step.
-* `strings.js` — pt-BR + en, `tr(key, lang)`.
+* `strings.js` — English source plus `config/i18n/`. `tr(key, lang)` falls back to English.
+  Language: in-game choice, else `QTMESH_LANG` / `?qtmesh_lang=`, else the OS, else English.
 * `build.js` (generated) — dev tools on/off, version.
 
 ## Coordinates, physics, camera

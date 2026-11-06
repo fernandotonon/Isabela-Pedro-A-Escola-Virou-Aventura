@@ -8,7 +8,8 @@ Item {
     readonly property string profileKey: "profile.v1"
     readonly property string settingsKey: "settings.v1"
     property var profile: null
-    property var settings: ({ musicVolume: 0.5, sfxVolume: 0.8, language: "pt_BR", quality: 1, keys: null })
+    // language "" is Auto: launcher, then the device, then English. A saved code overrides that.
+    property var settings: ({ musicVolume: 0.5, sfxVolume: 0.8, language: "", quality: 1, keys: null })
     readonly property bool hasProgress: profile !== null && profile.checkpoint !== undefined
     readonly property string backend: store.backend
 

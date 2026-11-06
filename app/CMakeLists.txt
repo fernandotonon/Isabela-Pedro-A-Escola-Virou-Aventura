@@ -120,6 +120,14 @@ clay_app(escola_aventura
         config/tuning.js
         config/level.js
         config/strings.js
+        config/i18n/pt_br.js
+        config/i18n/de.js
+        config/i18n/ru.js
+        config/i18n/fr.js
+        config/i18n/pl.js
+        config/i18n/tr.js
+        config/i18n/es.js
+        config/i18n/it.js
         config/assets.js
         "${CMAKE_CURRENT_BINARY_DIR}/config/build.js"
 

@@ -157,10 +157,32 @@ test("level: data is consistent (counts, references, section order)", () => {
   check(report.sections === 6, `sections=${report.sections}`);
 });
 
-test("strings: every pt-BR key has an English fallback and tr() resolves", () => {
-  const missing = Object.keys(Strings.pt_BR).filter(k => !(k in Strings.en));
-  check(missing.length === 0, `missing en: ${missing.join(", ")}`);
-  check(Strings.tr("menu.newGame", "pt_BR").length > 0 && Strings.tr("does.not.exist", "pt_BR") === "does.not.exist", "tr fallback");
+test("strings: every language has the English keys, and resolution matches the launcher", () => {
+  const enKeys = Object.keys(Strings.en).sort();
+  check(Strings.ORDER.length === 9, `languages=${Strings.ORDER.length}`);
+  for (const code of Strings.ORDER) {
+    const table = Strings.languages[code];
+    const keys = Object.keys(table).sort();
+    check(keys.join(",") === enKeys.join(","), `${code} key mismatch`);
+    for (const key of enKeys) {
+      const tokens = (s) => (s.match(/%[%ds]/g) || []).join(",");
+      check(tokens(table[key]) === tokens(Strings.en[key]), `${code} ${key} placeholders`);
+    }
+    if (code !== "en") {
+      check(table["menu.newGame"] !== Strings.en["menu.newGame"], `${code} menu.newGame`);
+      check(table["story.intro"] !== Strings.en["story.intro"], `${code} story.intro`);
+    }
+  }
+  check(Strings.matchCode("pt-br") === "pt_BR" && Strings.matchCode("PT") === "pt_BR" && Strings.matchCode("en_US") === "en", "code matching");
+  check(Strings.matchCode("ko_KR") === "" && Strings.matchCode("") === "", "unsupported");
+  check(Strings.resolve("", "", "ko_KR") === "en", "unknown device -> English");
+  check(Strings.resolve("", "", "pt_BR") === "pt_BR", "device language");
+  check(Strings.resolve("", "en", "pt_BR") === "en", "launcher beats device");
+  check(Strings.resolve("de", "en", "pt_BR") === "de", "in-game beats launcher");
+  check(Strings.resolve("bogus", "xx", "de_DE.UTF-8") === "de", "invalid values fall through");
+  check(Strings.tr("menu.newGame", "pt_BR") === "Novo jogo" && Strings.tr("menu.newGame", "ru").length > 0, "translated");
+  check(Strings.tr("does.not.exist", "fr") === "does.not.exist" && Strings.tr("menu.newGame") === "New game", "fallback");
+  check(Strings.cycleChoice("", 1) === "en" && Strings.cycleChoice("it", 1) === "" && Strings.cycleChoice("fr", -1) === "ru", "cycle");
 });
 
 test("assets: every level asset id resolves in the manifest", () => {

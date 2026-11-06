@@ -1,6 +1,8 @@
 // Isabela & Pedro: A Escola Virou Aventura - MIT License, see LICENSE
 #include "savestore.h"
 
+#include <QtGlobal>
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #include <cstdlib>
@@ -106,6 +108,12 @@ void SaveStore::remove(const QString &key)
     QSettings s(QStringLiteral("EscolaHorizonte"), QStringLiteral("EscolaAventura"));
     s.remove(k);
 #endif
+}
+
+QString SaveStore::environmentVariable(const QString &name) const
+{
+    // qEnvironmentVariable sees the native launcher and the web shell's qt.environment.
+    return qEnvironmentVariable(name.toUtf8().constData());
 }
 
 void SaveStore::clear()

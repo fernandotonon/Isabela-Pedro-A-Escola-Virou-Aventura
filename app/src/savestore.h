@@ -23,6 +23,8 @@ public:
     Q_INVOKABLE bool has(const QString &key) const;
     Q_INVOKABLE void remove(const QString &key);
     Q_INVOKABLE void clear();
+    /// Process environment (QTMESH_LANG from the QtMesh Games launcher). Empty on the web build.
+    Q_INVOKABLE QString environmentVariable(const QString &name) const;
 
 private:
     QString m_prefix;

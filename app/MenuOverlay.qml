@@ -37,7 +37,7 @@ Item {
         }
         case "pause": return [{ label: tr("menu.resume"), action: "resume" }, { label: tr("menu.restartCheckpoint"), action: "restart" }, { label: tr("menu.controls"), action: "controls" }, { label: tr("menu.volume"), action: "volume" }, { label: tr("menu.gallery"), action: "gallery" }, { label: tr("menu.quitToTitle"), action: "quit" }]
         case "controls": case "gallery": return [{ label: tr("menu.back"), action: "back" }]
-        case "volume": return [{ label: tr("menu.music"), action: "music", slider: true }, { label: tr("menu.effects"), action: "sfx", slider: true }, { label: tr("menu.language") + ": " + (game && game.language === "en" ? "English" : "Português (BR)"), action: "language" }, { label: tr("menu.back"), action: "back" }]
+        case "volume": return [{ label: tr("menu.music"), action: "music", slider: true }, { label: tr("menu.effects"), action: "sfx", slider: true }, { label: tr("menu.language") + "   " + menu.languageValue(), action: "language", cycle: true }, { label: tr("menu.back"), action: "back" }]
         case "complete": return [{ label: tr("menu.nextLevel"), action: "none", disabled: true }, { label: tr("menu.playAgain"), action: "new" }, { label: tr("menu.quitToTitle"), action: "quit" }]
         }
         return []
@@ -56,7 +56,7 @@ Item {
         case "controls": screenOverride = "controls"; break
         case "volume": screenOverride = "volume"; break
         case "gallery": screenOverride = "gallery"; break
-        case "language": save.writeSettings({ language: game.language === "en" ? "pt_BR" : "en" }); break
+        case "language": save.writeSettings({ language: Strings.cycleChoice(save.settings.language, 1) }); break
         case "back": screenOverride = game.phase === "complete" ? "complete" : ""; break
         case "quit": screenOverride = ""; game.resetWorldScale(); game.quitToTitle(); break
         }
@@ -64,9 +64,19 @@ Item {
     function startNew() { screenOverride = ""; game.resetWorldScale(); game.startNewGame() }
     function showCompletion() { screenOverride = "complete" }
     function adjust(entry, delta) {
-        if (!entry || !entry.slider) return
+        if (!entry) return
+        if (entry.cycle) { save.writeSettings({ language: Strings.cycleChoice(save.settings.language, delta) }); audio.play("ui_move"); return }
+        if (!entry.slider) return
         if (entry.action === "music") { save.writeSettings({ musicVolume: Math.max(0, Math.min(1, save.settings.musicVolume + delta)) }); audio.musicVolume = save.settings.musicVolume }
         else { save.writeSettings({ sfxVolume: Math.max(0, Math.min(1, save.settings.sfxVolume + delta)) }); audio.sfxVolume = save.settings.sfxVolume; audio.play("ui_move") }
+    }
+    // Auto shows the language it will use. Every name is that language's own name.
+    function languageValue() {
+        const stored = save && save.settings ? save.settings.language : ""
+        const choice = Strings.userChoice(stored)
+        const resolved = game ? game.language : Strings.resolve(stored, "", "")
+        const shown = choice === "" ? ("Auto · " + (Strings.LANGS[resolved] || resolved)) : (Strings.LANGS[choice] || choice)
+        return "◀  " + shown + "  ▶"
     }
 
     Connections {
@@ -116,7 +126,7 @@ Item {
                 id: ctrlCol; anchors { left: parent.left; right: parent.right; top: parent.top; margins: 14 * menu.ui } columns: 3; columnSpacing: 16 * menu.ui; rowSpacing: 6 * menu.ui
                 Text { text: ""; } Text { text: tr("controls.keyboard"); font.bold: true; color: menu.ink; font.pixelSize: 16 * menu.ui } Text { text: tr("controls.gamepad"); font.bold: true; color: menu.ink; font.pixelSize: 16 * menu.ui }
                 Repeater {
-                    model: [[tr("controls.move"), "A / D  ·  ← →", "◀ ▶  /  L-stick"], [tr("controls.jump"), "Espaço", "A / ✕"], [tr("controls.interact"), "E", "X / □"],
+                    model: [[tr("controls.move"), "A / D  ·  ← →", "◀ ▶  /  L-stick"], [tr("controls.jump"), tr("controls.space"), "A / ✕"], [tr("controls.interact"), "E", "X / □"],
                             [tr("controls.switch"), "Q  ·  Tab", "Y / △  ·  LB / RB"], [tr("controls.ability"), "Shift", "B / ○"], [tr("controls.crouch"), "S / ↓", "▼ / L-stick ↓"], [tr("controls.pause"), "Esc / P", "Start"]]
                     delegate: Repeater { required property var modelData; model: modelData; delegate: Text { required property var modelData; required property int index; text: modelData; color: menu.ink; font.pixelSize: 16 * menu.ui; font.bold: index === 0; Layout.fillWidth: index === 0 } }
                 }
@@ -163,7 +173,7 @@ Item {
                 Text { anchors.centerIn: parent; text: modelData.label + (modelData.slider ? "   " + menu.bar(modelData.action) : ""); color: menu.ink; opacity: modelData.disabled ? 0.55 : 1; font.pixelSize: 21 * menu.ui; font.bold: true }
                 MouseArea { anchors.fill: parent; hoverEnabled: true
                     onEntered: menu.cursor = index
-                    onClicked: (m) => { if (modelData.slider) menu.adjust(modelData, m.x < width / 2 ? -0.1 : 0.1); else menu.activate(modelData) } }
+                    onClicked: (m) => { if (modelData.slider) menu.adjust(modelData, m.x < width / 2 ? -0.1 : 0.1); else if (modelData.cycle) menu.adjust(modelData, m.x < width / 2 ? -1 : 1); else menu.activate(modelData) } }
             }
         }
         Text { visible: menu.screen === "title"; Layout.alignment: Qt.AlignHCenter; text: tr("menu.pressStart"); color: menu.ink; opacity: 0.6; font.pixelSize: 14 * menu.ui }

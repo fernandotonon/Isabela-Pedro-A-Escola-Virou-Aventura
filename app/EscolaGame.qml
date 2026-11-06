@@ -37,8 +37,21 @@ FocusScope {
     // Model files: qrc:/ (relative) on desktop; on WebAssembly they are preloaded into the
     // in-memory filesystem under /game/ (own build: Qt loader `preload`; Web Runtime: assets-manifest.json).
     property string assetBase: Qt.platform.os === "wasm" ? "file:///game/" : ""
-    property string language: save.settings.language || "pt_BR"
+    // Auto (empty setting) follows the launcher, then the OS, then English. See config/strings.js.
+    property string language: Strings.resolve(save.settings.language || "", launcherLanguage(), Qt.locale().name)
     function tr(key) { return Strings.tr(key, language) }
+    function launcherLanguage() {
+        const env = save.environmentVariable("QTMESH_LANG")
+        if (env) return env
+        return argValue("--qtmesh-lang=") || argValue("--lang=")
+    }
+    function argValue(prefix) {
+        for (let i = 0; i < args.length; ++i) {
+            const a = String(args[i])
+            if (a.indexOf(prefix) === 0) return a.substring(prefix.length)
+        }
+        return ""
+    }
 
     // ---- state ---------------------------------------------------------------------------------------
     property string phase: "title"            // title | loading | playing | paused | complete

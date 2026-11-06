@@ -1,127 +1,21 @@
-// UI strings. Brazilian Portuguese is the shipped language; every key also has an English
-// entry so the game can be switched (Settings) and so missing translations are caught by tests.
+// UI strings. English is the source text and the fallback: a missing translation shows in English.
+// Language files live in config/i18n/<code>.js. Which language is used (first match wins):
+//   1. the player's choice in the game (Settings -> Language), unless "Auto"
+//   2. the QtMesh Games launcher: QTMESH_LANG (desktop) or ?qtmesh_lang= (web); --lang= for testing
+//   3. the device / OS language
+//   4. English
+// Codes match Scrapfall and the launcher (pt_BR, pt-BR and pt all mean Brazilian Portuguese).
+// Names in LANGS are each language's own name and are never translated.
+// Translations were machine-written and should be reviewed by native speakers.
 .pragma library
-
-var pt_BR = {
-    "game.title": "Isabela & Pedro",
-    "game.subtitle": "A Escola Virou Aventura",
-    "game.school": "Escola Horizonte",
-    "level.caminho.name": "O Caminho para a Sala",
-    "section.pracinha": "A pracinha",
-    "section.jardim": "O jardim",
-    "section.playground": "O playground",
-    "section.patio": "O pátio de jogos",
-    "section.quadra": "A quadra coberta",
-    "section.corredor": "O corredor gigante",
-
-    "menu.newGame": "Novo jogo",
-    "menu.continue": "Continuar",
-    "menu.controls": "Controles",
-    "menu.volume": "Volume",
-    "menu.music": "Música",
-    "menu.effects": "Efeitos",
-    "menu.language": "Idioma",
-    "menu.resume": "Voltar ao jogo",
-    "menu.restartCheckpoint": "Reiniciar no checkpoint",
-    "menu.quitToTitle": "Voltar ao menu",
-    "menu.paused": "Pausa",
-    "menu.back": "Voltar",
-    "menu.gallery": "Galeria",
-    "menu.loading": "Carregando a imaginação...",
-    "menu.pressStart": "Pressione Espaço ou Start",
-    "menu.nextLevel": "Próxima fase: Em breve",
-    "menu.playAgain": "Jogar de novo",
-    "menu.confirmNew": "Começar um novo jogo apaga o progresso salvo. Continuar?",
-    "menu.yes": "Sim",
-    "menu.no": "Não",
-
-    "controls.title": "Controles",
-    "controls.move": "Mover",
-    "controls.jump": "Pular (segure para pular mais alto)",
-    "controls.interact": "Interagir",
-    "controls.switch": "Trocar de personagem",
-    "controls.ability": "Habilidade especial",
-    "controls.crouch": "Abaixar / passar por baixo (Pedro)",
-    "controls.pause": "Pausar",
-    "controls.keyboard": "Teclado",
-    "controls.gamepad": "Controle",
-    "controls.gamepadNote": "Controles (gamepad) funcionam no navegador; no computador use o teclado.",
-
-    "hud.courage": "Coragem",
-    "hud.stars": "Estrelas",
-    "hud.pencils": "Lápis",
-    "hud.interact": "Interagir",
-    "hud.needBoth": "Os dois irmãos precisam estar aqui",
-    "hud.checkpoint": "Checkpoint!",
-    "hud.courageLost": "Ops! Coragem -1",
-    "hud.courageOut": "Respira fundo... de volta ao checkpoint",
-    "hud.memoryFound": "Memória da Família encontrada!",
-    "hud.pencilFound": "Lápis colorido!",
-    "hud.gateOpen": "O portão se abriu!",
-    "hud.mechanism": "Mecanismo ativado",
-    "hud.revealed": "O caderno da Isabela revelou um caminho!",
-    "hud.curiosity": "A curiosidade do Pedro encontrou algo!",
-    "hud.nothingHere": "Nada por aqui... ainda.",
-    "hud.pushTooHeavy": "Pesado demais para o Pedro. Chame a Isabela!",
-    "hud.tooHigh": "Alto demais para o Pedro. A Isabela alcança!",
-    "hud.tooSmall": "Só o Pedro passa por aqui!",
-
-    "hint.move": "Use as SETAS ou A/D para andar. Continue andando para correr!",
-    "hint.move.touch": "Arraste o dedo na metade esquerda da tela para andar.",
-    "hint.jump.touch": "Toque em ▲ para pular. Segure para pular mais alto.",
-    "hint.switch.touch": "Toque no cartão do outro irmão para trocar de personagem.",
-    "hint.crawl.touch": "Com o Pedro, arraste o dedo para baixo para se abaixar e passar por baixo.",
-    "hint.ledge.touch": "Com a Isabela, pule em direção a uma borda para se agarrar. Arraste para cima para subir.",
-    "hint.lever.touch": "Toque em E perto da alavanca.",
-    "hint.notebook.touch": "Com a Isabela, toque em ✦ para usar o caderno e revelar pistas.",
-    "touch.jump": "pular", "touch.ability": "habilidade", "touch.interact": "usar", "touch.switch": "toque para trocar",
-    "hint.jump": "Pressione ESPAÇO para pular. Segure para pular mais alto.",
-    "hint.stars": "Colete as Estrelas de Coragem!",
-    "hint.switch": "Pressione Q ou TAB para trocar entre Isabela e Pedro.",
-    "hint.abilities": "Isabela pula alto e se agarra em bordas. Pedro é rápido e passa por baixo.",
-    "hint.crawl": "Com o Pedro, segure ↓ para se abaixar e passar por baixo.",
-    "hint.ledge": "Com a Isabela, pule em direção a uma borda para se agarrar. ↑ para subir.",
-    "hint.button": "Pise no botão para ativá-lo.",
-    "hint.lever": "Pressione E perto da alavanca.",
-    "hint.push": "Ande contra a caixa para empurrá-la.",
-    "hint.pushmedium": "O banco é pesado: só a Isabela consegue empurrar.",
-    "hint.moving": "Observe o ritmo da plataforma antes de pular.",
-    "hint.plates": "Isabela e Pedro precisam ficar juntos sobre as marcas.",
-    "hint.notebook": "Com a Isabela, pressione SHIFT para usar o caderno e revelar pistas.",
-    "hint.notebook2": "Parece que falta um caminho aqui... O caderno da Isabela pode ajudar.",
-    "hint.playground": "O playground ficou enorme! Isabela sobe; Pedro atravessa o túnel.",
-    "hint.patio": "Salte entre os bancos e as mesas.",
-    "hint.ball": "Cuidado com a bola! Ela só assusta, mas custa Coragem.",
-    "hint.pushbutton": "Empurre a lancheira até o botão.",
-    "hint.quadra": "Leve a bola até o gol. Pedro passa por baixo da arquibancada.",
-    "hint.corridor": "O corredor cresceu! Pule sobre os livros e cuidado com os aviões.",
-    "hint.desk": "Empurre a carteira até a janela para alcançar a beirada.",
-
-    "story.bell": "🔔 O sinal tocou! A imaginação dos irmãos transforma o caminho em aventura...",
-    "story.gate_far": "O portão parece cada vez mais distante...",
-    "story.gate_open": "Juntos, Isabela e Pedro abrem o portão da Escola Horizonte!",
-    "story.corridor_grows": "O corredor cresce como um labirinto. O relógio marca a hora!",
-    "story.finished": "Chegaram! O mundo volta ao normal e os irmãos comemoram.",
-    "story.intro": "Isabela e Pedro esperam na pracinha em frente à escola.",
-
-    "end.title": "Fase concluída!",
-    "end.stars": "Estrelas de Coragem",
-    "end.pencils": "Lápis coloridos",
-    "end.memory": "Memória da Família",
-    "end.found": "encontrada",
-    "end.notFound": "ainda escondida",
-    "end.time": "Tempo",
-    "end.best": "Melhor tempo",
-
-    "gallery.title": "Galeria",
-    "gallery.locked": "Encontre a Memória da Família na pracinha para desbloquear.",
-    "gallery.memory1.title": "Um dia na pracinha",
-    "gallery.memory1.text": "Um desenho da família toda sentada no banco da praça, com sorvete e um avião de papel.",
-
-    "char.isabela": "Isabela",
-    "char.pedro": "Pedro",
-    "dev.title": "Ferramentas de desenvolvimento"
-}
+.import "i18n/pt_br.js" as I18nPtBr
+.import "i18n/de.js" as I18nDe
+.import "i18n/ru.js" as I18nRu
+.import "i18n/fr.js" as I18nFr
+.import "i18n/pl.js" as I18nPl
+.import "i18n/tr.js" as I18nTr
+.import "i18n/es.js" as I18nEs
+.import "i18n/it.js" as I18nIt
 
 var en = {
     "game.title": "Isabela & Pedro",
@@ -134,7 +28,7 @@ var en = {
     "section.patio": "The games yard",
     "section.quadra": "The covered court",
     "section.corredor": "The giant corridor",
-    "menu.newGame": "New game", "menu.continue": "Continue", "menu.controls": "Controls", "menu.volume": "Volume",
+    "menu.newGame": "New game", "menu.continue": "Continue", "menu.controls": "Controls", "menu.volume": "Settings",
     "menu.music": "Music", "menu.effects": "Effects", "menu.language": "Language", "menu.resume": "Resume",
     "menu.restartCheckpoint": "Restart at checkpoint", "menu.quitToTitle": "Back to title", "menu.paused": "Paused",
     "menu.back": "Back", "menu.gallery": "Gallery", "menu.loading": "Loading imagination...",
@@ -144,6 +38,7 @@ var en = {
     "controls.interact": "Interact", "controls.switch": "Switch character", "controls.ability": "Special ability",
     "controls.crouch": "Crouch / crawl under (Pedro)", "controls.pause": "Pause", "controls.keyboard": "Keyboard",
     "controls.gamepad": "Gamepad", "controls.gamepadNote": "Gamepads work in the browser; on desktop use the keyboard.",
+    "controls.space": "Space",
     "hud.courage": "Courage", "hud.stars": "Stars", "hud.pencils": "Pencils", "hud.interact": "Interact",
     "hud.needBoth": "Both siblings need to be here", "hud.checkpoint": "Checkpoint!", "hud.courageLost": "Oops! Courage -1",
     "hud.courageOut": "Deep breath... back to the checkpoint", "hud.memoryFound": "Family Memory found!",
@@ -195,12 +90,66 @@ var en = {
     "char.isabela": "Isabela", "char.pedro": "Pedro", "dev.title": "Development tools"
 }
 
-var languages = { pt_BR: pt_BR, en: en }
+var pt_BR = I18nPtBr.strings
+var de = I18nDe.strings
+var ru = I18nRu.strings
+var fr = I18nFr.strings
+var pl = I18nPl.strings
+var tr_ = I18nTr.strings
+var es = I18nEs.strings
+var it = I18nIt.strings
 
-function has(key) { return pt_BR[key] !== undefined }
+var ORDER = ["en", "pt_BR", "de", "ru", "fr", "pl", "tr", "es", "it"]
+var LANGS = {
+    en: "English", pt_BR: "Português (Brasil)", de: "Deutsch", ru: "Русский",
+    fr: "Français", pl: "Polski", tr: "Türkçe", es: "Español", it: "Italiano"
+}
+var languages = { en: en, pt_BR: pt_BR, de: de, ru: ru, fr: fr, pl: pl, tr: tr_, es: es, it: it }
+
+// "pt-br", "PT_br", "pt" -> "pt_BR" (a bare language matches the first supported variant); "" if unsupported.
+function matchCode(raw) {
+    if (raw === undefined || raw === null) return ""
+    var r = String(raw).trim().replace(/-/g, "_").split(".")[0].split("@")[0]
+    if (!r) return ""
+    var low = r.toLowerCase()
+    var i
+    for (i = 0; i < ORDER.length; ++i) if (ORDER[i].toLowerCase() === low) return ORDER[i]
+    var lang = low.split("_")[0]
+    for (i = 0; i < ORDER.length; ++i) if (ORDER[i].toLowerCase().split("_")[0] === lang) return ORDER[i]
+    return ""
+}
+
+// Stored setting: a code from ORDER, or "" for Auto (empty / invalid).
+function userChoice(stored) {
+    if (stored === undefined || stored === null || stored === "") return ""
+    return matchCode(stored)
+}
+
+function resolve(user, launcher, os) {
+    var u = userChoice(user)
+    if (u) return u
+    var l = matchCode(launcher)
+    if (l) return l
+    var o = matchCode(os)
+    if (o) return o
+    return "en"
+}
+
+// Next setting when the language row is stepped. "" is Auto, then ORDER, wrapping around.
+function cycleChoice(stored, delta) {
+    var choices = [""].concat(ORDER)
+    var i = choices.indexOf(userChoice(stored))
+    if (i < 0) i = 0
+    var step = delta < 0 ? -1 : 1
+    return choices[(i + step + choices.length) % choices.length]
+}
+
+function has(key) { return en[key] !== undefined }
+
 function tr(key, lang) {
-    const table = languages[lang || "pt_BR"] || pt_BR
+    var code = (lang === undefined || lang === null || lang === "") ? "en" : (matchCode(lang) || "en")
+    var table = languages[code] || en
     if (table[key] !== undefined) return table[key]
-    if (pt_BR[key] !== undefined) return pt_BR[key]
+    if (en[key] !== undefined) return en[key]
     return key
 }

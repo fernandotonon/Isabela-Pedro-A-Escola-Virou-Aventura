@@ -59,9 +59,32 @@ TestCase {
         compare(Level.sectionAt(10).id, "pracinha"); compare(Level.sectionAt(470).id, "corredor")
     }
     function test_strings() {
-        const missing = Object.keys(Strings.pt_BR).filter(k => !(k in Strings.en))
-        compare(missing.join(","), "")
-        verify(Strings.tr("menu.newGame", "pt_BR").length > 0); compare(Strings.tr("nope.key"), "nope.key")
+        const enKeys = Object.keys(Strings.en).sort()
+        for (let i = 0; i < Strings.ORDER.length; ++i) {
+            const code = Strings.ORDER[i]
+            const table = Strings.languages[code]
+            const keys = Object.keys(table).sort()
+            compare(keys.join(","), enKeys.join(","))
+            for (let k = 0; k < enKeys.length; ++k) {
+                const key = enKeys[k]
+                compare((table[key].match(/%[%ds]/g) || []).join(","), (Strings.en[key].match(/%[%ds]/g) || []).join(","))
+            }
+        }
+        compare(Strings.matchCode("pt-br"), "pt_BR"); compare(Strings.matchCode("PT"), "pt_BR"); compare(Strings.matchCode("en_US"), "en")
+        compare(Strings.matchCode("ko_KR"), ""); compare(Strings.matchCode(""), "")
+        compare(Strings.resolve("", "", "ko_KR"), "en")
+        compare(Strings.resolve("", "", "pt_BR"), "pt_BR")
+        compare(Strings.resolve("", "en", "pt_BR"), "en")
+        compare(Strings.resolve("pt_BR", "en", "de"), "pt_BR")
+        compare(Strings.resolve("bogus", "xx", "de_DE.UTF-8"), "de")
+        compare(Strings.tr("menu.newGame", "pt_BR"), "Novo jogo")
+        compare(Strings.tr("menu.newGame", "de"), "Neues Spiel")
+        compare(Strings.tr("nope.key", "ru"), "nope.key")
+        compare(Strings.tr("menu.newGame"), "New game")
+        compare(Strings.cycleChoice("", 1), "en")
+        compare(Strings.cycleChoice("it", 1), "")
+        compare(Strings.cycleChoice("en", -1), "")
+        compare(Strings.ORDER.length, 9)
     }
     function test_assets_manifest_covers_level() {
         const ids = LevelCheck.assetIds(Level.level)
