@@ -13,6 +13,7 @@ View3D {
     readonly property alias entityRoot: entityRoot
     readonly property alias characterRoot: characterRoot
     readonly property alias fxRoot: fxRoot
+    readonly property alias preloadRoot: preloadRoot
     property color skyColor: "#8fd0f4"
     property color farColor: "#cfe8f6"
     property bool indoor: false
@@ -62,4 +63,6 @@ View3D {
     Node { id: entityRoot }
     Node { id: characterRoot }
     Node { id: fxRoot }
+    // Off-camera keepers for ModelPreloader (meshes stay resident after title warm-up).
+    Node { id: preloadRoot; position: Qt.vector3d(0, -500, 0); visible: false }
 }

@@ -40,11 +40,13 @@ Node {
     }
     function reset() { cx = spec.x; cy = spec.y; dir = 1; t = 0; position = Qt.vector3d(cx, cy, 0) }
 
+    readonly property bool modelPending: visual.modelPending
     Node {
         y: root.kind === "ball" ? root.r : 0
         eulerRotation.z: root.kind === "ball" ? root.spin : (root.dir > 0 ? -6 : 6)
         eulerRotation.y: root.kind === "plane" ? (root.dir > 0 ? 90 : -90) : 0
         PropVisual {
+            id: visual
             assetId: root.kind === "ball" ? "soccer_ball" : "paper_plane"
             w: root.kind === "ball" ? root.r * 2 : 1.8; h: root.kind === "ball" ? root.r * 2 : 0.3; d: root.kind === "ball" ? root.r * 2 : 1.1
             assetBase: root.assetBase; useModels: root.useModels

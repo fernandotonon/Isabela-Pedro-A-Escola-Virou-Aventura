@@ -33,6 +33,7 @@ Node {
     // only assets marked `tile: true` (platform blocks, stands) repeat along a wide box; decor never does
     readonly property int copies: def && def.tile && def.unitWidth && def.fit !== "width" && unitW * fitScale < 0.7 * w ? Math.max(1, Math.round(w / (unitW * fitScale))) : 1
     readonly property bool modelReady: modelRepeater.count > 0 && modelRepeater.objectAt(0) && modelRepeater.objectAt(0).status === Loader3D.Ready
+    readonly property bool modelPending: wantsModel && !modelReady
     Repeater3D {
         id: modelRepeater
         model: root.wantsModel ? root.copies : 0

@@ -23,6 +23,7 @@ Node {
 
     readonly property string representation: def ? def.representation : "placeholder"
     readonly property bool modelReady: modelLoader.status === Loader3D.Ready
+    readonly property bool modelPending: useModels && representation === "model" && def && def.model !== "" && !modelReady
     readonly property string clipName: def && def.clips && def.clips[state] ? def.clips[state] : "Idle"
 
     // blink while invulnerable

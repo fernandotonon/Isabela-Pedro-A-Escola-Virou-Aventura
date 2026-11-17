@@ -46,6 +46,7 @@ Node {
         controlled = motion.controlled
     }
 
+    readonly property bool modelPending: visual.modelPending
     CharacterVisual {
         id: visual
         characterId: root.characterId

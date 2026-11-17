@@ -14,6 +14,7 @@ Node {
     readonly property string kind: spec.type || ""       // star | pencil | memory
     readonly property real size: kind === "star" ? 0.55 : 0.75
     readonly property var sensor: ({ x: spec.x - size / 2, y: spec.y, w: size, h: size })
+    readonly property bool modelPending: look.modelPending
     signal taken(string kind, string id)
 
     function test(body) {

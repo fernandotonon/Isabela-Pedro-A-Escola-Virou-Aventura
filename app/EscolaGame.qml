@@ -120,11 +120,19 @@ FocusScope {
         phase = "loading"
         loadTimer.mode = "continue"; loadTimer.start()
     }
+    // Build the level only after unique packages are warm, then wait for instance Loader3Ds to settle.
     Timer {
         id: loadTimer
         property string mode: "new"
         interval: 60
         onTriggered: {
+            if (game.useModels && !modelPreloader.ready) {
+                // Title warm-up still running — keep the loading screen and retry shortly.
+                interval = 120
+                restart()
+                return
+            }
+            interval = 60
             game.ensureBuilt()
             if (mode === "new") {
                 save.clearProgress()
@@ -160,6 +168,23 @@ FocusScope {
                 console.log("WALKTHROUGH fast-forward to step", from, "at", pos.join(","), "active", game.active.characterId)
             }
             game.enterSection(director.sectionAt(game.active.motion.body.x), true)
+            modelWait.attempts = 0
+            modelWait.start()
+        }
+    }
+    Timer {
+        id: modelWait
+        interval: 50
+        property int attempts: 0
+        onTriggered: {
+            attempts++
+            const pending = game.useModels ? director.modelsPendingCount() : 0
+            if (pending > 0 && attempts < 400) { // ~20 s cap
+                restart()
+                return
+            }
+            if (pending > 0)
+                console.warn("EscolaGame: starting with", pending, "models still loading")
             game.phase = "playing"
             game.playSectionMusic()
         }
@@ -516,6 +541,12 @@ FocusScope {
         id: world3d
         anchors.fill: parent
         debugColliders: devTools.item ? devTools.item.showColliders : false
+    }
+    ModelPreloader {
+        id: modelPreloader
+        parent: world3d.preloadRoot
+        assetBase: game.assetBase
+        enabled: game.useModels
     }
     Character { id: isabela; parent: world3d.characterRoot; characterId: "isabela"; world: game.world; assetBase: game.assetBase; useModels: game.useModels }
     Character { id: pedro; parent: world3d.characterRoot; characterId: "pedro"; world: game.world; assetBase: game.assetBase; useModels: game.useModels }

@@ -107,6 +107,7 @@ clay_app(escola_aventura
         Hud.qml
         TouchControls.qml
         MenuOverlay.qml
+        ModelPreloader.qml
         ${ESCOLA_DEV_QML}
         scripts/Physics.js
         scripts/StateMachine.js

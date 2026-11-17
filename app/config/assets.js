@@ -95,3 +95,15 @@ var assets = {
 function get(id) { return assets[id] || null }
 function ids() { return Object.keys(assets) }
 function generated() { return Object.keys(assets).filter(function (k) { return assets[k].status === "generated" }) }
+// Unique balsam QML paths used as 3D models (for title-screen preload).
+function modelPaths() {
+    var out = [], seen = {}
+    for (var k in assets) {
+        var a = assets[k]
+        if (!a || !a.model || a.representation !== "model") continue
+        if (seen[a.model]) continue
+        seen[a.model] = true
+        out.push(a.model)
+    }
+    return out
+}

@@ -26,6 +26,7 @@ Node {
     function serialize() { return { open: open } }
     function restore(s) { if (s && s.open) setOpen(true) }
 
+    readonly property bool modelPending: visual.modelPending
     position: Qt.vector3d(spec.x + w / 2, spec.y, 0)
     PropVisual {
         id: visual

@@ -54,10 +54,12 @@ Node {
     function serialize() { return body ? { x: body.x, y: body.y } : null }
     function restore(s) { if (s && body) { body.x = s.x; body.y = s.y; body.vy = 0; pushVx = 0; Physics.moveSolid(solid, body.x - w / 2, body.y); solid.dx = 0; solid.dy = 0; sync() } }
 
+    readonly property bool modelPending: visual.modelPending
     Node {
         y: root.round ? root.h / 2 : 0
         eulerRotation.z: root.round ? root.spin : 0
         PropVisual {
+            id: visual
             assetId: root.spec.asset || "push_box"
             w: root.w; h: root.h; d: root.spec.d || Math.max(0.8, root.w * 0.8)
             assetBase: root.assetBase; useModels: root.useModels

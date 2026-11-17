@@ -66,6 +66,22 @@ Item {
     function sectionAt(x) { return Level.sectionAt(x) }
     function checkpointList() { return Level.checkpoints() }
 
+    // How many entity visuals still have a Loader3D in flight (used to hold "playing" until warm).
+    function modelsPendingCount() {
+        let n = 0
+        for (const p of props) if (p.modelPending) n++
+        for (const m of movers) if (m.modelPending) n++
+        for (const p of pushables) if (p.modelPending) n++
+        for (const g of gates) if (g.modelPending) n++
+        for (const c of collectibles) if (c.modelPending) n++
+        for (const cp of checkpoints) if (cp.modelPending) n++
+        for (const h of hazards) if (h.modelPending) n++
+        for (const id in switches) if (switches[id].modelPending) n++
+        if (finalDoor && finalDoor.modelPending) n++
+        for (const c of characters) if (c.modelPending) n++
+        return n
+    }
+
     function build() {
         if (built) return
         const common = { assetBase: assetBase, useModels: useModels }

@@ -44,8 +44,10 @@ Node {
         if (pressed) press(); else release()
     }
 
+    readonly property bool modelPending: visual.modelPending
     position: Qt.vector3d(spec.x, spec.y, 0)
     PropVisual {
+        id: visual
         assetId: root.kind === "button" ? "floor_button" : (root.kind === "lever" ? "lever" : "plate")
         w: root.w; h: root.h; d: root.kind === "plate" ? 1.0 : root.w
         assetBase: root.assetBase; useModels: root.useModels

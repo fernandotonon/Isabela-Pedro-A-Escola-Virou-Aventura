@@ -59,7 +59,9 @@ Node {
         sync()
     }
 
+    readonly property bool modelPending: visual.modelPending
     PropVisual {
+        id: visual
         assetId: root.spec.asset || "moving_platform"
         w: root.w; h: root.h; d: root.spec.d || 1.3
         assetBase: root.assetBase; useModels: root.useModels

@@ -18,8 +18,10 @@ Node {
         return false
     }
 
+    readonly property bool modelPending: visual.modelPending
     position: Qt.vector3d(spec.x, spec.y, 0)
     PropVisual {
+        id: visual
         assetId: "checkpoint_marker"
         w: 0.4; h: 2.2; d: 0.4
         assetBase: root.assetBase; useModels: root.useModels

@@ -33,8 +33,10 @@ Node {
     }
     function reset() { open = false; confirmed = ({}); present = ({}) }
 
+    readonly property bool modelPending: visual.modelPending
     position: Qt.vector3d(spec.x, spec.y, 0)
     PropVisual {
+        id: visual
         assetId: "final_door"
         w: root.w; h: root.h; d: 0.3
         assetBase: root.assetBase; useModels: root.useModels

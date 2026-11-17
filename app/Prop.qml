@@ -31,6 +31,7 @@ Node {
     // (the level teaches the crawl by shape: a bench, a tunnel, the bleachers standing clear of the ground).
     readonly property bool raised: spec.type === "lowpass" && spec.raised === true
     readonly property real gap: spec.gap || 0.8
+    readonly property bool modelPending: visual.modelPending
     PropVisual {
         id: visual
         visible: root.spec.type !== "ground" && !root.spec.invisible      // invisible: collision only (a slope built from steps under a model)
